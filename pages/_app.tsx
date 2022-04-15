@@ -1,9 +1,9 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import Layout from '../components/Layout'
+import { Layout } from '../components/layout'
 import Head from 'next/head'
 import { MantineProvider } from '@mantine/core'
-import { myTheme } from '../styles/myTheme'
+import { theme } from '../styles/theme'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -16,7 +16,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         />
       </Head>
 
-      <MantineProvider withGlobalStyles withNormalizeCSS theme={myTheme}>
+      <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
