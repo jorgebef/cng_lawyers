@@ -7,10 +7,10 @@ import {
   Text,
   Transition,
   useMantineTheme,
-  Box,
+  Container,
 } from '@mantine/core'
 import { useRouter } from 'next/router'
-import { useStyles } from './Header.style'
+import { useStyles } from './Header.styles'
 
 interface ILink {
   link: string
@@ -52,11 +52,8 @@ export const Header: React.FC = () => {
   ))
 
   return (
-    <MantineHeader
-      height={theme.other.headerH}
-      className={classes.headerWrapper}
-    >
-      <Box className={classes.header}>
+    <MantineHeader height={theme.other.headerH} className={classes.header}>
+      <Container className={classes.inner}>
         <Text>LOGO</Text>
         <Group spacing={theme.spacing.sm} className={classes.links}>
           {items}
@@ -76,7 +73,7 @@ export const Header: React.FC = () => {
             </Paper>
           )}
         </Transition>
-      </Box>
+      </Container>
     </MantineHeader>
   )
 }
