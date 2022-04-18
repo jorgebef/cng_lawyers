@@ -23,9 +23,6 @@ const Services: NextPage = () => {
           rel='noopener noreferrer'
         >
           Powered by{' '}
-          <span>
-            <Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
-          </span>
         </a>
       </div>
     </div>

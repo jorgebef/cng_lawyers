@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { AOSCard } from '../components/aosCard/AOSCard'
 import { Hero } from '../components/hero'
 
 const Home: NextPage = () => {
@@ -13,8 +14,15 @@ const Home: NextPage = () => {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      lakjsdlfkjasdlfj
-      <Hero />
+      <main>
+        <Hero />
+        <AOSCard />
+        <AOSCard />
+        <AOSCard />
+        <AOSCard />
+        <AOSCard />
+        <AOSCard />
+      </main>
     </>
   )
 }
