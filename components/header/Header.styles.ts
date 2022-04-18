@@ -2,7 +2,7 @@ import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles(theme => ({
   header: {
-    padding: `0 ${theme.spacing.lg}px`,
+    padding: `0 ${theme.spacing.md}px`,
   },
 
   inner: {
@@ -10,7 +10,14 @@ export const useStyles = createStyles(theme => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '100%',
-    maxWidth: theme.breakpoints.xl,
+  },
+
+  logoContainer: {
+    display: 'flex',
+    position: 'relative',
+    padding: `${theme.spacing.xs}px 0`,
+    height: theme.other.headerH,
+    maxWidth: '150px',
   },
 
   links: {
