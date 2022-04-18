@@ -3,7 +3,6 @@ import { createStyles } from '@mantine/core'
 export const useStyles = createStyles(theme => ({
   footer: {
     backgroundColor: theme.colors.gray[0],
-    padding: theme.spacing.sm,
     color: theme.colors.gray[6],
   },
 
@@ -19,7 +18,7 @@ export const useStyles = createStyles(theme => ({
     display: 'flex',
     width: '100%',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
 
     [theme.fn.smallerThan('sm')]: {
       justifyContent: 'center',
@@ -33,7 +32,7 @@ export const useStyles = createStyles(theme => ({
   },
 
   logo: {
-    maxWidth: '150px',
+    maxWidth: '130px',
   },
 
   groups: {

@@ -55,31 +55,37 @@ export const Footer = () => {
 
   return (
     <MantineFooter height={theme.other.footerH} className={classes.footer}>
-      <Container className={classes.inner}>
+      <Container size='xl' className={classes.inner}>
         <div className={classes.info}>
           <div className={classes.companyInfo}>
             <div className={classes.logo}>
-              <Image src={logo} quality={20} />
+              <Image alt='Logo' src={logo} quality={20} />
             </div>
             <div>
-              {Object.values(footerContact).map(val => (
-                <Text>{val}</Text>
+              {Object.values(footerContact).map((val, i) => (
+                <Text key={i} size='sm'>
+                  {val}
+                </Text>
               ))}
             </div>
           </div>
           <div className={classes.groups}>
             {footerCols.map((col, i) => (
               <div key={i}>
-                <Text className={classes.title}>{col.title}</Text>
-                {col.links.map(link => (
-                  <Text variant='link'>{link.label}</Text>
+                <Text size='sm' className={classes.title}>
+                  {col.title}
+                </Text>
+                {col.links.map((link, j) => (
+                  <Text key={j} variant='link' size='sm'>
+                    {link.label}
+                  </Text>
                 ))}
               </div>
             ))}
           </div>
         </div>
         <Divider className={classes.divider} />
-        <Text>© 2022 Jorge Befán - All rights reserved.</Text>
+        <Text size='sm'>© 2022 Jorge Befán - All rights reserved.</Text>
       </Container>
     </MantineFooter>
   )
