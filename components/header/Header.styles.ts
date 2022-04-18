@@ -1,7 +1,7 @@
 import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles(theme => ({
-  header: {
+  navbar: {
     padding: `0 ${theme.spacing.md}px`,
   },
 
@@ -16,8 +16,9 @@ export const useStyles = createStyles(theme => ({
     display: 'flex',
     position: 'relative',
     padding: `${theme.spacing.xs}px 0`,
-    height: theme.other.headerH,
+    height: theme.other.navbarH,
     maxWidth: '150px',
+    cursor: 'pointer',
   },
 
   links: {
@@ -69,7 +70,7 @@ export const useStyles = createStyles(theme => ({
     flexDirection: 'column',
     gap: theme.spacing.xs,
     padding: theme.spacing.md,
-    width: '100%',
+    // width: '100%',
     height: `calc(100vh - ${theme.other.headerH}px)`,
     top: theme.other.headerH,
     left: 0,
@@ -78,6 +79,7 @@ export const useStyles = createStyles(theme => ({
     border: 0,
     borderRadius: 0,
     overflow: 'hidden',
+    backgroundColor: 'white',
 
     [theme.fn.largerThan('sm')]: {
       display: 'none',

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Header as MantineHeader,
   Group,
@@ -13,6 +13,7 @@ import { useRouter } from 'next/router'
 import { useStyles } from './Header.styles'
 import logo from '../../public/logo.svg'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 interface ILink {
   link: string
@@ -53,10 +54,15 @@ export const Header: React.FC = () => {
     </Text>
   ))
 
+  const dropdownVariants = {
+    open: { x: 0 },
+    closed: { x: '-100%' },
+  }
+
   return (
-    <MantineHeader height={theme.other.headerH} className={classes.header}>
+    <MantineHeader height={theme.other.navbarH} className={classes.navbar}>
       <Container size='xl' className={classes.inner}>
-        <div className={classes.logoContainer}>
+        <div className={classes.logoContainer} onClick={() => router.push('/')}>
           <Image alt='Logo' src={logo} />
         </div>
         <Group spacing={theme.spacing.sm} className={classes.links}>
@@ -65,18 +71,31 @@ export const Header: React.FC = () => {
 
         <Burger
           opened={open}
+          color={
+            !open ? theme.colors[theme.primaryColor][0] : theme.colors.red[6]
+          }
           onClick={() => setOpen(!open)}
           className={classes.burger}
           size='md'
         />
 
-        <Transition transition='slide-right' duration={200} mounted={open}>
-          {styles => (
-            <Paper className={classes.dropdown} withBorder style={styles}>
-              {items}
-            </Paper>
-          )}
-        </Transition>
+        <motion.div
+          initial={open ? 'open' : 'closed'}
+          animate={open ? 'open' : 'closed'}
+          variants={dropdownVariants}
+          transition={{ type: 'spring', damping: 24, stiffness: 280 }}
+          className={classes.dropdown}
+        >
+          {items}
+        </motion.div>
+
+        {/* <Transition transition='slide-right' duration={200} mounted={open}> */}
+        {/*   {styles => ( */}
+        {/*     <Paper className={classes.dropdown} withBorder style={styles}> */}
+        {/*       {items} */}
+        {/*     </Paper> */}
+        {/*   )} */}
+        {/* </Transition> */}
       </Container>
     </MantineHeader>
   )
