@@ -1,4 +1,4 @@
-import { Button, Text, useMantineTheme } from '@mantine/core'
+import { Button, Container, Text, useMantineTheme } from '@mantine/core'
 import { useViewportSize } from '@mantine/hooks'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -13,38 +13,45 @@ export const Hero = () => {
 
   const imgPosition =
     width > theme.breakpoints.lg
-      ? '350px'
+      ? '320px'
       : width > theme.breakpoints.md
-      ? '29vw'
+      ? '13vw'
       : width < theme.breakpoints.sm
-      ? '20vw'
+      ? '11vw'
       : '18vw'
 
   return (
     <div className={classes.hero}>
-      <div className={classes.imgContainer}>
-        <Image
-          src={handshake}
-          priority
-          objectFit='cover'
-          quality={50}
-          loading='eager'
-          objectPosition={imgPosition}
-          className={classes.heroImg}
-        />
-      </div>
-      <div className={classes.heroLeft}>
-        <div className={classes.textContainer}>
-          <Text color={theme.white} className={classes.heroText}>
-            LEGAL ADVICE
-            <br />
-            YOU CAN TRUST
-          </Text>
-          <Button color='red' size='sm' onClick={() => router.push('/contact')}>
-            Contact us
-          </Button>
+      <Container px={0} className={classes.heroContainer}>
+        <div className={classes.imgContainer}>
+          <Image
+            alt='handshake image'
+            src={handshake}
+            priority
+            objectFit='cover'
+            quality={50}
+            loading='eager'
+            objectPosition={imgPosition}
+            className={classes.heroImg}
+          />
         </div>
-      </div>
+        <div className={classes.heroLeft}>
+          <div className={classes.textContainer}>
+            <Text color={theme.white} className={classes.heroText}>
+              LEGAL ADVICE
+              <br />
+              YOU CAN TRUST
+            </Text>
+            <Button
+              color='red'
+              size='sm'
+              onClick={() => router.push('/contact')}
+            >
+              Contact us
+            </Button>
+          </div>
+        </div>
+      </Container>
     </div>
   )
 }

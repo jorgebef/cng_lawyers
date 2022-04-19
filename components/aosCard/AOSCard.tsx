@@ -1,33 +1,29 @@
 import { Card, useMantineTheme } from '@mantine/core'
-import { useEffect } from 'react'
-import { useInView } from 'react-intersection-observer'
-import { motion, useAnimation } from 'framer-motion'
+import { motion } from 'framer-motion'
 
-export const AOSCard = () => {
+interface AOSCardProps {
+  xfrom?: string
+  yfrom?: string
+  children: React.ReactNode
+}
+
+export const AOSCard = ({ xfrom, yfrom, children }: AOSCardProps) => {
   const theme = useMantineTheme()
-  const controls = useAnimation()
-  const [ref, inView] = useInView()
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('show')
-    }
-  }, [controls, inView])
 
   const cardVariants = {
-    show: { opacity: 1, x: 0 },
-    hidden: { opacity: 0, x: '-100%' },
+    show: { opacity: 1, x: 0, y: 0 },
+    hidden: { opacity: 0, x: xfrom, y: yfrom },
   }
 
   return (
     <motion.div
-      ref={ref}
       initial='hidden'
       variants={cardVariants}
-      animate={controls}
+      whileInView='show'
+      viewport={{ once: true, amount: 0.3 }}
     >
-      <Card shadow='sm' p={theme.spacing.md} ref={null}>
-        TESTING
+      <Card p={theme.spacing.md} sx={{ backgroundColor: theme.colors.gray[1] }}>
+        {children}
       </Card>
     </motion.div>
   )

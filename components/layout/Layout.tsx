@@ -1,4 +1,4 @@
-import { AppShell, Container, useMantineTheme } from '@mantine/core'
+import { AppShell, Box, useMantineTheme } from '@mantine/core'
 import { Footer } from '../footer'
 import { Header } from '../header'
 
@@ -11,16 +11,13 @@ export const Layout = ({ children }: LayoutProps) => {
 
   return (
     <AppShell header={<Header />} footer={<Footer />} padding={0}>
-      <Container
-        px={theme.spacing.md}
-        py={theme.spacing.xl}
-        size='xl'
+      <Box
         sx={{
           minHeight: `calc(100vh - ${theme.other.footerH}px - ${theme.other.headerH}px)`,
         }}
       >
         {children}
-      </Container>
+      </Box>
     </AppShell>
   )
 }

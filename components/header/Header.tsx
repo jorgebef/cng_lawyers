@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {
   Header as MantineHeader,
   Group,
   Burger,
-  Paper,
   Text,
-  Transition,
   useMantineTheme,
   Container,
 } from '@mantine/core'
@@ -63,7 +61,7 @@ export const Header: React.FC = () => {
     <MantineHeader height={theme.other.navbarH} className={classes.navbar}>
       <Container size='xl' className={classes.inner}>
         <div className={classes.logoContainer} onClick={() => router.push('/')}>
-          <Image alt='Logo' src={logo} />
+          <Image alt='CNG Lawyers logo' src={logo} />
         </div>
         <Group spacing={theme.spacing.sm} className={classes.links}>
           {items}
@@ -88,14 +86,6 @@ export const Header: React.FC = () => {
         >
           {items}
         </motion.div>
-
-        {/* <Transition transition='slide-right' duration={200} mounted={open}> */}
-        {/*   {styles => ( */}
-        {/*     <Paper className={classes.dropdown} withBorder style={styles}> */}
-        {/*       {items} */}
-        {/*     </Paper> */}
-        {/*   )} */}
-        {/* </Transition> */}
       </Container>
     </MantineHeader>
   )

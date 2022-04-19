@@ -2,10 +2,24 @@ import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles(theme => ({
   hero: {
+    display: 'flex',
+    justifyContent: 'center',
+    height: '55vh',
+    backgroundColor: theme.colors[theme.primaryColor][0],
+
+    [theme.fn.smallerThan('md')]: {
+      height: '45vh',
+    },
+
+    [theme.fn.smallerThan('sm')]: {
+      height: '40vh',
+    },
+  },
+
+  heroContainer: {
     position: 'relative',
     display: 'flex',
-    height: '40vh',
-    margin: `-${theme.spacing.xl}px -${theme.spacing.md}px 2em`,
+    maxWidth: theme.breakpoints.xl,
   },
 
   heroLeft: {
@@ -15,7 +29,7 @@ export const useStyles = createStyles(theme => ({
     width: '100%',
     height: '100%',
     backgroundColor: theme.colors[theme.primaryColor][0],
-    clipPath: 'polygon(65% 0, 40% 100%, 0 100%, 0 0)',
+    clipPath: 'polygon(65% 0, 35% 100%, 0 100%, 0 0)',
   },
 
   textContainer: {
@@ -49,6 +63,7 @@ export const useStyles = createStyles(theme => ({
     position: 'relative',
     display: 'flex',
     overflow: 'hidden',
+    clipPath: 'polygon(100% 0, 70% 100%, 0 100%, 0 0)',
 
     '&::after': {
       position: 'absolute',
