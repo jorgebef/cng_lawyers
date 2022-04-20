@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import handshake from '../../public/handshake.jpeg'
 import { useStyles } from './Hero.styles'
+import apits_logo from '../../public/apits_logo.png'
+import logo_abogacia from '../../public/logo_abogacia.png'
 
 export const Hero = () => {
   const { classes } = useStyles()
@@ -32,7 +34,6 @@ export const Hero = () => {
             quality={50}
             loading='eager'
             objectPosition={imgPosition}
-            className={classes.heroImg}
           />
         </div>
         <div className={classes.heroLeft}>
@@ -49,6 +50,18 @@ export const Hero = () => {
             >
               Contact us
             </Button>
+            <div className={classes.otherLogos}>
+              <Image
+                src={logo_abogacia}
+                objectFit='scale-down'
+                alt='Logo Abogacia'
+              />
+              <Image
+                src={apits_logo}
+                objectFit='scale-down'
+                alt='A Place in the Sun logo'
+              />
+            </div>
           </div>
         </div>
       </Container>

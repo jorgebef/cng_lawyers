@@ -45,17 +45,19 @@ export const useStyles = createStyles(theme => ({
 
   heroText: {
     lineHeight: 1.1,
-    fontSize: 50,
+    fontSize: 55,
     fontWeight: 900,
+
+    [theme.fn.smallerThan('lg')]: {
+      fontSize: 45,
+    },
 
     [theme.fn.smallerThan('sm')]: {
       fontSize: 35,
-      fontWeight: 700,
     },
 
     [theme.fn.smallerThan('xs')]: {
       fontSize: 25,
-      fontWeight: 700,
     },
   },
 
@@ -75,7 +77,13 @@ export const useStyles = createStyles(theme => ({
     },
   },
 
-  heroImg: {
-    // filter: 'blur(2px)',
+  otherLogos: {
+    position: 'relative',
+    display: 'grid',
+    gridTemplateRows: 'repeat(2,1fr)',
+    flexDirection: 'column',
+    gap: theme.spacing.sm,
+    height: '9vh',
+    maxWidth: '20vw',
   },
 }))
