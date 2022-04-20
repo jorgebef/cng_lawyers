@@ -20,8 +20,8 @@ interface ILink {
 
 const links: ILink[] = [
   { link: '/', label: 'Home' },
-  { link: '/about', label: 'About' },
   { link: '/services', label: 'Services' },
+  { link: '/about-us', label: 'About us' },
   { link: '/contact', label: 'Contact' },
 ]
 
