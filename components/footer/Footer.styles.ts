@@ -47,7 +47,7 @@ export const useStyles = createStyles(theme => ({
 
   title: {
     fontWeight: 700,
-    color: theme.colors.gray[7],
+    color: theme.colors.gray[6],
   },
 
   divider: {
