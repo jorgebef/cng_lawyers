@@ -4,15 +4,11 @@ export const useStyles = createStyles(theme => ({
   hero: {
     display: 'flex',
     justifyContent: 'center',
-    height: '55vh',
+    height: '50vh',
     backgroundColor: theme.colors[theme.primaryColor][0],
 
     [theme.fn.smallerThan('md')]: {
       height: '45vh',
-    },
-
-    [theme.fn.smallerThan('sm')]: {
-      height: '40vh',
     },
   },
 
@@ -26,7 +22,7 @@ export const useStyles = createStyles(theme => ({
     position: 'absolute',
     display: 'flex',
     alignItems: 'center',
-    width: '40%',
+    width: '45%',
     height: '100%',
   },
 
@@ -54,7 +50,7 @@ export const useStyles = createStyles(theme => ({
     },
 
     [theme.fn.smallerThan('xs')]: {
-      fontSize: 25,
+      fontSize: 30,
     },
   },
 
@@ -62,7 +58,7 @@ export const useStyles = createStyles(theme => ({
     position: 'relative',
     display: 'flex',
     overflow: 'hidden',
-    paddingLeft:'100px',
+    paddingLeft: '100px',
     clipPath: 'polygon(100% 0, 70% 100%, 25% 100%, 55% 0)',
 
     '&::after': {

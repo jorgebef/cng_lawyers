@@ -1,7 +1,5 @@
-import { Button, Container, Text, useMantineTheme } from '@mantine/core'
-import { useViewportSize } from '@mantine/hooks'
+import { Container, Text, useMantineTheme } from '@mantine/core'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import handshake from '../../public/handshake_cropped.jpg'
 import { useStyles } from './Hero.styles'
 import apits_logo from '../../public/apits_logo.png'
@@ -10,17 +8,6 @@ import logo_abogacia from '../../public/logo_abogacia.png'
 export const Hero = () => {
   const { classes } = useStyles()
   const theme = useMantineTheme()
-  const router = useRouter()
-  const { width, height: _ } = useViewportSize()
-
-  const imgPosition =
-    width > theme.breakpoints.lg
-      ? '320px'
-      : width > theme.breakpoints.md
-      ? '13vw'
-      : width < theme.breakpoints.sm
-      ? '11vw'
-      : '18vw'
 
   return (
     <div className={classes.hero}>
@@ -42,13 +29,6 @@ export const Hero = () => {
               <br />
               YOU CAN TRUST
             </Text>
-            <Button
-              color='red'
-              size='sm'
-              onClick={() => router.push('/contact')}
-            >
-              Contact us
-            </Button>
             <div className={classes.otherLogos}>
               <Image
                 src={logo_abogacia}
