@@ -16,7 +16,7 @@ export const theme: MantineThemeOverride = {
   },
   defaultRadius: 'md',
   other: {
-    headerH: 75,
+    headerH: 65,
     footerH: 170,
   },
 }

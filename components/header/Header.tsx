@@ -58,7 +58,7 @@ export const Header: React.FC = () => {
   }
 
   return (
-    <MantineHeader height={theme.other.navbarH} className={classes.navbar}>
+    <MantineHeader height={theme.other.headerH} className={classes.navbar}>
       <Container size='xl' className={classes.inner}>
         <div className={classes.logoContainer} onClick={() => router.push('/')}>
           <Image alt='CNG Lawyers logo' src={logo} />

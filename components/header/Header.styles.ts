@@ -2,6 +2,7 @@ import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles(theme => ({
   navbar: {
+    position:'fixed',
     padding: `0 ${theme.spacing.md}px`,
   },
 
@@ -15,8 +16,8 @@ export const useStyles = createStyles(theme => ({
   logoContainer: {
     display: 'flex',
     position: 'relative',
-    padding: `${theme.spacing.xs}px 0`,
-    height: theme.other.navbarH,
+    padding: `5px 0`,
+    height: theme.other.headerH,
     maxWidth: '150px',
     cursor: 'pointer',
   },
