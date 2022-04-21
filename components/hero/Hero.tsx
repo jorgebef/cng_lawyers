@@ -2,7 +2,7 @@ import { Button, Container, Text, useMantineTheme } from '@mantine/core'
 import { useViewportSize } from '@mantine/hooks'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import handshake from '../../public/handshake.jpeg'
+import handshake from '../../public/handshake_cropped.jpg'
 import { useStyles } from './Hero.styles'
 import apits_logo from '../../public/apits_logo.png'
 import logo_abogacia from '../../public/logo_abogacia.png'
@@ -33,7 +33,6 @@ export const Hero = () => {
             objectFit='cover'
             quality={50}
             loading='eager'
-            objectPosition={imgPosition}
           />
         </div>
         <div className={classes.heroLeft}>

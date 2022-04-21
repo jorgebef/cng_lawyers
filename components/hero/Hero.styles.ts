@@ -26,10 +26,8 @@ export const useStyles = createStyles(theme => ({
     position: 'absolute',
     display: 'flex',
     alignItems: 'center',
-    width: '100%',
+    width: '40%',
     height: '100%',
-    backgroundColor: theme.colors[theme.primaryColor][0],
-    clipPath: 'polygon(65% 0, 35% 100%, 0 100%, 0 0)',
   },
 
   textContainer: {
@@ -38,7 +36,6 @@ export const useStyles = createStyles(theme => ({
     flexDirection: 'column',
     textAlign: 'center',
     gap: theme.spacing.md,
-    width: '50%',
     alignItems: 'center',
     padding: theme.spacing.xs,
   },
@@ -65,7 +62,8 @@ export const useStyles = createStyles(theme => ({
     position: 'relative',
     display: 'flex',
     overflow: 'hidden',
-    clipPath: 'polygon(100% 0, 70% 100%, 0 100%, 0 0)',
+    paddingLeft:'100px',
+    clipPath: 'polygon(100% 0, 70% 100%, 25% 100%, 55% 0)',
 
     '&::after': {
       position: 'absolute',
