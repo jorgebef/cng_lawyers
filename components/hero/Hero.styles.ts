@@ -22,7 +22,7 @@ export const useStyles = createStyles(theme => ({
     position: 'absolute',
     display: 'flex',
     alignItems: 'center',
-    width: '45%',
+    width: '52%',
     height: '100%',
   },
 
@@ -33,7 +33,12 @@ export const useStyles = createStyles(theme => ({
     textAlign: 'center',
     gap: theme.spacing.md,
     alignItems: 'center',
-    padding: theme.spacing.xs,
+    justifyContent: 'space-between',
+    padding: theme.spacing.xl,
+
+    [theme.fn.smallerThan('sm')]: {
+      padding: theme.spacing.xs,
+    },
   },
 
   heroText: {
@@ -58,8 +63,17 @@ export const useStyles = createStyles(theme => ({
     position: 'relative',
     display: 'flex',
     overflow: 'hidden',
-    paddingLeft: '100px',
-    clipPath: 'polygon(100% 0, 70% 100%, 25% 100%, 55% 0)',
+    marginLeft: '30vh',
+    clipPath: 'url(#myCurve)',
+
+    [theme.fn.smallerThan('md')]: {
+      marginLeft: '18vh',
+      marginRight: '-5vh',
+    },
+
+    [theme.fn.smallerThan('sm')]: {
+      marginLeft: '12vh',
+    },
 
     '&::after': {
       position: 'absolute',
@@ -76,8 +90,8 @@ export const useStyles = createStyles(theme => ({
     display: 'grid',
     gridTemplateRows: 'repeat(2,1fr)',
     flexDirection: 'column',
-    gap: theme.spacing.sm,
-    height: '9vh',
-    maxWidth: '20vw',
+    marginTop: theme.spacing.md,
+    width: '20vw',
+    maxWidth: '150px',
   },
 }))

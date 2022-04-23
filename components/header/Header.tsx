@@ -19,10 +19,10 @@ interface ILink {
 }
 
 const links: ILink[] = [
-  { link: '/', label: 'Home' },
-  { link: '/services', label: 'Services' },
-  { link: '/about-us', label: 'About us' },
-  { link: '/contact', label: 'Contact' },
+  { link: '/', label: 'HOME' },
+  { link: '/services', label: 'SERVICES' },
+  { link: '/about-us', label: 'ABOUT US' },
+  { link: '/contact', label: 'CONTACT' },
 ]
 
 export const Header: React.FC = () => {

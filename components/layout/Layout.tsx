@@ -30,7 +30,6 @@ export const Layout = ({ children }: LayoutProps) => {
           minHeight: `calc(100vh - ${theme.other.footerH}px - ${theme.other.headerH}px)`,
         }}
       >
-        {router.asPath === '/' && <Hero />}
         {children}
       </Box>
     </AppShell>
