@@ -1,14 +1,6 @@
-import {
-  AppShell,
-  Box,
-  Container,
-  createStyles,
-  useMantineTheme,
-} from '@mantine/core'
-import { useRouter } from 'next/router'
+import { AppShell, Box, useMantineTheme } from '@mantine/core'
 import { Footer } from '../footer'
 import { Header } from '../header'
-import { Hero } from '../hero'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -16,7 +8,6 @@ type LayoutProps = {
 
 export const Layout = ({ children }: LayoutProps) => {
   const theme = useMantineTheme()
-  const router = useRouter()
 
   return (
     <AppShell header={<Header />} footer={<Footer />} padding={0}>

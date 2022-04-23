@@ -1,9 +1,5 @@
-import { Container, Text, useMantineTheme } from '@mantine/core'
-import Image from 'next/image'
-import handshake from '../../public/handshake_cropped.jpg'
+import { Container, Image, Text, useMantineTheme } from '@mantine/core'
 import { useStyles } from './Hero.styles'
-import apits_logo from '../../public/apits_logo.png'
-import logo_abogacia from '../../public/logo_abogacia_white.png'
 import { motion } from 'framer-motion'
 
 export const Hero = () => {
@@ -14,13 +10,14 @@ export const Hero = () => {
     <div className={classes.hero}>
       <Container px={0} className={classes.heroContainer}>
         <div className={classes.imgContainer}>
-          <Image
+          <img
             alt='handshake image'
-            src={handshake}
-            priority
-            objectFit='cover'
-            quality={50}
-            loading='eager'
+            src='/handshake_cropped.jpg'
+            style={{
+              height: '100%',
+              width: '100%',
+              objectFit: 'cover',
+            }}
           />
         </div>
         <div className={classes.heroLeft}>
@@ -31,18 +28,8 @@ export const Hero = () => {
               YOU CAN TRUST
             </Text>
             <div className={classes.otherLogos}>
-              <Image
-                src={apits_logo}
-                objectFit='scale-down'
-                loading='eager'
-                alt='A Place in the Sun logo'
-              />
-              <Image
-                src={logo_abogacia}
-                objectFit='scale-down'
-                loading='eager'
-                alt='Logo Abogacia'
-              />
+              <Image src='/apits_logo.png' alt='A Place in the Sun logo' />
+              <Image src='/logo_abogacia_white.png' alt='Logo Abogacia' />
               <svg width='0' height='0'>
                 <defs>
                   <clipPath id='myCurve' clipPathUnits='objectBoundingBox'>

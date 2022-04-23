@@ -3,14 +3,14 @@ import {
   Header as MantineHeader,
   Group,
   Burger,
+  Image,
   Text,
   useMantineTheme,
   Container,
+  Button,
 } from '@mantine/core'
 import { useRouter } from 'next/router'
 import { useStyles } from './Header.styles'
-import logo from '../../public/logo.svg'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 interface ILink {
@@ -22,7 +22,7 @@ const links: ILink[] = [
   { link: '/', label: 'HOME' },
   { link: '/services', label: 'SERVICES' },
   { link: '/about-us', label: 'ABOUT US' },
-  { link: '/contact', label: 'CONTACT' },
+  { link: '/contact', label: 'CONTACT US' },
 ]
 
 export const Header: React.FC = () => {
@@ -50,6 +50,7 @@ export const Header: React.FC = () => {
         [classes.linkActive]: active === link.link,
       })}
       onClick={(e: React.MouseEvent) => handleToggle(e, link)}
+      sx={{ color: link.label.toLowerCase() === 'contact us' ? theme.colors.red[0]: 'none' }}
     >
       {link.label}
     </Text>
@@ -62,23 +63,34 @@ export const Header: React.FC = () => {
 
   return (
     <MantineHeader height={theme.other.headerH} className={classes.navbar}>
-      <Container size='xl' className={classes.inner}>
+      <Container size='xl' px={theme.spacing.md} className={classes.inner}>
         <div className={classes.logoContainer} onClick={() => router.push('/')}>
-          <Image alt='CNG Lawyers logo' src={logo} />
+          <Image alt='CNG Lawyers logo' src='/logo.svg' />
         </div>
-        <Group spacing={theme.spacing.sm} className={classes.links}>
+
+        <div className={classes.smButtons}>
+          <Button
+            className={classes.contactBtn}
+            color='red'
+            size='xs'
+            onClick={() => router.push('/contact')}
+          >
+            Contact us
+          </Button>
+          <Burger
+            opened={open}
+            color={
+              !open ? theme.colors[theme.primaryColor][0] : theme.colors.red[6]
+            }
+            onClick={() => setOpen(!open)}
+            className={classes.burger}
+            size='md'
+          />
+        </div>
+
+        <Group spacing={theme.spacing.xs} className={classes.links}>
           {items}
         </Group>
-
-        <Burger
-          opened={open}
-          color={
-            !open ? theme.colors[theme.primaryColor][0] : theme.colors.red[6]
-          }
-          onClick={() => setOpen(!open)}
-          className={classes.burger}
-          size='md'
-        />
 
         <motion.div
           initial={open ? 'open' : 'closed'}

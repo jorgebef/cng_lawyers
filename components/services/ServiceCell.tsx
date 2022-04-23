@@ -1,5 +1,4 @@
 import { Box, Text, useMantineTheme } from '@mantine/core'
-import { GiHouse } from 'react-icons/gi'
 
 interface ServiceCellProps {
   title: string

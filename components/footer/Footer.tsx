@@ -2,12 +2,11 @@ import {
   Container,
   Divider,
   Footer as MantineFooter,
+  Image,
   Text,
   useMantineTheme,
 } from '@mantine/core'
-import Image from 'next/image'
 import { useStyles } from './Footer.styles'
-import logo from '../../public/logo.svg'
 
 interface IFooterContact {
   [key: string]: string
@@ -59,7 +58,7 @@ export const Footer = () => {
         <div className={classes.info}>
           <div className={classes.companyInfo}>
             <div className={classes.logo}>
-              <Image alt='Logo' src={logo} quality={20} />
+              <Image alt='Logo' src='/logo.svg' />
             </div>
             <div>
               {Object.values(footerContact).map((val, i) => (

@@ -1,8 +1,7 @@
-import { Box, Paper, Text, useMantineTheme } from '@mantine/core'
-import Image, { StaticImageData } from 'next/image'
+import { Box, Image, Text, useMantineTheme } from '@mantine/core'
 
 interface ServiceCardProps {
-  img: StaticImageData
+  img: string
   title: string
   align: 'left' | 'right'
   children: React.ReactNode
@@ -37,8 +36,6 @@ export const ServiceCard = ({
       <Image
         src={img}
         alt={title}
-        quality={40}
-        objectFit='cover'
         style={{
           borderRadius: theme.radius.md,
           gridRow: 1,

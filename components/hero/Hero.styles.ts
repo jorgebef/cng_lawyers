@@ -6,23 +6,28 @@ export const useStyles = createStyles(theme => ({
     justifyContent: 'center',
     height: '50vh',
     backgroundColor: theme.colors[theme.primaryColor][0],
+    overflow: 'hidden',
 
-    [theme.fn.smallerThan('md')]: {
-      height: '45vh',
-    },
+    [theme.fn.smallerThan('md')]:{
+    height: '45vh',
+    }
   },
 
   heroContainer: {
     position: 'relative',
     display: 'flex',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
     maxWidth: theme.breakpoints.xl,
+    width: '100%',
   },
 
   heroLeft: {
     position: 'absolute',
     display: 'flex',
+    left: 0,
     alignItems: 'center',
-    width: '52%',
+    width: '70%',
     height: '100%',
   },
 
@@ -34,7 +39,7 @@ export const useStyles = createStyles(theme => ({
     gap: theme.spacing.md,
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: theme.spacing.xl,
+    padding: theme.spacing.lg,
 
     [theme.fn.smallerThan('sm')]: {
       padding: theme.spacing.xs,
@@ -47,32 +52,29 @@ export const useStyles = createStyles(theme => ({
     fontWeight: 900,
 
     [theme.fn.smallerThan('lg')]: {
-      fontSize: 45,
-    },
-
-    [theme.fn.smallerThan('sm')]: {
-      fontSize: 35,
-    },
-
-    [theme.fn.smallerThan('xs')]: {
-      fontSize: 30,
+      fontSize: 40,
     },
   },
 
   imgContainer: {
-    position: 'relative',
+    position: 'absolute',
     display: 'flex',
     overflow: 'hidden',
-    marginLeft: '30vh',
+    height: '100%',
     clipPath: 'url(#myCurve)',
 
+    [theme.fn.largerThan('md')]: {
+      alignSelf: 'center',
+      minHeight: '650px',
+    },
+
     [theme.fn.smallerThan('md')]: {
-      marginLeft: '18vh',
-      marginRight: '-5vh',
+      right: '-20vw',
     },
 
     [theme.fn.smallerThan('sm')]: {
-      marginLeft: '12vh',
+      left: '25vw',
+      right: '-35vw',
     },
 
     '&::after': {
