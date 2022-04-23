@@ -4,6 +4,7 @@ import { Layout } from '../components/layout'
 import Head from 'next/head'
 import { MantineProvider } from '@mantine/core'
 import { theme } from '../styles/theme'
+import { AnimatePresence } from 'framer-motion'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -16,9 +17,15 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       </Head>
 
       <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <AnimatePresence
+          exitBeforeEnter
+          initial={false}
+          onExitComplete={() => window.scrollTo(0, 0)}
+        >
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </AnimatePresence>
       </MantineProvider>
     </>
   )

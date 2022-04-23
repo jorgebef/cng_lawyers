@@ -1,8 +1,15 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { Container, Text, useMantineTheme } from '@mantine/core'
 import { useScrollIntoView } from '@mantine/hooks'
 import { useEffect } from 'react'
+import { motion } from 'framer-motion'
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  }
+}
 
 const Contact: NextPage = () => {
   const theme = useMantineTheme()
@@ -21,7 +28,10 @@ const Contact: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main>
+      <motion.main
+              initial={{ x: -200 }}
+              animate={{ x: 0 }}
+      >
         <Container>
           <div ref={targetRef}>
             <Text p={theme.spacing.xl} size='xl'>
@@ -29,7 +39,7 @@ const Contact: NextPage = () => {
             </Text>
           </div>
         </Container>
-      </main>
+      </motion.main>
     </>
   )
 }

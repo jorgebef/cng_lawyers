@@ -1,29 +1,62 @@
-import type { NextPage } from 'next'
+import { Container, Image, Text, useMantineTheme } from '@mantine/core'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
+import { motion } from 'framer-motion'
 
-const Test: NextPage = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  }
+}
+
+const About: NextPage = () => {
+  const theme = useMantineTheme()
+
   return (
     <div className='container'>
       <Head>
         <title>CNG Lawyers - About us</title>
-        <meta name='CNG Lawyers about us' content='About CNG Lawyers, international lawfirm' />
+        <meta
+          name='CNG Lawyers about us'
+          content='About CNG Lawyers, international lawfirm'
+        />
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main>
-      <div style={{ padding: '100px' }}>
-        <a
-          href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
+      <motion.main
+        initial={{ x: -200 }}
+        animate={{ x: 0 }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: theme.spacing.xl,
+        }}
+      >
+        <Container
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: theme.spacing.lg,
+            justifyContent: 'center',
+            padding: theme.spacing.lg,
+            maxWidth: theme.breakpoints.xl,
+          }}
         >
-          Powered by{' '}
-        </a>
-      </div>
-      </main>
-
+          <Text
+            weight={900}
+            color={theme.colors[theme.primaryColor][0]}
+            sx={{ fontSize: 40 }}
+          >
+            ABOUT US
+          </Text>
+          <div>
+            <Image src='/team.jpg' alt='CNG Lawyers team' />
+          </div>
+        </Container>
+      </motion.main>
     </div>
   )
 }
 
-export default Test
+export default About

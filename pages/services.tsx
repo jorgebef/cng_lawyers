@@ -1,14 +1,10 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import { ServiceCard, ServiceCell } from '../components/services'
-import conveyancing from '../public/conveyancing.jpg'
-import litigation from '../public/litigation.jpg'
-import fiscal_repres from '../public/fiscal_repres.jpg'
 import {
   Box,
   Container,
   List,
-  Paper,
   Space,
   Text,
   ThemeIcon,
@@ -24,8 +20,17 @@ import {
 } from 'react-icons/gi'
 import { IoDocumentTextOutline } from 'react-icons/io5'
 import { GoLaw } from 'react-icons/go'
+import { motion } from 'framer-motion'
 
-const Services: NextPage = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  }
+}
+
+const Services: NextPage = ({}: InferGetStaticPropsType<
+  typeof getStaticProps
+>) => {
   const theme = useMantineTheme()
 
   return (
@@ -39,12 +44,14 @@ const Services: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main
+      <motion.main
+        initial={{ x: -200 }}
+        animate={{ x: 0 }}
         style={{
           display: 'flex',
           flexDirection: 'column',
           gap: theme.spacing.xl,
-          paddingTop: theme.spacing.xl,
+          // paddingTop: theme.spacing.xl,
         }}
       >
         <Container
@@ -295,7 +302,11 @@ const Services: NextPage = () => {
             gap: theme.spacing.xl,
           }}
         >
-          <ServiceCard img={conveyancing} title='Conveyancing' align='left'>
+          <ServiceCard
+            img='/conveyancing.jpg'
+            title='Conveyancing'
+            align='left'
+          >
             Purchase a property with the security that a Law firm provides when
             buying Real Estate in a foreign country. With the right advice that
             we can provide in your language, you will feel like at home when
@@ -306,7 +317,7 @@ const Services: NextPage = () => {
           </ServiceCard>
 
           <ServiceCard
-            img={fiscal_repres}
+            img='/fiscal_repres.jpg'
             title='Fiscal Representation'
             align='right'
           >
@@ -317,7 +328,7 @@ const Services: NextPage = () => {
             easier. Contact us in order to enquire about the possible packages.
           </ServiceCard>
 
-          <ServiceCard img={litigation} title='Litigation' align='left'>
+          <ServiceCard img='/litigation.jpg' title='Litigation' align='left'>
             If you have any procedure that requires the appearance of a lawyer,
             be sure you are in good hands. We will handle the procedure and
             inform you of any news, winning cases and reaching deals that are
@@ -326,7 +337,7 @@ const Services: NextPage = () => {
             specifics of the case.
           </ServiceCard>
         </Container>
-      </main>
+      </motion.main>
     </div>
   )
 }

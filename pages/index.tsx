@@ -6,7 +6,7 @@ import {
   Text,
   useMantineTheme,
 } from '@mantine/core'
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -21,11 +21,19 @@ import {
   GiHandcuffs,
 } from 'react-icons/gi'
 import { IoDocumentTextOutline } from 'react-icons/io5'
+import { motion } from 'framer-motion'
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  }
+}
 
 interface FeatureDivProps {
   number: string
   text: string
 }
+
 const FeatureDiv = ({ number, text }: FeatureDivProps) => {
   const theme = useMantineTheme()
   const [count, setCount] = useState('0')
@@ -38,10 +46,10 @@ const FeatureDiv = ({ number, text }: FeatureDivProps) => {
 
     if (start === end) return
 
-    let totalMilSecDur = parseInt(duration)
-    let incrementTime = (totalMilSecDur / end) * 4000
+    const totalMilSecDur = parseInt(duration)
+    const incrementTime = (totalMilSecDur / end) * 4000
 
-    let timer = setInterval(() => {
+    const timer = setInterval(() => {
       start += 3
       setCount(String(start) + number.substring(3))
       if (start === end) clearInterval(timer)
@@ -93,7 +101,9 @@ const Home: NextPage = () => {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main
+      <motion.main
+        initial={{ x: -200 }}
+        animate={{ x: 0 }}
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -304,7 +314,7 @@ const Home: NextPage = () => {
             part of the family.
           </AOSCardQuote>
         </Container>
-      </main>
+      </motion.main>
     </>
   )
 }
