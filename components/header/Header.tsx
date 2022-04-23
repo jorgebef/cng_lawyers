@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Header as MantineHeader,
   Group,
@@ -33,9 +33,12 @@ export const Header: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false)
   const [active, setActive] = useState<string>(router.asPath)
 
+  useEffect(() => {
+    setActive(router.asPath)
+  }, [router.asPath])
+
   const handleToggle = (e: React.MouseEvent, link: ILink) => {
     e.preventDefault()
-    setActive(link.link)
     setOpen(false)
     router.push(link.link)
   }
