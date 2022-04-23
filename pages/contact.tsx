@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Container, Text, useMantineTheme } from '@mantine/core'
 import { useScrollIntoView } from '@mantine/hooks'
-import { Hero } from '../components/hero'
 import { useEffect } from 'react'
 
 const Contact: NextPage = () => {
@@ -22,16 +21,13 @@ const Contact: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='container'>
-        <Hero />
+      <main>
         <Container>
-          <Hero />
           <div ref={targetRef}>
             <Text p={theme.spacing.xl} size='xl'>
               This is the target for the scroll into view
             </Text>
           </div>
-          <Hero />
         </Container>
       </main>
     </>
