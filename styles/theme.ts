@@ -19,4 +19,5 @@ export const theme: MantineThemeOverride = {
     headerH: 65,
     footerH: 170,
   },
+  fontFamily: 'Roboto'
 }
