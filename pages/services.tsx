@@ -51,7 +51,6 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
           display: 'flex',
           flexDirection: 'column',
           gap: theme.spacing.xl,
-          // paddingTop: theme.spacing.xl,
         }}
       >
         <Container

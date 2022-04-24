@@ -1,9 +1,19 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
-import { Container, Text, useMantineTheme } from '@mantine/core'
+import {
+  Button,
+  Container,
+  Text,
+  Textarea,
+  TextInput,
+  useMantineTheme,
+} from '@mantine/core'
 import { useScrollIntoView } from '@mantine/hooks'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { useAppCtx } from '../context/AppCtx'
+import { MdAlternateEmail, MdPhone, MdPerson, MdCheck } from 'react-icons/md'
+import { showNotification } from '@mantine/notifications'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -13,12 +23,58 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Contact: NextPage = () => {
   const theme = useMantineTheme()
+  const { contactView, unsetView } = useAppCtx()
 
   const { targetRef, scrollIntoView } = useScrollIntoView<HTMLDivElement>()
 
+  const [name, setName] = useState<string>()
+  const [email, setEmail] = useState<string>()
+  const [phone, setPhone] = useState<string>()
+  const [message, setMessage] = useState<string>()
+
   useEffect(() => {
-    scrollIntoView({ alignment: 'center' })
-  }, [scrollIntoView])
+    if (contactView === true) {
+      scrollIntoView({ alignment: 'center' })
+      unsetView()
+    }
+  }, [contactView])
+
+  const clearValues = () => {
+    setName('')
+    setEmail('')
+    setPhone('')
+    setMessage('')
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    await fetch('/.netlify/functions/sendMail', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone,
+        message: message,
+      }),
+    })
+    clearValues()
+    showNotification({
+      id: 'Successful contact',
+      disallowClose: true,
+      autoClose: 5000,
+      title: 'Thank you for contacting us',
+      message: 'We will get back to you within 48 hours',
+      color: 'green',
+      icon: <MdCheck />,
+      style: { borderColor: 'green', padding: theme.spacing.lg },
+      sx: { marginBottom: '10vh' },
+      loading: false,
+    })
+  }
 
   return (
     <>
@@ -29,15 +85,114 @@ const Contact: NextPage = () => {
       </Head>
 
       <motion.main
-              initial={{ x: -200 }}
-              animate={{ x: 0 }}
+        initial={{ x: -200 }}
+        animate={{ x: 0 }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: theme.spacing.xl,
+        }}
       >
-        <Container>
-          <div ref={targetRef}>
-            <Text p={theme.spacing.xl} size='xl'>
-              This is the target for the scroll into view
-            </Text>
-          </div>
+        <Container
+          px={0}
+          sx={{
+            display: 'flex',
+            width: '100%',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: theme.spacing.lg,
+            justifyContent: 'center',
+            padding: theme.spacing.lg,
+            maxWidth: theme.breakpoints.lg,
+          }}
+        >
+          <iframe
+            src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3145.0187011329904!2d-0.6812167837472543!3d37.9766928797231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63a9063eeec0eb%3A0xa829d04542d6cd53!2sCNG%20Lawyers!5e0!3m2!1sen!2ses!4v1650812312396!5m2!1sen!2ses'
+            style={{
+              alignSelf: 'center',
+              height: '45vh',
+              width: '100%',
+              border: 0,
+            }}
+            loading='lazy'
+          />
+        </Container>
+        <Container
+          ref={targetRef}
+          px={theme.spacing.xl}
+          py={theme.spacing.xl}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: theme.spacing.lg,
+            justifyContent: 'center',
+            borderRadius: theme.radius.md,
+            width: '100%',
+            maxWidth: theme.breakpoints.lg,
+            backgroundColor: theme.colors.gray[1],
+          }}
+        >
+          <Text
+            align='center'
+            weight={900}
+            color={theme.colors[theme.primaryColor][0]}
+            sx={{ fontSize: 40 }}
+          >
+            REQUEST AN APPOINTMENT WITH US
+          </Text>
+          <form
+            id='contactForm'
+            onSubmit={handleSubmit}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              width: '100%',
+              maxWidth: theme.breakpoints.xs,
+              gap: theme.spacing.sm,
+            }}
+          >
+            <TextInput
+              label='Full name'
+              placeholder='Full name'
+              value={name}
+              onChange={e => setName(e.currentTarget.value)}
+              icon={<MdPerson />}
+              required
+            />
+            <TextInput
+              label='Email'
+              placeholder='Email'
+              value={email}
+              onChange={e => setEmail(e.currentTarget.value)}
+              icon={<MdAlternateEmail />}
+              required
+            />
+            <TextInput
+              label='Phone number'
+              placeholder='Phone number'
+              value={phone}
+              onChange={e => setPhone(e.currentTarget.value)}
+              icon={<MdPhone />}
+              required
+            />
+            <Textarea
+              placeholder='Your message'
+              label='Message'
+              radius='md'
+              value={message}
+              onChange={e => setMessage(e.currentTarget.value)}
+            />
+            <Button
+              type='submit'
+              sx={{
+                backgroundColor: theme.colors[theme.primaryColor][0],
+                alignSelf: 'center',
+              }}
+            >
+              SUBMIT
+            </Button>
+          </form>
         </Container>
       </motion.main>
     </>

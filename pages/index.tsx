@@ -22,6 +22,7 @@ import {
 } from 'react-icons/gi'
 import { IoDocumentTextOutline } from 'react-icons/io5'
 import { motion } from 'framer-motion'
+import { useAppCtx } from '../context/AppCtx'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -90,6 +91,7 @@ const FeatureDiv = ({ number, text }: FeatureDivProps) => {
 const Home: NextPage = () => {
   const theme = useMantineTheme()
   const router = useRouter()
+  const { viewContact } = useAppCtx()
 
   return (
     <>
@@ -176,7 +178,14 @@ const Home: NextPage = () => {
               without obligation
             </Text>
           </Text>
-          <Button color='red' size='lg' onClick={() => router.push('/contact')}>
+          <Button
+            color='red'
+            size='lg'
+            onClick={() => {
+              viewContact()
+              router.push('/contact')
+            }}
+          >
             Contact us
           </Button>
         </Box>
