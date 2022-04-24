@@ -12,6 +12,7 @@ import {
 import { useRouter } from 'next/router'
 import { useStyles } from './Header.styles'
 import { motion } from 'framer-motion'
+import { useAppCtx } from '../../context/AppCtx'
 
 interface ILink {
   link: string
@@ -29,6 +30,7 @@ export const Header: React.FC = () => {
   const { classes, cx } = useStyles()
   const router = useRouter()
   const theme = useMantineTheme()
+  const { viewContact } = useAppCtx()
 
   const [open, setOpen] = useState<boolean>(false)
   const [active, setActive] = useState<string>(router.asPath)
@@ -37,10 +39,10 @@ export const Header: React.FC = () => {
     setActive(router.asPath)
   }, [router.asPath])
 
-  const handleToggle = (e: React.MouseEvent, link: ILink) => {
+  const handleNavigate = (e: React.MouseEvent, link: string) => {
     e.preventDefault()
     setOpen(false)
-    router.push(link.link)
+    router.push(link)
   }
 
   const items = links.map(link => (
@@ -49,8 +51,13 @@ export const Header: React.FC = () => {
       className={cx(classes.link, {
         [classes.linkActive]: active === link.link,
       })}
-      onClick={(e: React.MouseEvent) => handleToggle(e, link)}
-      sx={{ color: link.label.toLowerCase() === 'contact us' ? theme.colors.red[0]: 'none' }}
+      onClick={(e: React.MouseEvent) => handleNavigate(e, link.link)}
+      sx={{
+        color:
+          link.label.toLowerCase() === 'contact us'
+            ? theme.colors.red[0]
+            : 'none',
+      }}
     >
       {link.label}
     </Text>
@@ -64,7 +71,10 @@ export const Header: React.FC = () => {
   return (
     <MantineHeader height={theme.other.headerH} className={classes.navbar}>
       <Container size='xl' px={theme.spacing.md} className={classes.inner}>
-        <div className={classes.logoContainer} onClick={() => router.push('/')}>
+        <div
+          className={classes.logoContainer}
+          onClick={(e: React.MouseEvent) => handleNavigate(e, '/')}
+        >
           <Image alt='CNG Lawyers logo' src='/logo.svg' />
         </div>
 
@@ -73,7 +83,10 @@ export const Header: React.FC = () => {
             className={classes.contactBtn}
             color='red'
             size='xs'
-            onClick={() => router.push('/contact')}
+            onClick={(e: React.MouseEvent) => {
+              viewContact()
+              handleNavigate(e, '/contact')
+            }}
           >
             Contact us
           </Button>
