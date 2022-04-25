@@ -1,4 +1,4 @@
-import { Container, Image, Text, useMantineTheme } from '@mantine/core'
+import { Container, Text, useMantineTheme } from '@mantine/core'
 import { useStyles } from './Hero.styles'
 import { motion } from 'framer-motion'
 
@@ -28,8 +28,16 @@ export const Hero = () => {
               YOU CAN TRUST
             </Text>
             <div className={classes.otherLogos}>
-              <Image src='/apits_logo.png' alt='A Place in the Sun logo' />
-              <Image src='/logo_abogacia_white.png' alt='Logo Abogacia' />
+              <img
+                src='/apits_logo.png'
+                alt='A Place in the Sun logo'
+                loading='lazy'
+              />
+              <img
+                src='/logo_abogacia_white.png'
+                alt='Logo Abogacia'
+                loading='lazy'
+              />
               <svg width='0' height='0'>
                 <defs>
                   <clipPath id='myCurve' clipPathUnits='objectBoundingBox'>

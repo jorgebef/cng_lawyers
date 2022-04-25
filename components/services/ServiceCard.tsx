@@ -1,4 +1,4 @@
-import { Box, Image, Text, useMantineTheme } from '@mantine/core'
+import { Box, Text, useMantineTheme } from '@mantine/core'
 
 interface ServiceCardProps {
   img: string
@@ -33,9 +33,10 @@ export const ServiceCard = ({
         },
       }}
     >
-      <Image
+      <img
         src={img}
         alt={title}
+        loading='lazy'
         style={{
           borderRadius: theme.radius.md,
           gridRow: 1,

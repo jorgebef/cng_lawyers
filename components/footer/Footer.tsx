@@ -2,7 +2,6 @@ import {
   Container,
   Divider,
   Footer as MantineFooter,
-  Image,
   Text,
   useMantineTheme,
 } from '@mantine/core'
@@ -58,7 +57,7 @@ export const Footer = () => {
         <div className={classes.info}>
           <div className={classes.companyInfo}>
             <div className={classes.logo}>
-              <Image alt='Logo' src='/logo.svg' />
+              <img alt='Logo' src='/logo.svg' loading='lazy' />
             </div>
             <div>
               {Object.values(footerContact).map((val, i) => (

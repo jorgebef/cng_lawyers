@@ -1,4 +1,4 @@
-import { Container, Image, Text, useMantineTheme } from '@mantine/core'
+import { Container,  Text, useMantineTheme } from '@mantine/core'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
@@ -51,7 +51,7 @@ const About: NextPage = () => {
             ABOUT US
           </Text>
           <div>
-            <Image src='/team.jpg' alt='CNG Lawyers team' />
+            <img src='/team.jpg' alt='CNG Lawyers team' loading='lazy' />
           </div>
         </Container>
       </motion.main>

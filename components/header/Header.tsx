@@ -3,7 +3,6 @@ import {
   Header as MantineHeader,
   Group,
   Burger,
-  Image,
   Text,
   useMantineTheme,
   Container,
@@ -75,7 +74,13 @@ export const Header: React.FC = () => {
           className={classes.logoContainer}
           onClick={(e: React.MouseEvent) => handleNavigate(e, '/')}
         >
-          <Image alt='CNG Lawyers logo' src='/logo.svg' />
+          <img
+            alt='CNG Lawyers logo'
+            src='/logo.svg'
+            loading='lazy'
+            width='100%'
+            height='inherit'
+          />
         </div>
 
         <div className={classes.smButtons}>
