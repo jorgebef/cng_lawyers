@@ -91,7 +91,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
           >
             <ServiceCell
               title='SPANISH PROPERTY LAW'
-              icon={<GiHouse size='100%' color='white' />}
+              icon={<GiHouse size='70px' color='white' />}
             >
               Our specialist property team will guide you through all aspects of
               Purchasing & Selling your Property, Property Rentals, Commercial
@@ -100,7 +100,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
 
             <ServiceCell
               title='RELOCATION SERVICES'
-              icon={<GiDirectionSigns size='100%' color='white' />}
+              icon={<GiDirectionSigns size='70px' color='white' />}
             >
               Our relocation team will help you in arranging your NIE
               (foreigner’s tax number), Residency Card, Health Card, Visas,
@@ -110,7 +110,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
 
             <ServiceCell
               title='WILLS & INHERITANCE'
-              icon={<IoDocumentTextOutline size='100%' color='white' />}
+              icon={<IoDocumentTextOutline size='70px' color='white' />}
             >
               It is extremely important to make a Spanish will as Spanish law on
               inheritance is very different from other countries. We can assist
@@ -120,7 +120,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
 
             <ServiceCell
               title='CIVIL LAW'
-              icon={<GoLaw size='100%' color='white' />}
+              icon={<GoLaw size='70px' color='white' />}
             >
               CNG Lawyers handles all matters of Civil Litigation, including
               Personal Injuries, Debt Collection, Creditors Rights, Wrongful
@@ -129,7 +129,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
 
             <ServiceCell
               title='TAXATION'
-              icon={<GiReceiveMoney size='100%' color='white' />}
+              icon={<GiReceiveMoney size='70px' color='white' />}
             >
               Assisting in all matters of fiscal representation before the
               Spanish tax office, both for private individuals and companies. We
@@ -138,7 +138,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             </ServiceCell>
             <ServiceCell
               title='CRIMINAL LAW'
-              icon={<GiHandcuffs size='100%' color='white' />}
+              icon={<GiHandcuffs size='70px' color='white' />}
             >
               CNG Lawyers can assist you if you have been charged with or have
               been a victim of any offences, including Driving & Vehicle

@@ -58,7 +58,7 @@ const FeatureDiv = ({ number, text }: FeatureDivProps) => {
   }, [number])
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ display: 'flex', width: '100%', alignItems: 'center' }}>
       <Text
         weight={900}
         variant='gradient'
@@ -69,7 +69,7 @@ const FeatureDiv = ({ number, text }: FeatureDivProps) => {
         }}
         sx={{
           fontSize: 45,
-          minWidth: `${number.length + 3.1 + Math.log(number.length) * 1.8}rem`,
+          width: `${number.length + 2.2 + Math.log(number.length) * 1.8}rem`,
         }}
         component='span'
       >
@@ -103,6 +103,9 @@ const Home: NextPage = () => {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
+
+      <Hero />
+
       <motion.main
         initial={{ x: -200 }}
         animate={{ x: 0 }}
@@ -112,12 +115,10 @@ const Home: NextPage = () => {
           gap: theme.spacing.lg,
         }}
       >
-        <Hero />
-        <Box
+        <Container
           px={theme.spacing.md}
           py={theme.spacing.md}
           sx={{
-            position: 'relative',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -129,66 +130,57 @@ const Home: NextPage = () => {
             color={theme.colors[theme.primaryColor][0]}
             align='center'
             weight={900}
-            sx={{ fontSize: 40, zIndex: 1 }}
+            sx={{ fontSize: 40 }}
           >
             EXCELLENT SERVICE
           </Text>
-          <div style={{ position: 'relative', zIndex: 1 }}>
+          <div>
             <FeatureDiv number='30' text='Years of experience' />
             <FeatureDiv number='690' text='Deals closed' />
             <FeatureDiv number='300' text='Cases won' />
             <FeatureDiv number='1200' text='Happy clients' />
           </div>
-          <Box sx={{ [theme.fn.smallerThan('md')]: { display: 'none' } }}>
-            <GoLaw
-              size='100%'
-              style={{
-                position: 'absolute',
-                color: theme.colors[theme.primaryColor][1],
-                opacity: 0.15,
-                zIndex: 0,
-                width: 'auto',
-                bottom: 0,
-                right: '5vw',
-              }}
-            />
-          </Box>
-        </Box>
+        </Container>
 
-        <Box
-          px={theme.spacing.md}
-          py={theme.spacing.xl}
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: theme.spacing.sm,
+        <div
+          style={{
+            padding: `${theme.spacing.xl}px ${theme.spacing.md}px`,
             backgroundColor: theme.colors.gray[1],
           }}
         >
-          <Text
-            component='span'
-            color={theme.colors[theme.primaryColor][0]}
-            align='center'
-            size='xl'
-            weight={500}
-          >
-            Schedule a call or an appointment{' '}
-            <Text component='span' weight={800} size='xl'>
-              without obligation
-            </Text>
-          </Text>
-          <Button
-            color='red'
-            size='lg'
-            onClick={() => {
-              viewContact()
-              router.push('/contact')
+          <Container
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              maxWidth: theme.breakpoints.xl,
+              gap: theme.spacing.sm,
             }}
           >
-            Contact us
-          </Button>
-        </Box>
+            <Text
+              component='span'
+              color={theme.colors[theme.primaryColor][0]}
+              align='center'
+              size='xl'
+              weight={500}
+            >
+              Schedule a call or an appointment{' '}
+              <Text component='span' weight={800} size='xl'>
+                without obligation
+              </Text>
+            </Text>
+            <Button
+              color='red'
+              size='lg'
+              onClick={() => {
+                viewContact()
+                router.push('/contact')
+              }}
+            >
+              Contact us
+            </Button>
+          </Container>
+        </div>
 
         <Container
           px={theme.spacing.lg}
@@ -229,7 +221,7 @@ const Home: NextPage = () => {
           >
             <ServiceCell
               title='SPANISH PROPERTY LAW'
-              icon={<GiHouse size='100%' color='white' />}
+              icon={<GiHouse size='70px' color='white' />}
             >
               Our specialist property team will guide you through all aspects of
               Purchasing & Selling your Property, Property Rentals, Commercial
@@ -238,7 +230,7 @@ const Home: NextPage = () => {
 
             <ServiceCell
               title='RELOCATION SERVICES'
-              icon={<GiDirectionSigns size='100%' color='white' />}
+              icon={<GiDirectionSigns size='70px' color='white' />}
             >
               Our relocation team will help you in arranging your NIE
               (foreigner’s tax number), Residency Card, Health Card, Visas,
@@ -248,7 +240,7 @@ const Home: NextPage = () => {
 
             <ServiceCell
               title='WILLS & INHERITANCE'
-              icon={<IoDocumentTextOutline size='100%' color='white' />}
+              icon={<IoDocumentTextOutline size='70px' color='white' />}
             >
               It is extremely important to make a Spanish will as Spanish law on
               inheritance is very different from other countries. We can assist
@@ -258,7 +250,7 @@ const Home: NextPage = () => {
 
             <ServiceCell
               title='CIVIL LAW'
-              icon={<GoLaw size='100%' color='white' />}
+              icon={<GoLaw size='70px' color='white' />}
             >
               CNG Lawyers handles all matters of Civil Litigation, including
               Personal Injuries, Debt Collection, Creditors Rights, Wrongful
@@ -267,7 +259,7 @@ const Home: NextPage = () => {
 
             <ServiceCell
               title='TAXATION'
-              icon={<GiReceiveMoney size='100%' color='white' />}
+              icon={<GiReceiveMoney size='70px' color='white' />}
             >
               Assisting in all matters of fiscal representation before the
               Spanish tax office, both for private individuals and companies. We
@@ -276,7 +268,7 @@ const Home: NextPage = () => {
             </ServiceCell>
             <ServiceCell
               title='CRIMINAL LAW'
-              icon={<GiHandcuffs size='100%' color='white' />}
+              icon={<GiHandcuffs size='70px' color='white' />}
             >
               CNG Lawyers can assist you if you have been charged with or have
               been a victim of any offences, including Driving & Vehicle
