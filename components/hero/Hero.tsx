@@ -8,14 +8,22 @@ export const Hero = () => {
 
   return (
     <div className={classes.hero}>
-      <Container px={0} className={classes.heroContainer}>
+      <Container
+        px={0}
+        className={classes.heroContainer}
+        // sx={{ display: 'flex', flexDirection: 'row-reverse' }}
+      >
         <div className={classes.imgContainer}>
           <img
             alt='handshake image'
             src='/handshake_cropped.jpg'
+            loading='lazy'
+            width='900'
+            height='750'
             style={{
-              height: '100%',
-              width: '100%',
+              height: 'auto',
+              marginLeft:'-110px',
+              // width: '100%',
               objectFit: 'cover',
             }}
           />
@@ -32,11 +40,17 @@ export const Hero = () => {
                 src='/apits_logo.png'
                 alt='A Place in the Sun logo'
                 loading='lazy'
+                width='192'
+                height='35'
+                style={{ width: '100%', height: 'auto' }}
               />
               <img
                 src='/logo_abogacia_white.png'
                 alt='Logo Abogacia'
                 loading='lazy'
+                width='210'
+                height='72'
+                style={{ width: '100%', height: 'auto' }}
               />
               <svg width='0' height='0'>
                 <defs>

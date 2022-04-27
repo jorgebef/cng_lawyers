@@ -5,41 +5,43 @@ export const useStyles = createStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     height: '50vh',
+    maxHeight: '550px',
     backgroundColor: theme.colors[theme.primaryColor][0],
     overflow: 'hidden',
 
-    [theme.fn.smallerThan('md')]:{
-    height: '45vh',
-    }
+    [theme.fn.smallerThan('md')]: {
+      height: '45vh',
+    },
   },
 
   heroContainer: {
     position: 'relative',
     display: 'flex',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-    maxWidth: theme.breakpoints.xl,
+    // alignItems: 'flex-end',
+    // justifyContent: 'flex-end',
+    flexDirection: 'row-reverse',
+    // maxWidth: theme.breakpoints.xl,
     width: '100%',
   },
 
   heroLeft: {
-    position: 'absolute',
+    // position: 'absolute',
     display: 'flex',
     left: 0,
     alignItems: 'center',
-    width: '70%',
+    width: '100%',
     height: '100%',
   },
 
   textContainer: {
-    position: 'absolute',
+    // position: 'absolute',
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center',
     gap: theme.spacing.md,
     alignItems: 'center',
-    justifyContent: 'space-between',
     padding: theme.spacing.lg,
+    zIndex:1,
 
     [theme.fn.smallerThan('sm')]: {
       padding: theme.spacing.xs,
@@ -51,17 +53,19 @@ export const useStyles = createStyles(theme => ({
     fontSize: 55,
     fontWeight: 900,
 
-    [theme.fn.smallerThan('lg')]: {
+    [theme.fn.smallerThan('md')]: {
       fontSize: 40,
     },
   },
 
   imgContainer: {
-    position: 'absolute',
+    // position: 'absolute',
     display: 'flex',
     overflow: 'hidden',
     height: '100%',
     clipPath: 'url(#myCurve)',
+    marginLeft:'-100px',
+    zIndex:0,
 
     [theme.fn.largerThan('md')]: {
       alignSelf: 'center',
@@ -69,16 +73,17 @@ export const useStyles = createStyles(theme => ({
     },
 
     [theme.fn.smallerThan('md')]: {
-      right: '-20vw',
+      marginRight: '-120px',
     },
 
     [theme.fn.smallerThan('sm')]: {
-      left: '25vw',
-      right: '-35vw',
+      marginRight: '-160px',
     },
 
     '&::after': {
       position: 'absolute',
+      top: 0,
+      left: 0,
       width: '100%',
       height: '100%',
       content: '""',
@@ -89,11 +94,10 @@ export const useStyles = createStyles(theme => ({
 
   otherLogos: {
     position: 'relative',
-    display: 'grid',
-    gridTemplateRows: 'repeat(2,1fr)',
+    display: 'flex',
     flexDirection: 'column',
+    gap: theme.spacing.xs,
     marginTop: theme.spacing.md,
-    width: '20vw',
-    maxWidth: '150px',
+    width: '150px',
   },
 }))

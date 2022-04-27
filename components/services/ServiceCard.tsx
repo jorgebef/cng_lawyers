@@ -37,9 +37,13 @@ export const ServiceCard = ({
         src={img}
         alt={title}
         loading='lazy'
+        width='800'
+        height='500'
         style={{
           borderRadius: theme.radius.md,
           gridRow: 1,
+          width: '100%',
+          height: 'auto',
           zIndex: 0,
         }}
       />

@@ -1,17 +1,26 @@
 import { useEffect, useState } from 'react'
 import {
-  Header as MantineHeader,
-  Group,
+  //   Header as MantineHeader,
+  //   Group,
   Burger,
-  Text,
+  //   Text,
   useMantineTheme,
-  Container,
-  Button,
+  //   Container,
+  //   Button,
 } from '@mantine/core'
 import { useRouter } from 'next/router'
 import { useStyles } from './Header.styles'
 import { motion } from 'framer-motion'
 import { useAppCtx } from '../../context/AppCtx'
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  Toolbar,
+  Typography,
+} from '@mui/material'
+import { muiTheme } from '../../styles/theme'
 
 interface ILink {
   link: string
@@ -45,7 +54,7 @@ export const Header: React.FC = () => {
   }
 
   const items = links.map(link => (
-    <Text
+    <Typography
       key={link.label}
       className={cx(classes.link, {
         [classes.linkActive]: active === link.link,
@@ -59,7 +68,7 @@ export const Header: React.FC = () => {
       }}
     >
       {link.label}
-    </Text>
+    </Typography>
   ))
 
   const dropdownVariants = {
@@ -68,58 +77,105 @@ export const Header: React.FC = () => {
   }
 
   return (
-    <MantineHeader height={theme.other.headerH} className={classes.navbar}>
-      <Container size='xl' px={theme.spacing.md} className={classes.inner}>
-        <div
-          className={classes.logoContainer}
-          onClick={(e: React.MouseEvent) => handleNavigate(e, '/')}
-        >
-          <img
-            alt='CNG Lawyers logo'
-            src='/logo.svg'
-            loading='lazy'
-            width='100%'
-            height='inherit'
-          />
-        </div>
-
-        <div className={classes.smButtons}>
-          <Button
-            className={classes.contactBtn}
-            color='red'
-            size='xs'
-            onClick={(e: React.MouseEvent) => {
-              viewContact()
-              handleNavigate(e, '/contact')
+    <AppBar position='fixed' sx={{ backgroundColor: 'white' }}>
+      {/* <Container size='xl' px={theme.spacing.md} className={classes.inner}> */}
+      <Container
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          height: '100%',
+        }}
+      >
+        <Toolbar>
+          {/* <div */}
+          {/*   className={classes.logoContainer} */}
+          {/*   onClick={(e: React.MouseEvent) => handleNavigate(e, '/')} */}
+          {/* > */}
+          <Box
+            onClick={(e: React.MouseEvent) => handleNavigate(e, '/')}
+            sx={{
+              display: 'flex',
+              position: 'relative',
+              alignItems: 'center',
+              height: muiTheme.custom.header.height,
+              cursor: 'pointer',
             }}
           >
-            Contact us
-          </Button>
-          <Burger
-            opened={open}
-            color={
-              !open ? theme.colors[theme.primaryColor][0] : theme.colors.red[6]
-            }
-            onClick={() => setOpen(!open)}
-            className={classes.burger}
-            size='md'
-          />
-        </div>
+            <img
+              alt='CNG Lawyers logo'
+              src='/logo.svg'
+              loading='lazy'
+              width='128px'
+              height='50px'
+            />
+          </Box>
 
-        <Group spacing={theme.spacing.xs} className={classes.links}>
-          {items}
-        </Group>
+          {/* <div className={classes.smButtons}> */}
+          <Box
+            sx={{
+              display: { xs: 'flex', sm: 'none' },
+              alignItems: 'center',
+              gap: theme.spacing.xs,
+            }}
+          >
+            <Button
+              className={classes.contactBtn}
+              // color='red'
+              // size='xs'
+              onClick={(e: React.MouseEvent) => {
+                viewContact()
+                handleNavigate(e, '/contact')
+              }}
+            >
+              Contact us
+            </Button>
+            <Burger
+              opened={open}
+              color={
+                !open
+                  ? theme.colors[theme.primaryColor][0]
+                  : theme.colors.red[6]
+              }
+              onClick={() => setOpen(!open)}
+              className={classes.burger}
+              size='md'
+            />
+          </Box>
 
-        <motion.div
-          initial={open ? 'open' : 'closed'}
-          animate={open ? 'open' : 'closed'}
-          variants={dropdownVariants}
-          transition={{ type: 'spring', damping: 24, stiffness: 280 }}
-          className={classes.dropdown}
-        >
-          {items}
-        </motion.div>
+          {/* <Group spacing={theme.spacing.xs} className={classes.links}> */}
+          <Box className={classes.links}>
+            {items}
+            {/* </Group> */}
+          </Box>
+
+          <Box
+            component={motion.div}
+            initial={open ? 'open' : 'closed'}
+            animate={open ? 'open' : 'closed'}
+            variants={dropdownVariants}
+            transition={{ type: 'spring', damping: 24, stiffness: 280 }}
+            sx={{
+              position: 'absolute',
+              display: { xs: 'flex', sm: 'none' },
+              flexDirection: 'column',
+              gap: theme.spacing.xs,
+              padding: theme.spacing.md,
+              height: `calc(100vh - ${muiTheme.custom.header.height}px)`,
+              top: muiTheme.custom.header.height,
+              left: 0,
+              right: 0,
+              zIndex: 90,
+              border: 0,
+              borderRadius: 0,
+              overflow: 'hidden',
+              backgroundColor: 'white',
+            }}
+          >
+            {items}
+          </Box>
+        </Toolbar>
       </Container>
-    </MantineHeader>
+    </AppBar>
   )
 }

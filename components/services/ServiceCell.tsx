@@ -24,6 +24,8 @@ export const ServiceCell = ({ title, icon, children }: ServiceCellProps) => {
           position: 'absolute',
           height: '120px',
           width: '120px',
+          display: 'grid',
+          placeItems: 'center',
           padding: theme.spacing.md,
           borderRadius: '50%',
           backgroundColor: theme.colors[theme.primaryColor][0],

@@ -32,7 +32,7 @@ export const useStyles = createStyles(theme => ({
   },
 
   logo: {
-    maxWidth: '130px',
+    width: '150px',
   },
 
   groups: {

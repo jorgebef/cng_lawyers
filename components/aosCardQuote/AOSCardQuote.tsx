@@ -24,12 +24,11 @@ export const AOSCardQuote = ({ xfrom, yfrom, cite, children }: AOSCardProps) => 
       viewport={{ once: true, amount: 0.3 }}
     >
       <Card
-        p={theme.spacing.md}
         sx={{
           backgroundColor: theme.colors.gray[1],
         }}
       >
-        <Blockquote cite={cite} sx={{ color: theme.colors.gray[7] }}>
+        <Blockquote cite={cite} sx={{ width:'100%', color: theme.colors.gray[7] }}>
           {children}
         </Blockquote>
       </Card>

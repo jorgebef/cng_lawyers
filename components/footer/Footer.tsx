@@ -57,7 +57,13 @@ export const Footer = () => {
         <div className={classes.info}>
           <div className={classes.companyInfo}>
             <div className={classes.logo}>
-              <img alt='Logo' src='/logo.svg' loading='lazy' />
+              <img
+                alt='CNG Lawyers logo'
+                src='/logo.svg'
+                loading='lazy'
+                width='128px'
+                height='50px'
+              />
             </div>
             <div>
               {Object.values(footerContact).map((val, i) => (
