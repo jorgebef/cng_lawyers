@@ -1,4 +1,5 @@
-import { AppShell, Box, Container, useMantineTheme } from '@mantine/core'
+import { Box } from '@mui/material'
+import { theme } from '../../styles/theme'
 import { Footer } from '../footer'
 import { Header } from '../header'
 
@@ -7,22 +8,19 @@ type LayoutProps = {
 }
 
 export const Layout = ({ children }: LayoutProps) => {
-  const theme = useMantineTheme()
 
   return (
     <>
-      {/* <AppShell header={<Header />} footer={<Footer />} padding={0}> */}
       <Header />
-      <div
-        style={{
-          margin: `${theme.other.headerH}px 0`,
-          // minHeight: `calc(100vh - ${theme.other.footerH}px - ${theme.other.headerH}px)`,
+      <Box
+        sx={{
+          my: `${theme.custom.header.height}px`,
+          minHeight: `calc(100vh - ${theme.custom.header.height}px - ${theme.custom.footer.height}px)`,
         }}
       >
         {children}
-      </div>
+      </Box>
       <Footer />
-      {/* </AppShell> */}
     </>
   )
 }

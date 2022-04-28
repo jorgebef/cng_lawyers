@@ -1,26 +1,17 @@
 import { useEffect, useState } from 'react'
-import {
-  //   Header as MantineHeader,
-  //   Group,
-  Burger,
-  //   Text,
-  useMantineTheme,
-  //   Container,
-  //   Button,
-} from '@mantine/core'
 import { useRouter } from 'next/router'
-import { useStyles } from './Header.styles'
 import { motion } from 'framer-motion'
 import { useAppCtx } from '../../context/AppCtx'
 import {
   AppBar,
   Box,
   Button,
-  Container,
+  IconButton,
   Toolbar,
   Typography,
+  useTheme,
 } from '@mui/material'
-import { muiTheme } from '../../styles/theme'
+import { CloseRounded, MenuRounded } from '@mui/icons-material'
 
 interface ILink {
   link: string
@@ -35,9 +26,8 @@ const links: ILink[] = [
 ]
 
 export const Header: React.FC = () => {
-  const { classes, cx } = useStyles()
+  const theme = useTheme()
   const router = useRouter()
-  const theme = useMantineTheme()
   const { viewContact } = useAppCtx()
 
   const [open, setOpen] = useState<boolean>(false)
@@ -56,15 +46,32 @@ export const Header: React.FC = () => {
   const items = links.map(link => (
     <Typography
       key={link.label}
-      className={cx(classes.link, {
-        [classes.linkActive]: active === link.link,
-      })}
+      className={active === link.link ? 'active' : undefined}
       onClick={(e: React.MouseEvent) => handleNavigate(e, link.link)}
       sx={{
         color:
-          link.label.toLowerCase() === 'contact us'
-            ? theme.colors.red[0]
-            : 'none',
+          active === link.link
+            ? 'white'
+            : link.label.toLowerCase() === 'contact us'
+            ? theme.palette.error.main
+            : theme.palette.primary.main,
+        display: 'block',
+        lineHeight: 1,
+        px: theme.custom.spacing.md,
+        py: theme.custom.spacing.xs,
+        borderRadius: `${theme.shape.borderRadius}px`,
+        textDecoration: 'none',
+        cursor: 'pointer',
+        fontWeight: 900,
+
+        '&:hover': {
+          backgroundColor: theme.palette.grey[200],
+        },
+
+        '&.active, &:hover.active': {
+          backgroundColor: theme.palette.primary.main,
+          color: 'white',
+        },
       }}
     >
       {link.label}
@@ -78,104 +85,98 @@ export const Header: React.FC = () => {
 
   return (
     <AppBar position='fixed' sx={{ backgroundColor: 'white' }}>
-      {/* <Container size='xl' px={theme.spacing.md} className={classes.inner}> */}
-      <Container
+      <Toolbar
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          height: '100%',
         }}
       >
-        <Toolbar>
-          {/* <div */}
-          {/*   className={classes.logoContainer} */}
-          {/*   onClick={(e: React.MouseEvent) => handleNavigate(e, '/')} */}
-          {/* > */}
-          <Box
-            onClick={(e: React.MouseEvent) => handleNavigate(e, '/')}
+        <Box
+          onClick={(e: React.MouseEvent) => handleNavigate(e, '/')}
+          sx={{
+            display: 'flex',
+            position: 'relative',
+            alignItems: 'center',
+            height: theme.custom.header.height,
+            cursor: 'pointer',
+          }}
+        >
+          <img
+            alt='CNG Lawyers logo'
+            src='/logo.svg'
+            loading='lazy'
+            width='128px'
+            height='50px'
+          />
+        </Box>
+
+        <Box
+          sx={{
+            display: { xs: 'flex', md: 'none' },
+            alignItems: 'center',
+            gap: theme.custom.spacing.xs,
+          }}
+        >
+          <Button
+            onClick={(e: React.MouseEvent) => {
+              viewContact()
+              handleNavigate(e, '/contact')
+            }}
+            size='small'
             sx={{
-              display: 'flex',
-              position: 'relative',
-              alignItems: 'center',
-              height: muiTheme.custom.header.height,
-              cursor: 'pointer',
+              color: 'white',
+              backgroundColor: theme.palette.error.main,
+              // display: { xs: 'block', md: 'none' },
             }}
           >
-            <img
-              alt='CNG Lawyers logo'
-              src='/logo.svg'
-              loading='lazy'
-              width='128px'
-              height='50px'
-            />
-          </Box>
+            Contact us
+          </Button>
+          <IconButton onClick={() => setOpen(!open)}>
+            {!open ? (
+              <MenuRounded fontSize='large' />
+            ) : (
+              <CloseRounded fontSize='large' />
+            )}
+          </IconButton>
+        </Box>
 
-          {/* <div className={classes.smButtons}> */}
-          <Box
-            sx={{
-              display: { xs: 'flex', sm: 'none' },
-              alignItems: 'center',
-              gap: theme.spacing.xs,
-            }}
-          >
-            <Button
-              className={classes.contactBtn}
-              // color='red'
-              // size='xs'
-              onClick={(e: React.MouseEvent) => {
-                viewContact()
-                handleNavigate(e, '/contact')
-              }}
-            >
-              Contact us
-            </Button>
-            <Burger
-              opened={open}
-              color={
-                !open
-                  ? theme.colors[theme.primaryColor][0]
-                  : theme.colors.red[6]
-              }
-              onClick={() => setOpen(!open)}
-              className={classes.burger}
-              size='md'
-            />
-          </Box>
+        <Box
+          sx={{
+            display: { xs: 'none', md: 'flex' },
+            gap: theme.custom.spacing.xs,
+          }}
+        >
+          {items}
+        </Box>
 
-          {/* <Group spacing={theme.spacing.xs} className={classes.links}> */}
-          <Box className={classes.links}>
-            {items}
-            {/* </Group> */}
-          </Box>
-
-          <Box
-            component={motion.div}
-            initial={open ? 'open' : 'closed'}
-            animate={open ? 'open' : 'closed'}
-            variants={dropdownVariants}
-            transition={{ type: 'spring', damping: 24, stiffness: 280 }}
-            sx={{
-              position: 'absolute',
-              display: { xs: 'flex', sm: 'none' },
-              flexDirection: 'column',
-              gap: theme.spacing.xs,
-              padding: theme.spacing.md,
-              height: `calc(100vh - ${muiTheme.custom.header.height}px)`,
-              top: muiTheme.custom.header.height,
-              left: 0,
-              right: 0,
-              zIndex: 90,
-              border: 0,
-              borderRadius: 0,
-              overflow: 'hidden',
-              backgroundColor: 'white',
-            }}
-          >
-            {items}
-          </Box>
-        </Toolbar>
-      </Container>
+        <Box
+          component={motion.div}
+          initial={open ? 'open' : 'closed'}
+          animate={open ? 'open' : 'closed'}
+          variants={dropdownVariants}
+          transition={{ type: 'spring', damping: 24, stiffness: 280 }}
+          sx={{
+            position: 'absolute',
+            display: { xs: 'flex', md: 'none' },
+            flexDirection: 'column',
+            gap: theme.custom.spacing.xs,
+            py: theme.custom.spacing.md,
+            px: theme.custom.spacing.lg,
+            height: `calc(100vh - ${theme.custom.header.height}px)`,
+            top: theme.custom.header.height,
+            left: 0,
+            right: 0,
+            zIndex: 90,
+            border: 0,
+            borderRadius: 0,
+            overflow: 'hidden',
+            backgroundColor: 'white',
+          }}
+        >
+          {items}
+        </Box>
+      </Toolbar>
     </AppBar>
   )
 }

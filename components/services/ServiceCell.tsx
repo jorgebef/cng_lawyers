@@ -1,4 +1,4 @@
-import { Box, Text, useMantineTheme } from '@mantine/core'
+import { Box, styled, Typography, useTheme } from '@mui/material'
 
 interface ServiceCellProps {
   title: string
@@ -6,17 +6,24 @@ interface ServiceCellProps {
   children: React.ReactNode
 }
 
-export const ServiceCell = ({ title, icon, children }: ServiceCellProps) => {
-  const theme = useMantineTheme()
+const CustomTypography = styled(Typography, {
+  shouldForwardProp: () => true,
+})<{ weight?: number; size?: number | string }>(({ theme, weight, size }) => ({
+  color: theme.palette.primary.main,
+  fontWeight: weight && weight,
+  fontSize: size && size,
+}))
 
+export const ServiceCell = ({ title, icon, children }: ServiceCellProps) => {
+  const theme = useTheme()
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         position: 'relative',
-        padding: theme.spacing.xl,
+        padding: theme.custom.spacing.xl,
         paddingTop: '80px',
-        backgroundColor: theme.colors.gray[1],
-        borderRadius: theme.radius.md,
+        backgroundColor: theme.palette.grey[100],
+        borderRadius: theme.shape.borderRadius,
       }}
     >
       <Box
@@ -26,21 +33,21 @@ export const ServiceCell = ({ title, icon, children }: ServiceCellProps) => {
           width: '120px',
           display: 'grid',
           placeItems: 'center',
-          padding: theme.spacing.md,
+          padding: theme.custom.spacing.md,
           borderRadius: '50%',
-          backgroundColor: theme.colors[theme.primaryColor][0],
+          backgroundColor: theme.palette.primary.main,
           top: '-60px',
           left: 'calc( 50% - 60px )',
         }}
       >
         {icon}
       </Box>
-      <Text color={theme.colors[theme.primaryColor][0]} weight={700} size='xl'>
+      <CustomTypography weight={700} size={theme.typography.h5.fontSize}>
         {title}
-      </Text>
-      <Text color={theme.colors[theme.primaryColor][0]} size='lg'>
+      </CustomTypography>
+      <CustomTypography size={theme.typography.h6.fontSize}>
         {children}
-      </Text>
-    </div>
+      </CustomTypography>
+    </Box>
   )
 }

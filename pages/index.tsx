@@ -1,11 +1,3 @@
-import {
-  Box,
-  Button,
-  Container,
-  Space,
-  Text,
-  useMantineTheme,
-} from '@mantine/core'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -23,6 +15,7 @@ import {
 import { IoDocumentTextOutline } from 'react-icons/io5'
 import { motion } from 'framer-motion'
 import { useAppCtx } from '../context/AppCtx'
+import { Box, Button, Container, Divider, Typography, useTheme } from '@mui/material'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -36,7 +29,7 @@ interface FeatureDivProps {
 }
 
 const FeatureDiv = ({ number, text }: FeatureDivProps) => {
-  const theme = useMantineTheme()
+  const theme = useTheme()
   const [count, setCount] = useState('0')
 
   useEffect(() => {
@@ -59,37 +52,34 @@ const FeatureDiv = ({ number, text }: FeatureDivProps) => {
 
   return (
     <div style={{ display: 'flex', width: '100%', alignItems: 'center' }}>
-      <Text
-        weight={900}
-        variant='gradient'
-        gradient={{
-          from: theme.colors[theme.primaryColor][1],
-          to: theme.colors[theme.primaryColor][0],
-          deg: 30,
-        }}
+      <Typography
+        fontWeight={900}
+        borderColor={theme.palette.secondary.main}
+        fontSize={theme.typography.h3.fontSize}
         sx={{
-          fontSize: 45,
-          width: `${number.length + 2.2 + Math.log(number.length) * 1.8}rem`,
+          background: `-webkit-linear-gradient(30deg, ${theme.palette.secondary.main} 10%, ${theme.palette.primary.main} 70%)`,
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          width: `${number.length + 2.6 + Math.log(number.length) * 1.8}rem`,
         }}
         component='span'
       >
         +{count}
-      </Text>
-      <Text
+      </Typography>
+      <Typography
         component='span'
-        weight={700}
-        color={theme.colors[theme.primaryColor][0]}
-        size='xl'
-        // sx={{opacity:'0.9'}}
+        fontWeight={700}
+        fontSize={theme.typography.h5.fontSize}
+        color={theme.palette.primary.main}
       >
         {text}
-      </Text>
+      </Typography>
     </div>
   )
 }
 
 const Home: NextPage = () => {
-  const theme = useMantineTheme()
+  const theme = useTheme()
   const router = useRouter()
   const { viewContact } = useAppCtx()
 
@@ -112,28 +102,26 @@ const Home: NextPage = () => {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: theme.spacing.lg,
+          gap: theme.custom.spacing.lg,
         }}
       >
         <Container
-          px={theme.spacing.md}
-          py={theme.spacing.md}
           sx={{
+            padding: theme.custom.spacing.md,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: theme.spacing.xs,
+            gap: theme.custom.spacing.xs,
           }}
         >
-          <Text
+          <Typography
             component='span'
-            color={theme.colors[theme.primaryColor][0]}
-            align='center'
-            weight={900}
-            sx={{ fontSize: 40 }}
+            color={theme.palette.primary.main}
+            fontWeight={900}
+            fontSize={40}
           >
             EXCELLENT SERVICE
-          </Text>
+          </Typography>
           <div>
             <FeatureDiv number='30' text='Years of experience' />
             <FeatureDiv number='690' text='Deals closed' />
@@ -142,10 +130,11 @@ const Home: NextPage = () => {
           </div>
         </Container>
 
-        <div
-          style={{
-            padding: `${theme.spacing.xl}px ${theme.spacing.md}px`,
-            backgroundColor: theme.colors.gray[1],
+        <Box
+          sx={{
+            px: theme.custom.spacing.xl,
+            py: theme.custom.spacing.md,
+            backgroundColor: theme.palette.grey[100],
           }}
         >
           <Container
@@ -153,70 +142,73 @@ const Home: NextPage = () => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              maxWidth: theme.breakpoints.xl,
-              gap: theme.spacing.sm,
+              maxWidth: theme.breakpoints.values.xl,
+              gap: theme.custom.spacing.sm,
             }}
           >
-            <Text
+            <Typography
               component='span'
-              color={theme.colors[theme.primaryColor][0]}
-              align='center'
-              size='xl'
-              weight={500}
+              color={theme.palette.primary.main}
+              fontSize={theme.typography.h5.fontSize}
+              fontWeight={500}
             >
               Schedule a call or an appointment{' '}
-              <Text component='span' weight={800} size='xl'>
+              <Typography
+                component='span'
+                fontWeight={900}
+                fontSize={theme.typography.h5.fontSize}
+              >
                 without obligation
-              </Text>
-            </Text>
+              </Typography>
+            </Typography>
             <Button
-              color='red'
-              size='lg'
+              size='large'
               onClick={() => {
                 viewContact()
                 router.push('/contact')
+              }}
+              sx={{
+                color: 'white',
+                fontSize: theme.typography.h6.fontSize,
+                backgroundColor: theme.palette.error.main,
               }}
             >
               Contact us
             </Button>
           </Container>
-        </div>
+        </Box>
 
         <Container
-          px={theme.spacing.lg}
-          py={theme.spacing.xl}
           sx={{
+            px: theme.custom.spacing.lg,
+            py: theme.custom.spacing.xl,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: theme.spacing.lg,
+            gap: theme.custom.spacing.lg,
             justifyContent: 'center',
-            maxWidth: theme.breakpoints.xl,
+            maxWidth: theme.breakpoints.values.xl,
           }}
         >
-          <Text
-            weight={900}
-            color={theme.colors[theme.primaryColor][0]}
-            sx={{ fontSize: 40 }}
+          <Typography
+            fontWeight={900}
+            fontSize={40}
+            sx={{ color: theme.palette.primary.main }}
           >
             LEGAL SERVICES
-          </Text>
-          <Space h='xl' />
+          </Typography>
+          <Divider />
           <Box
             sx={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(3,1fr)',
-              gap: theme.spacing.lg,
+              gridTemplateColumns: {
+                xs: '1fr',
+                sm: 'repeat(2,1f)',
+                lg: 'repeat(3,1fr)',
+              },
+              gap: theme.custom.spacing.lg,
               rowGap: '80px',
               textAlign: 'center',
-
-              [theme.fn.smallerThan('lg')]: {
-                gridTemplateColumns: 'repeat(2,1fr)',
-              },
-
-              [theme.fn.smallerThan('sm')]: {
-                gridTemplateColumns: 'repeat(1,1fr)',
-              },
             }}
           >
             <ServiceCell
@@ -283,18 +275,13 @@ const Home: NextPage = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: theme.spacing.lg,
-            maxWidth: theme.breakpoints.xl,
+            gap: theme.custom.spacing.lg,
+            maxWidth: theme.breakpoints.values.xl,
           }}
         >
-          <Text
-            weight={900}
-            color={theme.colors[theme.primaryColor][0]}
-            align='center'
-            sx={{ fontSize: 40 }}
-          >
+          <Typography fontWeight={900} align='center' sx={{ fontSize: 40 }}>
             CLIENT TESTIMONIALS
-          </Text>
+          </Typography>
           <AOSCardQuote xfrom='-100%' cite='- Mrs. Grimason'>
             I bought a property in Torrevieja and I feel fortunate to have dealt
             with this company. Once I put a deposit down and I met Javier, he

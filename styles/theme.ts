@@ -1,7 +1,8 @@
 import { MantineThemeOverride } from '@mantine/core'
 import { createTheme, ThemeProvider, styled } from '@mui/material'
+import { Shadows } from '@mui/material/styles/shadows'
 
-export const theme: MantineThemeOverride = {
+export const mantineTheme: MantineThemeOverride = {
   colorScheme: 'light',
   primaryColor: 'blueish',
   colors: {
@@ -46,6 +47,17 @@ declare module '@mui/material/styles' {
       footer: {
         height: string
       }
+      spacing: {
+        xs: number
+        sm: number
+        md: number
+        lg: number
+        xl: number
+      }
+      fontSizes: {
+        lg: number
+        xl: number
+      }
     }
   }
 
@@ -61,11 +73,23 @@ declare module '@mui/material/styles' {
       footer?: {
         height?: number
       }
+      spacing?: {
+        xs?: number
+        sm?: number
+        md?: number
+        lg?: number
+        xl?: number
+      }
+      fontSizes?: {
+        lg?: number
+        xl?: number
+      }
     }
   }
 }
 
-export const muiTheme = createTheme({
+export const theme = createTheme({
+  shadows: Array(25).fill('none') as Shadows,
   palette: {
     primary: {
       main: '#226093',
@@ -77,12 +101,31 @@ export const muiTheme = createTheme({
       main: '#495810',
     },
   },
+  shape: { borderRadius: 6 },
+  components: {
+    MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+      },
+    },
+  },
   custom: {
     header: {
       height: 65,
     },
     footer: {
       height: 170,
+    },
+    spacing: {
+      xs: 1.5,
+      sm: 2,
+      md: 3,
+      lg: 6,
+      xl: 10,
+    },
+    fontSizes: {
+      lg: 20,
+      xl: 26,
     },
   },
 })

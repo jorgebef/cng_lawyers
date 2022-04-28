@@ -1,11 +1,5 @@
-import {
-  Container,
-  Divider,
-  Footer as MantineFooter,
-  Text,
-  useMantineTheme,
-} from '@mantine/core'
-import { useStyles } from './Footer.styles'
+import { Box, Container, Divider, Typography } from '@mui/material'
+import { theme } from '../../styles/theme'
 
 interface IFooterContact {
   [key: string]: string
@@ -48,15 +42,46 @@ const footerCols: IFooterCol[] = [
 ]
 
 export const Footer = () => {
-  const theme = useMantineTheme()
-  const { classes } = useStyles()
 
   return (
-    <MantineFooter height={theme.other.footerH} className={classes.footer}>
-      <Container size='xl' className={classes.inner}>
-        <div className={classes.info}>
-          <div className={classes.companyInfo}>
-            <div className={classes.logo}>
+    <Box
+      component='footer'
+      sx={{
+        height: theme.custom.footer.height,
+        backgroundColor: theme.palette.grey[100],
+        color: theme.palette.grey[500],
+      }}
+    >
+      <Container
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'space-evenly',
+          maxWidth: theme.breakpoints.values.xl,
+          height: '100%',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: { xs: 'center', md: 'space-around' },
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: theme.custom.spacing.md,
+            }}
+          >
+            <Box
+              sx={{
+                width: '150px',
+              }}
+            >
               <img
                 alt='CNG Lawyers logo'
                 src='/logo.svg'
@@ -64,33 +89,45 @@ export const Footer = () => {
                 width='128px'
                 height='50px'
               />
-            </div>
-            <div>
+            </Box>
+            <Box>
               {Object.values(footerContact).map((val, i) => (
-                <Text key={i} size='sm'>
-                  {val}
-                </Text>
+                <Typography key={i}>{val}</Typography>
               ))}
-            </div>
-          </div>
-          <div className={classes.groups}>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: { xs: 'none', md: 'flex' },
+              flexWrap: 'wrap',
+              gap: theme.custom.spacing.lg,
+            }}
+          >
             {footerCols.map((col, i) => (
               <div key={i}>
-                <Text size='sm' className={classes.title}>
+                <Typography
+                  sx={{
+                    fontWeight: 700,
+                  }}
+                >
                   {col.title}
-                </Text>
+                </Typography>
                 {col.links.map((link, j) => (
-                  <Text key={j} variant='link' size='sm'>
-                    {link.label}
-                  </Text>
+                  <Typography key={j}>{link.label}</Typography>
                 ))}
               </div>
             ))}
-          </div>
-        </div>
-        <Divider className={classes.divider} />
-        <Text size='sm'>© 2022 Jorge Befán - All rights reserved.</Text>
+          </Box>
+        </Box>
+        <Divider variant='middle' sx={{ alignSelf: 'stretch' }} />
+        <Typography
+          sx={{
+            color: theme.palette.grey[700],
+          }}
+        >
+          © 2022 Jorge Befán - All rights reserved.
+        </Typography>
       </Container>
-    </MantineFooter>
+    </Box>
   )
 }

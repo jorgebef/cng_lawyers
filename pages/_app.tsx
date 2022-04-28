@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app'
 import { Layout } from '../components/layout'
 import Head from 'next/head'
 import { MantineProvider } from '@mantine/core'
-import { muiTheme, theme } from '../styles/theme'
+import { mantineTheme, theme } from '../styles/theme'
 import { AnimatePresence } from 'framer-motion'
 import Router from 'next/router'
 import nProgress from 'nprogress'
@@ -27,8 +27,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       </Head>
 
       <AppCtxProvider>
-        <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
-          <ThemeProvider theme={muiTheme}>
+        <MantineProvider theme={mantineTheme} withGlobalStyles withNormalizeCSS>
+          <ThemeProvider theme={theme}>
             <NotificationsProvider position='bottom-center'>
               <AnimatePresence
                 exitBeforeEnter
