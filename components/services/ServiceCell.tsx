@@ -20,10 +20,10 @@ export const ServiceCell = ({ title, icon, children }: ServiceCellProps) => {
     <Box
       sx={{
         position: 'relative',
-        padding: theme.custom.spacing.xl,
+        padding: theme.custom.spacing.md,
         paddingTop: '80px',
         backgroundColor: theme.palette.grey[100],
-        borderRadius: theme.shape.borderRadius,
+        borderRadius: `${theme.shape.borderRadius}px`,
       }}
     >
       <Box

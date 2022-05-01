@@ -1,4 +1,4 @@
-import { Box, Text, useMantineTheme } from '@mantine/core'
+import { Box, Typography, useTheme } from '@mui/material'
 
 interface ServiceCardProps {
   img: string
@@ -13,23 +13,20 @@ export const ServiceCard = ({
   align,
   children,
 }: ServiceCardProps) => {
-  const theme = useMantineTheme()
+  const theme = useTheme()
 
   return (
     <Box
       sx={{
         position: 'relative',
         display: 'grid',
-        gridTemplateColumns: '4fr 3fr',
+        gridTemplateColumns: { xs: '1fr', md: '4fr 3fr' },
         alignItems: 'center',
         direction: align === 'left' ? 'ltr' : 'rtl',
-        padding: theme.spacing.md,
-        [theme.fn.smallerThan('md')]: {
-          padding: theme.spacing.lg,
-          gridTemplateColumns: '1fr',
-        },
-        [theme.fn.smallerThan('sm')]: {
-          padding: 0,
+        padding: {
+          xs: 0,
+          sm: theme.custom.spacing.lg,
+          md: theme.custom.spacing.md,
         },
       }}
     >
@@ -40,7 +37,7 @@ export const ServiceCard = ({
         width='800'
         height='500'
         style={{
-          borderRadius: theme.radius.md,
+          borderRadius: theme.shape.borderRadius,
           gridRow: 1,
           width: '100%',
           height: 'auto',
@@ -49,40 +46,30 @@ export const ServiceCard = ({
       />
       <Box
         sx={{
-          padding: theme.spacing.md,
+          padding: theme.custom.spacing.md,
           zIndex: 9,
-          borderRadius: theme.radius.md,
-          borderTopLeftRadius: 0,
-          borderTopRightRadius: 0,
-          backgroundColor: theme.colors[theme.primaryColor][0],
-          marginTop: '-5%',
+          borderTopLeftRadius: { xs: 0, md: theme.shape.borderRadius },
+          borderTopRightRadius: { xs: 0, md: theme.shape.borderRadius },
+          borderRadius: `${theme.shape.borderRadius}px`,
+          backgroundColor: theme.palette.primary.main,
+          marginTop: { xs: '-5%', md: 0 },
           textAlign: 'left',
           boxShadow: '0 10px 15px -3px #00000066',
-
-          [theme.fn.largerThan('md')]: {
-            borderRadius: theme.radius.md,
-            marginTop: 0,
-            marginLeft: align === 'left' ? '-20%' : 0,
-            marginRight: align === 'right' ? '-20%' : 0,
-          },
+          marginLeft: { xs: 0, md: align === 'left' ? '-20%' : 0 },
+          marginRight: { xs: 0, md: align === 'right' ? '-20%' : 0 },
         }}
       >
-        <Text
+        <Typography
           color='white'
-          // color={theme.colors[theme.primaryColor][0]}
-          weight={700}
-          size='xl'
-          sx={{ paddingBottom: theme.spacing.sm }}
+          fontWeight={700}
+          fontSize={theme.typography.h4.fontSize}
+          sx={{ paddingBottom: theme.custom.spacing.sm }}
         >
           {title.toUpperCase()}
-        </Text>
-        <Text
-          color='white'
-          // color={theme.colors[theme.primaryColor][0]}
-          size='md'
-        >
+        </Typography>
+        <Typography color='white' fontSize={theme.typography.h6.fontSize}>
           {children}
-        </Text>
+        </Typography>
       </Box>
     </Box>
   )

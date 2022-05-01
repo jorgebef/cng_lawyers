@@ -1,39 +1,5 @@
-import { MantineThemeOverride } from '@mantine/core'
-import { createTheme, ThemeProvider, styled } from '@mui/material'
+import { createTheme } from '@mui/material'
 import { Shadows } from '@mui/material/styles/shadows'
-
-export const mantineTheme: MantineThemeOverride = {
-  colorScheme: 'light',
-  primaryColor: 'blueish',
-  colors: {
-    blueish: ['#226093', '#7DA0C3'],
-    red: [
-      '#FF4365',
-      '#FF4365',
-      '#FF4365',
-      '#FF4365',
-      '#FF4365',
-      '#FF4365',
-      '#FF4365',
-    ],
-    // red:['#ED254E','#ED254E','#ED254E','#ED254E','#ED254E','#ED254E','#ED254E'],
-    // red:['#D64550','#D64550','#D64550','#D64550','#D64550','#D64550','#D64550'],
-  },
-  spacing: {
-    lg: 28,
-    xl: 40,
-  },
-  fontSizes: {
-    lg: 20,
-    xl: 26,
-  },
-  defaultRadius: 'md',
-  other: {
-    headerH: 65,
-    footerH: 170,
-  },
-  fontFamily: 'Roboto',
-}
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -97,6 +63,9 @@ export const theme = createTheme({
     secondary: {
       main: '#7DA0C3',
     },
+    error: {
+      main: '#FF4365',
+    },
     extra: {
       main: '#495810',
     },
@@ -106,6 +75,19 @@ export const theme = createTheme({
     MuiButton: {
       defaultProps: {
         disableElevation: true,
+        disableRipple: true,
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'white',
+          '& .MuiOutlinedInput-root:hover': {
+            '& fieldset': {
+              borderColor: '#226093',
+            },
+          },
+        },
       },
     },
   },

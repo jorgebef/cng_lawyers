@@ -62,7 +62,7 @@ export const Header: React.FC = () => {
         borderRadius: `${theme.shape.borderRadius}px`,
         textDecoration: 'none',
         cursor: 'pointer',
-        fontWeight: 900,
+        fontWeight: 700,
 
         '&:hover': {
           backgroundColor: theme.palette.grey[200],
@@ -126,13 +126,19 @@ export const Header: React.FC = () => {
             size='small'
             sx={{
               color: 'white',
+              px: theme.custom.spacing.xs,
               backgroundColor: theme.palette.error.main,
-              // display: { xs: 'block', md: 'none' },
+              ':hover': {
+                backgroundColor: theme.palette.error.light,
+              },
             }}
           >
             Contact us
           </Button>
-          <IconButton onClick={() => setOpen(!open)}>
+          <IconButton
+            aria-label={`${open ? 'open' : 'close'} menu button`}
+            onClick={() => setOpen(!open)}
+          >
             {!open ? (
               <MenuRounded fontSize='large' />
             ) : (

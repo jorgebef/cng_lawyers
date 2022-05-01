@@ -17,7 +17,7 @@ const About: NextPage = () => {
       <Head>
         <title>CNG Lawyers - About us</title>
         <meta
-          name='CNG Lawyers about us'
+          name='description'
           content='About CNG Lawyers, international lawfirm'
         />
         <link rel='icon' href='/favicon.ico' />

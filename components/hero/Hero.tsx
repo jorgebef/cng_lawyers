@@ -48,7 +48,7 @@ export const Hero = () => {
           <img
             alt='handshake image'
             src='/handshake_cropped.jpg'
-            loading='lazy'
+            // loading='lazy'
             width='900'
             height='750'
             style={{

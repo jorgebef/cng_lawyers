@@ -15,7 +15,14 @@ import {
 import { IoDocumentTextOutline } from 'react-icons/io5'
 import { motion } from 'framer-motion'
 import { useAppCtx } from '../context/AppCtx'
-import { Box, Button, Container, Divider, Typography, useTheme } from '@mui/material'
+import {
+  Box,
+  Button,
+  Container,
+  Divider,
+  Typography,
+  useTheme,
+} from '@mui/material'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -88,8 +95,8 @@ const Home: NextPage = () => {
       <Head>
         <title>CNG Lawyers - Home</title>
         <meta
-          name='Home'
-          content='CNG Lawyers - The lawfirm you can trust in Spain'
+          name='description'
+          content='CNG Lawyers - The Costa Blanca lawfirm you can trust in Spain'
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
@@ -170,7 +177,11 @@ const Home: NextPage = () => {
               sx={{
                 color: 'white',
                 fontSize: theme.typography.h6.fontSize,
+                px: theme.custom.spacing.sm,
                 backgroundColor: theme.palette.error.main,
+                ':hover': {
+                  backgroundColor: theme.palette.error.light,
+                },
               }}
             >
               Contact us
@@ -203,7 +214,7 @@ const Home: NextPage = () => {
               display: 'grid',
               gridTemplateColumns: {
                 xs: '1fr',
-                sm: 'repeat(2,1f)',
+                sm: 'repeat(2,1fr)',
                 lg: 'repeat(3,1fr)',
               },
               gap: theme.custom.spacing.lg,
@@ -279,7 +290,12 @@ const Home: NextPage = () => {
             maxWidth: theme.breakpoints.values.xl,
           }}
         >
-          <Typography fontWeight={900} align='center' sx={{ fontSize: 40 }}>
+          <Typography
+            fontWeight={900}
+            align='center'
+            color={theme.palette.primary.main}
+            sx={{ fontSize: 40 }}
+          >
             CLIENT TESTIMONIALS
           </Typography>
           <AOSCardQuote xfrom='-100%' cite='- Mrs. Grimason'>

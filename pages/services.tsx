@@ -3,35 +3,14 @@ import Head from 'next/head'
 import { ServiceCard, ServiceCell } from '../components/services'
 import { GiReceiveMoney, GiHandcuffs } from 'react-icons/gi'
 import { motion } from 'framer-motion'
-import {
-  Box,
-  Container,
-  Divider,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListSubheader,
-  Typography,
-  useTheme,
-} from '@mui/material'
+import { Box, Container, Divider, Typography, useTheme } from '@mui/material'
 import {
   BalanceSharp,
-  CheckBoxRounded,
-  CheckCircleOutlineRounded,
-  CheckRounded,
   FeedSharp,
   HouseSharp,
   SignpostSharp,
 } from '@mui/icons-material'
-import {
-  Timeline,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot,
-  TimelineItem,
-  TimelineOppositeContent,
-  TimelineSeparator,
-} from '@mui/lab'
+import { ServiceTimeline } from '../components/services/ServiceTimeline'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -49,7 +28,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
       <Head>
         <title>CNG Lawyers - Services</title>
         <meta
-          name='CNG Lawyers legal services'
+          name='description'
           content='Legal services provided by CNG Lawyers, conveyancing, fiscal representation, litigation'
         />
         <link rel='icon' href='/favicon.ico' />
@@ -167,6 +146,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
           }}
         >
           <Typography
+            textAlign='center'
             fontWeight={900}
             color={theme.palette.primary.main}
             fontSize={40}
@@ -174,280 +154,33 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             PROFESSIONAL SERVICE WHEN BUYING OR SELLING IN SPAIN
           </Typography>
 
-          <Timeline position='alternate'>
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot color='primary' variant='filled' />
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent>
-                <List
-                  dense
-                  subheader={
-                    <ListSubheader
-                      sx={{
-                        fontSize: theme.typography.h5.fontSize,
-                        color: theme.palette.primary.main,
-                        fontWeight: 900,
-                        textAlign: 'left',
-                      }}
-                    >
-                      BEFORE
-                    </ListSubheader>
-                  }
-                  sx={{
-                    fontWeight: 500,
-                    color: theme.palette.primary.main,
-                  }}
-                >
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleOutlineRounded
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </ListItemIcon>
-                    We will provide you with a full breakdown of costs easy to
-                    understand for the purchase or sale of the desired property.
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleOutlineRounded
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </ListItemIcon>
-                    Our solicitors perform a complete legal evaluation and due
-                    diligence of the property.
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleOutlineRounded
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </ListItemIcon>
-                    We negotiate and prepare the contract for any real estate
-                    property purchase.
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleOutlineRounded
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </ListItemIcon>
-                    We help you obtain your tax identification (NIE) number,
-                    Spanish bank account and Power of Attorney (when required).
-                  </ListItem>
-                </List>
-              </TimelineContent>
-            </TimelineItem>
-
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot color='primary' variant='filled' />
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent>
-                <List
-                  dense
-                  subheader={
-                    <ListSubheader
-                      sx={{
-                        fontSize: theme.typography.h5.fontSize,
-                        color: theme.palette.primary.main,
-                        fontWeight: 900,
-                        textAlign: 'left',
-                      }}
-                    >
-                      BEFORE
-                    </ListSubheader>
-                  }
-                  sx={{
-                    fontWeight: 500,
-                    color: theme.palette.primary.main,
-                  }}
-                >
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleOutlineRounded
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </ListItemIcon>
-                    We will provide you with a full breakdown of costs easy to
-                    understand for the purchase or sale of the desired property.
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleOutlineRounded
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </ListItemIcon>
-                    Our solicitors perform a complete legal evaluation and due
-                    diligence of the property.
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleOutlineRounded
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </ListItemIcon>
-                    We negotiate and prepare the contract for any real estate
-                    property purchase.
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleOutlineRounded
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </ListItemIcon>
-                    We help you obtain your tax identification (NIE) number,
-                    Spanish bank account and Power of Attorney (when required).
-                  </ListItem>
-                </List>
-              </TimelineContent>
-            </TimelineItem>
-
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot color='primary' variant='filled' />
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent>
-                <List
-                  dense
-                  subheader={
-                    <ListSubheader
-                      sx={{
-                        fontSize: theme.typography.h5.fontSize,
-                        color: theme.palette.primary.main,
-                        fontWeight: 900,
-                        textAlign: 'left',
-                      }}
-                    >
-                      BEFORE
-                    </ListSubheader>
-                  }
-                  sx={{
-                    fontWeight: 500,
-                    color: theme.palette.primary.main,
-                  }}
-                >
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleOutlineRounded
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </ListItemIcon>
-                    We will provide you with a full breakdown of costs easy to
-                    understand for the purchase or sale of the desired property.
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleOutlineRounded
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </ListItemIcon>
-                    Our solicitors perform a complete legal evaluation and due
-                    diligence of the property.
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleOutlineRounded
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </ListItemIcon>
-                    We negotiate and prepare the contract for any real estate
-                    property purchase.
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleOutlineRounded
-                        sx={{ color: theme.palette.primary.main }}
-                      />
-                    </ListItemIcon>
-                    We help you obtain your tax identification (NIE) number,
-                    Spanish bank account and Power of Attorney (when required).
-                  </ListItem>
-                </List>
-              </TimelineContent>
-            </TimelineItem>
-
-            {/* <Timeline.Item bulletSize={25}> */}
-            {/*   <Text */}
-            {/*     size='xl' */}
-            {/*     color={theme.colors[theme.primaryColor][0]} */}
-            {/*     weight='900' */}
-            {/*     pb={theme.spacing.sm} */}
-            {/*   > */}
-            {/*     DURING */}
-            {/*   </Text> */}
-            {/*   <List */}
-            {/*     spacing='xs' */}
-            {/*     center */}
-            {/*     icon={ */}
-            {/*       <ThemeIcon size={30} radius='xl'> */}
-            {/*         <AiOutlineCheckCircle */}
-            {/*           size={30} */}
-            {/*           color={theme.colors[theme.primaryColor][0]} */}
-            {/*         /> */}
-            {/*       </ThemeIcon> */}
-            {/*     } */}
-            {/*     sx={{ */}
-            {/*       fontWeight: 500, */}
-            {/*       color: theme.colors[theme.primaryColor][0], */}
-            {/*     }} */}
-            {/*   > */}
-            {/*     <List.Item> */}
-            {/*       Our goal is to guide our clients through a safe and */}
-            {/*       comfortable buying experience with the maximum legal */}
-            {/*       guarantees. */}
-            {/*     </List.Item> */}
-            {/*     <List.Item> */}
-            {/*       We provide complete support including: translation services, */}
-            {/*       attending the notary and assistance signing of title deeds. */}
-            {/*     </List.Item> */}
-            {/*   </List> */}
-            {/* </Timeline.Item> */}
-
-            {/* <Timeline.Item bulletSize={25}> */}
-            {/*   <Text */}
-            {/*     size='xl' */}
-            {/*     color={theme.colors[theme.primaryColor][0]} */}
-            {/*     weight='900' */}
-            {/*     pb={theme.spacing.sm} */}
-            {/*   > */}
-            {/*     AFTER */}
-            {/*   </Text> */}
-            {/*   <List */}
-            {/*     spacing='xs' */}
-            {/*     center */}
-            {/*     icon={ */}
-            {/*       <ThemeIcon size={30} radius='xl'> */}
-            {/*         <AiOutlineCheckCircle */}
-            {/*           size={30} */}
-            {/*           color={theme.colors[theme.primaryColor][0]} */}
-            {/*         /> */}
-            {/*       </ThemeIcon> */}
-            {/*     } */}
-            {/*     sx={{ */}
-            {/*       fontWeight: 500, */}
-            {/*       color: theme.colors[theme.primaryColor][0], */}
-            {/*     }} */}
-            {/*   > */}
-            {/*     <List.Item> */}
-            {/*       We will register your deeds at the land registry and help */}
-            {/*       change over of all utility services. */}
-            {/*     </List.Item> */}
-            {/*     <List.Item> */}
-            {/*       We provide comprehensive tax services including resident and */}
-            {/*       non-resident taxes, and legal representation for any queries */}
-            {/*       and issues that may arise in Spain. */}
-            {/*     </List.Item> */}
-            {/*     <List.Item> */}
-            {/*       We invite you to meet us personally at our office in */}
-            {/*       Torrevieja where we have FREE parking for our clients. */}
-            {/*     </List.Item> */}
-            {/*   </List> */}
-            {/* </Timeline.Item> */}
-          </Timeline>
+          <ServiceTimeline
+            itemArr={[
+              {
+                subheader: 'before',
+                contentList: [
+                  'We will provide you with a full breakdown of costs easy to understand for the purchase or sale of the desired property.',
+                  'Our solicitors perform a complete legal evaluation and due diligence of the property.',
+                  'We negotiate and prepare the contract for any real estate property purchase.',
+                ],
+              },
+              {
+                subheader: 'during',
+                contentList: [
+                  'Our goal is to guide our clients through a safe and comfortable buying experience with the maximum legal guarantees.',
+                  'We provide complete support including: translation services, attending the notary and assistance signing of title deeds.',
+                ],
+              },
+              {
+                subheader: 'after',
+                contentList: [
+                  'We will register your deeds at the land registry and help change over of all utility services.',
+                  'We provide comprehensive tax services including resident and non-resident taxes, and legal representation for any queries and issues that may arise in Spain.',
+                  'We invite you to meet us personally at our office in Torrevieja where we have FREE parking for our clients.',
+                ],
+              },
+            ]}
+          />
         </Container>
         <Container
           sx={{
