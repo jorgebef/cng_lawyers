@@ -21,6 +21,7 @@
     "framer-motion": "^6.3.0",
     "mailgun-js": "^0.22.0",
     "next": "12.1.5",
+    "nodemailer": "^6.7.4",
     "nprogress": "^0.2.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
