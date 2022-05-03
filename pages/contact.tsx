@@ -7,7 +7,6 @@ import {
   Box,
   Button,
   Container,
-  FormControl,
   InputAdornment,
   TextField,
   Typography,
@@ -28,7 +27,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Contact: NextPage = () => {
   const theme = useTheme()
-  const { contactView, unsetView } = useAppCtx()
+  // const { contactView, unsetView } = useAppCtx()
 
   // const { targetRef, scrollIntoView } = useScrollIntoView<HTMLDivElement>()
 
@@ -53,23 +52,31 @@ const Contact: NextPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    alert('SUBMITTED!!!!')
-    clearValues()
 
-    // await fetch('/.netlify/functions/sendMail', {
-    //   method: 'POST',
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     name: name,
-    //     email: email,
-    //     phone: phone,
-    //     message: message,
-    //   }),
-    // })
-    // clearValues()
+    try {
+      const res = await fetch('/.netlify/functions/sendMail', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          phone: phone,
+          message: message,
+        }),
+      })
+      const resData = await res.json()
+      if (res.ok) {
+        clearValues()
+        alert(`Message ID ${resData.messageId} has been successfully sent.
+We will get back to you in 48 hours.`)
+      }
+    } catch (err) {
+      alert(err)
+    }
+
     // showNotification({
     //   id: 'Successful contact',
     //   disallowClose: true,
