@@ -125,7 +125,7 @@ export const Footer = () => {
             color: theme.palette.grey[700],
           }}
         >
-          © 2022 Jorge Befán - All rights reserved.
+          © 2022 Designed by: J. Befán - All rights reserved.
         </Typography>
       </Container>
     </Box>
