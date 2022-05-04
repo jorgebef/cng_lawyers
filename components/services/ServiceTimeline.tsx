@@ -28,12 +28,22 @@ export const ServiceTimeline = ({ itemArr }: ServiceTimelineProps) => {
   const theme = useTheme()
 
   const TimelineItems = itemArr.map(({ subheader, contentList }) => (
-    <TimelineItem key={subheader}>
+    <TimelineItem
+      sx={{
+        '&::before': {
+          maxWidth: 0,
+        },
+      }}
+    >
       <TimelineSeparator>
         <TimelineDot color='primary' variant='filled' />
-        <TimelineConnector />
+        <TimelineConnector sx={{ py: theme.custom.spacing.xl }} />
       </TimelineSeparator>
-      <TimelineContent>
+      <TimelineContent
+        sx={{
+          px: 0,
+        }}
+      >
         <List
           dense
           subheader={
@@ -56,7 +66,7 @@ export const ServiceTimeline = ({ itemArr }: ServiceTimelineProps) => {
           {contentList.map((contentItem, i) => {
             return (
               <ListItem key={i}>
-                <ListItemIcon>
+                <ListItemIcon sx={{ minWidth: 0, marginRight: '10px' }}>
                   <CheckCircleOutlineRounded
                     sx={{ color: theme.palette.primary.main }}
                   />
@@ -70,5 +80,5 @@ export const ServiceTimeline = ({ itemArr }: ServiceTimelineProps) => {
     </TimelineItem>
   ))
 
-  return <Timeline position='alternate'>{TimelineItems}</Timeline>
+  return <Timeline>{TimelineItems}</Timeline>
 }

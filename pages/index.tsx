@@ -103,18 +103,20 @@ const Home: NextPage = () => {
 
       <Hero />
 
-      <motion.main
+      <Box
+        component={motion.main}
         initial={{ x: -200 }}
         animate={{ x: 0 }}
-        style={{
+        sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: theme.custom.spacing.lg,
+          gap: theme.custom.spacing.md,
         }}
       >
         <Container
           sx={{
-            padding: theme.custom.spacing.md,
+            px: theme.custom.spacing.sm,
+            py: theme.custom.spacing.md,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -123,6 +125,7 @@ const Home: NextPage = () => {
         >
           <Typography
             component='span'
+            textAlign='center'
             color={theme.palette.primary.main}
             fontWeight={900}
             fontSize={40}
@@ -139,8 +142,8 @@ const Home: NextPage = () => {
 
         <Box
           sx={{
-            px: theme.custom.spacing.xl,
-            py: theme.custom.spacing.md,
+            px: theme.custom.spacing.sm,
+            py: theme.custom.spacing.lg,
             backgroundColor: theme.palette.grey[100],
           }}
         >
@@ -155,6 +158,7 @@ const Home: NextPage = () => {
           >
             <Typography
               component='span'
+              textAlign='center'
               color={theme.palette.primary.main}
               fontSize={theme.typography.h5.fontSize}
               fontWeight={500}
@@ -191,8 +195,8 @@ const Home: NextPage = () => {
 
         <Container
           sx={{
-            px: theme.custom.spacing.lg,
-            py: theme.custom.spacing.xl,
+            px: theme.custom.spacing.sm,
+            py: theme.custom.spacing.lg,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -318,7 +322,7 @@ const Home: NextPage = () => {
             part of the family.
           </AOSCardQuote>
         </Container>
-      </motion.main>
+      </Box>
     </>
   )
 }

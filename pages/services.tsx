@@ -34,10 +34,11 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <motion.main
+      <Box
+        component={motion.main}
         initial={{ x: -200 }}
         animate={{ x: 0 }}
-        style={{
+        sx={{
           display: 'flex',
           flexDirection: 'column',
           gap: theme.custom.spacing.xl,
@@ -48,14 +49,16 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            px: theme.custom.spacing.sm,
+            py: theme.custom.spacing.lg,
             gap: theme.custom.spacing.lg,
             justifyContent: 'center',
-            padding: theme.custom.spacing.lg,
             maxWidth: theme.breakpoints.values.xl,
           }}
         >
           <Typography
             fontWeight={900}
+            textAlign='center'
             color={theme.palette.primary.main}
             fontSize={40}
           >
@@ -139,9 +142,8 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             display: 'flex',
             flexDirection: 'column',
             gap: theme.custom.spacing.lg,
-            px: theme.custom.spacing.xl,
+            px: theme.custom.spacing.sm,
             alignItems: 'center',
-            padding: theme.custom.spacing.lg,
             maxWidth: theme.breakpoints.values.xl,
           }}
         >
@@ -225,7 +227,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             specifics of the case.
           </ServiceCard>
         </Container>
-      </motion.main>
+      </Box>
     </div>
   )
 }
