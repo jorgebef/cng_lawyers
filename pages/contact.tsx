@@ -150,7 +150,7 @@ We will get back to you in 48 hours.`)
           }}
         >
           <Typography
-            // align='center'
+            align='center'
             fontWeight={900}
             fontSize={40}
             color={theme.palette.primary.main}

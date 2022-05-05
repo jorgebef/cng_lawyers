@@ -148,7 +148,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
           }}
         >
           <Typography
-            textAlign='center'
+            align='center'
             fontWeight={900}
             color={theme.palette.primary.main}
             fontSize={40}

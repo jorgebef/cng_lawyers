@@ -125,7 +125,7 @@ const Home: NextPage = () => {
         >
           <Typography
             component='span'
-            textAlign='center'
+            align='center'
             color={theme.palette.primary.main}
             fontWeight={900}
             fontSize={40}
@@ -158,7 +158,7 @@ const Home: NextPage = () => {
           >
             <Typography
               component='span'
-              textAlign='center'
+              align='center'
               color={theme.palette.primary.main}
               fontSize={theme.typography.h5.fontSize}
               fontWeight={500}

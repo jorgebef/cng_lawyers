@@ -29,6 +29,7 @@ export const ServiceTimeline = ({ itemArr }: ServiceTimelineProps) => {
 
   const TimelineItems = itemArr.map(({ subheader, contentList }) => (
     <TimelineItem
+      key={subheader}
       sx={{
         '&::before': {
           maxWidth: 0,
