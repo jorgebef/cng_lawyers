@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { Container, Typography, useTheme } from '@mui/material'
+import { Box, Container, Typography, useTheme } from '@mui/material'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -23,10 +23,11 @@ const About: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <motion.main
+      <Box
+        component={motion.main}
         initial={{ x: -200 }}
         animate={{ x: 0 }}
-        style={{
+        sx={{
           display: 'flex',
           flexDirection: 'column',
           gap: theme.custom.spacing.xl,
@@ -54,7 +55,18 @@ const About: NextPage = () => {
             <img src='/team.jpg' alt='CNG Lawyers team' loading='lazy' />
           </div>
         </Container>
-      </motion.main>
+        <Container>
+          <div>
+            At CNG Lawyers we are an independent law firm where we offer you the
+            legal experience you deserve, provided by qualified lawyers that not
+            only speak English, but also understand the way you think. We have
+            helped thousands of people in their quest to buy or sell a property
+            in Spain as well as managing their legal representation, taxes, and
+            all affairs in the country. We always go that one step further for
+            our clients. We are conveyancing experts.
+          </div>
+        </Container>
+      </Box>
     </div>
   )
 }
