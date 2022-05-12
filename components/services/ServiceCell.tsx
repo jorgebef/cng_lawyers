@@ -43,7 +43,7 @@ export const ServiceCell = ({ title, icon, children }: ServiceCellProps) => {
         {icon}
       </Box>
       <CustomTypography weight={700} size={theme.typography.h5.fontSize}>
-        {title}
+        {title.toUpperCase()}
       </CustomTypography>
       <CustomTypography size={theme.typography.h6.fontSize}>
         {children}

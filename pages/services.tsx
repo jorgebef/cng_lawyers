@@ -79,7 +79,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             }}
           >
             <ServiceCell
-              title='SPANISH PROPERTY LAW'
+              title='real estate law'
               icon={<HouseSharp sx={{ fontSize: 70, color: 'white' }} />}
             >
               Our specialist property team will guide you through all aspects of
@@ -88,7 +88,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             </ServiceCell>
 
             <ServiceCell
-              title='RELOCATION SERVICES'
+              title='conveyancing experts'
               icon={<SignpostSharp sx={{ fontSize: 70, color: 'white' }} />}
             >
               Our relocation team will help you in arranging your NIE
@@ -108,7 +108,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             </ServiceCell>
 
             <ServiceCell
-              title='CIVIL LAW'
+              title='comprehensive legal representation'
               icon={<BalanceSharp sx={{ fontSize: 70, color: 'white' }} />}
             >
               CNG Lawyers handles all matters of Civil Litigation, including
@@ -117,7 +117,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             </ServiceCell>
 
             <ServiceCell
-              title='TAXATION'
+              title='taxation experts'
               icon={<GiReceiveMoney size='70px' color='white' />}
             >
               Assisting in all matters of fiscal representation before the
@@ -126,7 +126,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
               Appeals and Claims
             </ServiceCell>
             <ServiceCell
-              title='CRIMINAL LAW'
+              title='qualified solicitors at your disposal'
               icon={<GiHandcuffs size='70px' color='white' />}
             >
               CNG Lawyers can assist you if you have been charged with or have
@@ -164,6 +164,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
                   'We will provide you with a full breakdown of costs easy to understand for the purchase or sale of the desired property.',
                   'Our solicitors perform a complete legal evaluation and due diligence of the property.',
                   'We negotiate and prepare the contract for any real estate property purchase.',
+                  'We help you obtain your tax identification (NIE) number, Spanish bank account and Power of Attorney (when required).',
                 ],
               },
               {

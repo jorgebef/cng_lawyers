@@ -6,9 +6,10 @@ interface IFooterContact {
 }
 
 const footerContact: IFooterContact = {
-  addr: 'C/ Pedro Lorca xxxxx',
-  telf1: '+34 xxx xxx xxx',
-  telf2: '+34 xxx xxx xxx',
+  addr: 'C/ Pedro Lorca 29, 3rd floor',
+  addr2: 'Torrevieja - 03181',
+  addr3: 'Alicante (Spain)',
+  telf1: '+34 711 01 12 93',
   email: 'info@cnglawyers.com',
 }
 
