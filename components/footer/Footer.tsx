@@ -24,20 +24,21 @@ const footerCols: IFooterCol[] = [
     links: [
       { label: 'Conveyancing', link: '/services' },
       { label: 'Inheritance', link: '/services' },
+      { label: 'Legal Representation', link: '/services' },
+      { label: 'Tax Advice', link: '/services' },
     ],
   },
   {
     title: 'About us',
     links: [
-      { label: 'XXXXX', link: '/contact' },
-      { label: 'XXXXXXX', link: '/contact' },
+      { label: 'About us', link: '/about-us' },
     ],
   },
   {
-    title: 'Community',
+    title: 'Contact us',
     links: [
-      { label: 'Follow on Instagram', link: '/contact' },
-      { label: 'Email newsletter', link: '/contact' },
+      { label: 'Reach out to us', link: '/contact' },
+      { label: 'Whatsapp', link: '/contact' },
     ],
   },
 ]
