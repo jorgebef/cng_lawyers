@@ -3,7 +3,6 @@ import { Box, Container, Typography } from '@mui/material'
 import { theme } from '../../styles/theme'
 
 export const Hero = () => {
-
   return (
     <Box
       sx={{
@@ -48,13 +47,11 @@ export const Hero = () => {
           <img
             alt='handshake image'
             src='/handshake_cropped.jpg'
-            // loading='lazy'
             width='900'
             height='750'
             style={{
               height: 'auto',
               marginLeft: '-110px',
-              // width: '100%',
               objectFit: 'cover',
             }}
           />
