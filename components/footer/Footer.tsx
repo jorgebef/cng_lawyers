@@ -30,9 +30,7 @@ const footerCols: IFooterCol[] = [
   },
   {
     title: 'About us',
-    links: [
-      { label: 'About us', link: '/about-us' },
-    ],
+    links: [{ label: 'About us', link: '/about-us' }],
   },
   {
     title: 'Contact us',
@@ -44,7 +42,6 @@ const footerCols: IFooterCol[] = [
 ]
 
 export const Footer = () => {
-
   return (
     <Box
       component='footer'

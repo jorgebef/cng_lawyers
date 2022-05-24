@@ -4,13 +4,9 @@ import { ServiceCard, ServiceCell } from '../components/services'
 import { GiReceiveMoney, GiHandcuffs } from 'react-icons/gi'
 import { motion } from 'framer-motion'
 import { Box, Container, Divider, Typography, useTheme } from '@mui/material'
-import {
-  BalanceSharp,
-  FeedSharp,
-  HouseSharp,
-  SignpostSharp,
-} from '@mui/icons-material'
+import { FeedSharp, HouseSharp, SignpostSharp } from '@mui/icons-material'
 import { ServiceTimeline } from '../components/services/ServiceTimeline'
+import { GoLaw } from 'react-icons/go'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -79,6 +75,16 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             }}
           >
             <ServiceCell
+              title='conveyancing experts'
+              icon={<SignpostSharp sx={{ fontSize: 70, color: 'white' }} />}
+            >
+              Our relocation team will help you in arranging your NIE
+              (foreigner’s tax number), Residency Card, Health Card, Visas,
+              Spanish Citizenship, Buying or Importing a Car and Paying your
+              Taxes
+            </ServiceCell>
+
+            <ServiceCell
               title='real estate law'
               icon={<HouseSharp sx={{ fontSize: 70, color: 'white' }} />}
             >
@@ -88,13 +94,13 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             </ServiceCell>
 
             <ServiceCell
-              title='conveyancing experts'
-              icon={<SignpostSharp sx={{ fontSize: 70, color: 'white' }} />}
+              title='qualified solicitors at your disposal'
+              icon={<GiHandcuffs size='70px' color='white' />}
             >
-              Our relocation team will help you in arranging your NIE
-              (foreigner’s tax number), Residency Card, Health Card, Visas,
-              Spanish Citizenship, Buying or Importing a Car and Paying your
-              Taxes
+              At CNG Lawyers, you will always receive the best legal advice from
+              qualified and registered solicitors totalling 50+ years of
+              experience between the team in various fields like from criminal
+              law, real estate law or commercial law.
             </ServiceCell>
 
             <ServiceCell
@@ -109,11 +115,13 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
 
             <ServiceCell
               title='comprehensive legal representation'
-              icon={<BalanceSharp sx={{ fontSize: 70, color: 'white' }} />}
+              icon={<GoLaw size='70px' color='white' />}
             >
-              CNG Lawyers handles all matters of Civil Litigation, including
-              Personal Injuries, Debt Collection, Creditors Rights, Wrongful
-              Dismissal, Divorce and Family Law
+              At CNG Lawyers, we handle all matters of legal representation,
+              including but not limited to Litigation, including Personal
+              Injuries, Divorce, Family Law, tax representation for your tax
+              declarations, whether resident or non-resident taxes and any other
+              procedures.
             </ServiceCell>
 
             <ServiceCell
@@ -124,15 +132,6 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
               Spanish tax office, both for private individuals and companies. We
               can assist you with your Personal Income Tax Declaration, Tax
               Appeals and Claims
-            </ServiceCell>
-            <ServiceCell
-              title='qualified solicitors at your disposal'
-              icon={<GiHandcuffs size='70px' color='white' />}
-            >
-              CNG Lawyers can assist you if you have been charged with or have
-              been a victim of any offences, including Driving & Vehicle
-              offences, Personal Assault, Theft & Vandalism, Criminal
-              Negligence, Corporate Crimes and any other offences
             </ServiceCell>
           </Box>
         </Container>

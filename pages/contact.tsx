@@ -1,8 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useAppCtx } from '../context/AppCtx'
 import {
   Box,
   Button,
