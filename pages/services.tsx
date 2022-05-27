@@ -1,12 +1,13 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import { ServiceCard, ServiceCell } from '../components/services'
-import { GiReceiveMoney, GiHandcuffs } from 'react-icons/gi'
 import { motion } from 'framer-motion'
 import { Box, Container, Divider, Typography, useTheme } from '@mui/material'
-import { FeedSharp, HouseSharp, SignpostSharp } from '@mui/icons-material'
 import { ServiceTimeline } from '../components/services/ServiceTimeline'
+import { GiReceiveMoney, GiDiploma } from 'react-icons/gi'
 import { GoLaw } from 'react-icons/go'
+import { MdOutlineFeed } from 'react-icons/md'
+import { BsFillHouseFill, BsFillSignpost2Fill } from 'react-icons/bs'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -56,7 +57,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             fontWeight={900}
             textAlign='center'
             color={theme.palette.primary.main}
-            fontSize={40}
+            fontSize={theme.custom.fontSizes.xxl}
           >
             LEGAL SERVICES
           </Typography>
@@ -76,7 +77,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
           >
             <ServiceCell
               title='conveyancing experts'
-              icon={<SignpostSharp sx={{ fontSize: 70, color: 'white' }} />}
+              Icon={BsFillSignpost2Fill}
             >
               Our relocation team will help you in arranging your NIE
               (foreigner’s tax number), Residency Card, Health Card, Visas,
@@ -86,7 +87,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
 
             <ServiceCell
               title='real estate law'
-              icon={<HouseSharp sx={{ fontSize: 70, color: 'white' }} />}
+              Icon={BsFillHouseFill}
             >
               Our specialist property team will guide you through all aspects of
               Purchasing & Selling your Property, Property Rentals, Commercial
@@ -95,7 +96,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
 
             <ServiceCell
               title='qualified solicitors at your disposal'
-              icon={<GiHandcuffs size='70px' color='white' />}
+              Icon={GiDiploma}
             >
               At CNG Lawyers, you will always receive the best legal advice from
               qualified and registered solicitors totalling 50+ years of
@@ -105,7 +106,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
 
             <ServiceCell
               title='WILLS & INHERITANCE'
-              icon={<FeedSharp sx={{ fontSize: 70, color: 'white' }} />}
+              Icon={MdOutlineFeed}
             >
               It is extremely important to make a Spanish will as Spanish law on
               inheritance is very different from other countries. We can assist
@@ -115,7 +116,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
 
             <ServiceCell
               title='comprehensive legal representation'
-              icon={<GoLaw size='70px' color='white' />}
+              Icon={GoLaw}
             >
               At CNG Lawyers, we handle all matters of legal representation,
               including but not limited to Litigation, including Personal
@@ -126,7 +127,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
 
             <ServiceCell
               title='taxation experts'
-              icon={<GiReceiveMoney size='70px' color='white' />}
+              Icon={GiReceiveMoney}
             >
               Assisting in all matters of fiscal representation before the
               Spanish tax office, both for private individuals and companies. We
@@ -150,7 +151,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             align='center'
             fontWeight={900}
             color={theme.palette.primary.main}
-            fontSize={40}
+            fontSize={theme.custom.fontSizes.xxl}
           >
             PROFESSIONAL SERVICE WHEN BUYING OR SELLING IN SPAIN
           </Typography>

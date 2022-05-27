@@ -1,4 +1,5 @@
 import { Box, Typography, useTheme } from '@mui/material'
+import { motion } from 'framer-motion'
 
 interface ServiceCardProps {
   img: string
@@ -15,8 +16,23 @@ export const ServiceCard = ({
 }: ServiceCardProps) => {
   const theme = useTheme()
 
+  const imgMotion = {
+    rest: {
+      scale: 1,
+      transition: theme.custom.framerAnimation.standard,
+    },
+    hover: {
+      scale: 1.1,
+      transition: theme.custom.framerAnimation.standard,
+    },
+  }
+
   return (
     <Box
+      component={motion.div}
+      initial='rest'
+      whileHover='hover'
+      animate='rest'
       sx={{
         position: 'relative',
         display: 'grid',
@@ -30,20 +46,28 @@ export const ServiceCard = ({
         },
       }}
     >
-      <img
-        src={img}
-        alt={title}
-        loading='lazy'
-        width='800'
-        height='500'
-        style={{
-          borderRadius: theme.shape.borderRadius,
-          gridRow: 1,
-          width: '100%',
-          height: 'auto',
-          zIndex: 0,
+      <Box
+        sx={{
+          borderRadius: `${theme.shape.borderRadius}px`,
+          overflow: 'hidden',
         }}
-      />
+      >
+        <Box
+          component={motion.img}
+          src={img}
+          alt={title}
+          variants={imgMotion}
+          loading='lazy'
+          width='800'
+          height='500'
+          sx={{
+            gridRow: 1,
+            width: '100%',
+            height: 'auto',
+            zIndex: 0,
+          }}
+        />
+      </Box>
       <Box
         sx={{
           padding: theme.custom.spacing.md,
@@ -51,23 +75,32 @@ export const ServiceCard = ({
           borderTopLeftRadius: { xs: 0, md: theme.shape.borderRadius },
           borderTopRightRadius: { xs: 0, md: theme.shape.borderRadius },
           borderRadius: `${theme.shape.borderRadius}px`,
-          backgroundColor: theme.palette.primary.main,
+          // backgroundColor: theme.palette.primary.main,
+          backgroundColor: theme.palette.grey[100],
           marginTop: { xs: '-5%', md: 0 },
           textAlign: 'left',
-          boxShadow: '0 10px 15px -3px #00000066',
+          // boxShadow: '0 10px 15px -3px #00000066',
           marginLeft: { xs: 0, md: align === 'left' ? '-20%' : 0 },
+          // marginLeft: { xs: 0, md: align === 'left' ? '10%' : 0 },
           marginRight: { xs: 0, md: align === 'right' ? '-20%' : 0 },
+          // marginRight: { xs: 0, md: align === 'right' ? '10%' : 0 },
         }}
       >
         <Typography
-          color='white'
+          // color='white'
+          color={theme.palette.primary.main}
           fontWeight={700}
-          fontSize={theme.typography.h4.fontSize}
+          fontSize={theme.custom.fontSizes.xxl}
           sx={{ paddingBottom: theme.custom.spacing.sm }}
         >
           {title.toUpperCase()}
         </Typography>
-        <Typography color='white' fontSize={theme.typography.h6.fontSize}>
+        {/* <Typography color='white' fontSize={theme.typography.h6.fontSize}> */}
+        <Typography
+          color={theme.palette.primary.main}
+          fontSize={theme.custom.fontSizes.lg}
+          fontWeight='400'
+        >
           {children}
         </Typography>
       </Box>

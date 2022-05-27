@@ -30,6 +30,7 @@ export const AOSCardQuote = ({
       variants={cardVariants}
       whileInView='show'
       viewport={{ once: true, amount: 0.3 }}
+      transition={theme.custom.framerAnimation.standard}
     >
       <Card
         sx={{

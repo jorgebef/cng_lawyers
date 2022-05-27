@@ -5,24 +5,14 @@ import { useEffect, useState } from 'react'
 import { AOSCardQuote } from '../components/aosCardQuote'
 import { ServiceCell } from '../components/services'
 import { Hero } from '../components/hero'
+import { GiReceiveMoney, GiDiploma } from 'react-icons/gi'
 import { GoLaw } from 'react-icons/go'
-import {
-  GiHouse,
-  GiDirectionSigns,
-  GiReceiveMoney,
-  GiHandcuffs,
-} from 'react-icons/gi'
-import { IoDocumentTextOutline } from 'react-icons/io5'
+import { MdOutlineFeed } from 'react-icons/md'
+import { BsFillHouseFill, BsFillSignpost2Fill } from 'react-icons/bs'
 import { motion } from 'framer-motion'
 import { useAppCtx } from '../context/AppCtx'
-import {
-  Box,
-  Button,
-  Container,
-  Divider,
-  Typography,
-  useTheme,
-} from '@mui/material'
+import { Box, Container, Divider, Typography, useTheme } from '@mui/material'
+import { ContactButton } from '../components/contactButton'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -128,7 +118,7 @@ const Home: NextPage = () => {
             align='center'
             color={theme.palette.primary.main}
             fontWeight={900}
-            fontSize={40}
+            fontSize={theme.custom.fontSizes.xxl}
           >
             EXCELLENT SERVICE
           </Typography>
@@ -172,24 +162,16 @@ const Home: NextPage = () => {
                 without obligation
               </Typography>
             </Typography>
-            <Button
+            <ContactButton
               size='large'
               onClick={() => {
                 viewContact()
                 router.push('/contact')
               }}
-              sx={{
-                color: 'white',
-                fontSize: theme.typography.h6.fontSize,
-                px: theme.custom.spacing.sm,
-                backgroundColor: theme.palette.error.main,
-                ':hover': {
-                  backgroundColor: theme.palette.error.light,
-                },
-              }}
+              btnFontSize='lg'
             >
               Contact us
-            </Button>
+            </ContactButton>
           </Container>
         </Box>
 
@@ -207,7 +189,7 @@ const Home: NextPage = () => {
         >
           <Typography
             fontWeight={900}
-            fontSize={40}
+            fontSize={theme.custom.fontSizes.xxl}
             sx={{ color: theme.palette.primary.main }}
           >
             LEGAL SERVICES
@@ -227,17 +209,8 @@ const Home: NextPage = () => {
             }}
           >
             <ServiceCell
-              title='SPANISH PROPERTY LAW'
-              icon={<GiHouse size='70px' color='white' />}
-            >
-              Our specialist property team will guide you through all aspects of
-              Purchasing & Selling your Property, Property Rentals, Commercial
-              Leases, Building Projects, and Securing Off-Plan Purchases
-            </ServiceCell>
-
-            <ServiceCell
-              title='RELOCATION SERVICES'
-              icon={<GiDirectionSigns size='70px' color='white' />}
+              title='conveyancing experts'
+              Icon={BsFillSignpost2Fill}
             >
               Our relocation team will help you in arranging your NIE
               (foreigner’s tax number), Residency Card, Health Card, Visas,
@@ -245,10 +218,23 @@ const Home: NextPage = () => {
               Taxes
             </ServiceCell>
 
+            <ServiceCell title='real estate law' Icon={BsFillHouseFill}>
+              Our specialist property team will guide you through all aspects of
+              Purchasing & Selling your Property, Property Rentals, Commercial
+              Leases, Building Projects, and Securing Off-Plan Purchases
+            </ServiceCell>
+
             <ServiceCell
-              title='WILLS & INHERITANCE'
-              icon={<IoDocumentTextOutline size='70px' color='white' />}
+              title='qualified solicitors at your disposal'
+              Icon={GiDiploma}
             >
+              At CNG Lawyers, you will always receive the best legal advice from
+              qualified and registered solicitors totalling 50+ years of
+              experience between the team in various fields like from criminal
+              law, real estate law or commercial law.
+            </ServiceCell>
+
+            <ServiceCell title='WILLS & INHERITANCE' Icon={MdOutlineFeed}>
               It is extremely important to make a Spanish will as Spanish law on
               inheritance is very different from other countries. We can assist
               with: Making Wills, Inheritances, Powers of Attorney, and any
@@ -256,31 +242,21 @@ const Home: NextPage = () => {
             </ServiceCell>
 
             <ServiceCell
-              title='CIVIL LAW'
-              icon={<GoLaw size='70px' color='white' />}
+              title='comprehensive legal representation'
+              Icon={GoLaw}
             >
-              CNG Lawyers handles all matters of Civil Litigation, including
-              Personal Injuries, Debt Collection, Creditors Rights, Wrongful
-              Dismissal, Divorce and Family Law
+              At CNG Lawyers, we handle all matters of legal representation,
+              including but not limited to Litigation, including Personal
+              Injuries, Divorce, Family Law, tax representation for your tax
+              declarations, whether resident or non-resident taxes and any other
+              procedures.
             </ServiceCell>
 
-            <ServiceCell
-              title='TAXATION'
-              icon={<GiReceiveMoney size='70px' color='white' />}
-            >
+            <ServiceCell title='taxation experts' Icon={GiReceiveMoney}>
               Assisting in all matters of fiscal representation before the
               Spanish tax office, both for private individuals and companies. We
               can assist you with your Personal Income Tax Declaration, Tax
               Appeals and Claims
-            </ServiceCell>
-            <ServiceCell
-              title='CRIMINAL LAW'
-              icon={<GiHandcuffs size='70px' color='white' />}
-            >
-              CNG Lawyers can assist you if you have been charged with or have
-              been a victim of any offences, including Driving & Vehicle
-              offences, Personal Assault, Theft & Vandalism, Criminal
-              Negligence, Corporate Crimes and any other offences
             </ServiceCell>
           </Box>
         </Container>
@@ -298,7 +274,7 @@ const Home: NextPage = () => {
             fontWeight={900}
             align='center'
             color={theme.palette.primary.main}
-            sx={{ fontSize: 40 }}
+            sx={{ fontSize: theme.custom.fontSizes.xxl }}
           >
             CLIENT TESTIMONIALS
           </Typography>

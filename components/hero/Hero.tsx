@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
 import { Box, Container, Typography } from '@mui/material'
+import { GoLaw } from 'react-icons/go'
 import { theme } from '../../styles/theme'
 
 export const Hero = () => {
@@ -8,7 +8,7 @@ export const Hero = () => {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        height: { xs: '45vh', md: '50vh' },
+        height: '42vh',
         maxHeight: '550px',
         backgroundColor: theme.palette.primary.main,
         overflow: 'hidden',
@@ -50,7 +50,7 @@ export const Hero = () => {
             width='900'
             height='750'
             style={{
-              height: 'auto',
+              height: '45vh',
               marginLeft: '-110px',
               objectFit: 'cover',
             }}
@@ -70,7 +70,7 @@ export const Hero = () => {
               display: 'flex',
               flexDirection: 'column',
               textAlign: 'center',
-              gap: theme.custom.spacing.md,
+              // gap: theme.custom.spacing.xs,
               alignItems: 'center',
               padding: {
                 xs: theme.custom.spacing.xs,
@@ -98,7 +98,7 @@ export const Hero = () => {
                 flexDirection: 'column',
                 gap: theme.custom.spacing.xs,
                 marginTop: theme.custom.spacing.md,
-                width: '150px',
+                width: '160px',
               }}
             >
               <img
@@ -109,18 +109,39 @@ export const Hero = () => {
                 height='35'
                 style={{ width: '100%', height: 'auto' }}
               />
-              <img
-                src='/logo_abogacia_white.png'
-                alt='Logo Abogacia'
-                loading='lazy'
-                width='210'
-                height='72'
-                style={{ width: '100%', height: 'auto' }}
-              />
+              {/* <img */}
+              {/*   src='/logo_abogacia_white.png' */}
+              {/*   alt='Logo Abogacia' */}
+              {/*   loading='lazy' */}
+              {/*   width='210' */}
+              {/*   height='72' */}
+              {/*   style={{ width: '100%', height: 'auto' }} */}
+              {/* /> */}
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2,1fr)',
+                  alignItems: 'center',
+                }}
+              >
+                <GoLaw
+                  fontSize={theme.custom.fontSizes.xxl}
+                  color={theme.palette.extra.main}
+                />
+                <Typography
+                  // color={theme.palette.extra.main}
+                  color={theme.palette.grey[300]}
+                  fontSize={theme.custom.fontSizes.xl}
+                  fontWeight='700'
+                  lineHeight={1.1}
+                >
+                  Registered Lawyers
+                </Typography>
+              </Box>
               <svg width='0' height='0'>
                 <defs>
                   <clipPath id='myCurve' clipPathUnits='objectBoundingBox'>
-                    <motion.path d='M0.179,0.356 C0.351,0.221,0.421,0.081,0.43,0 H0.997 C1,0.044,1,0.228,0.819,0.409 C0.635,0.576,0.575,0.906,0.587,1 H0 C0.009,0.823,0.015,0.485,0.179,0.356' />
+                    <path d='M0.179,0.356 C0.351,0.221,0.421,0.081,0.43,0 H0.997 C1,0.044,1,0.228,0.819,0.409 C0.635,0.576,0.575,0.906,0.587,1 H0 C0.009,0.823,0.015,0.485,0.179,0.356' />
                   </clipPath>
                 </defs>
               </svg>

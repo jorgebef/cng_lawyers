@@ -16,6 +16,7 @@ import {
   MessageRounded,
   PersonRounded,
   PhoneRounded,
+  WhatsappRounded,
 } from '@mui/icons-material'
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -90,6 +91,19 @@ We will get back to you in 48 hours.`)
     // })
   }
 
+  const iconMotion = {
+    rest: {
+      scale: 1,
+      rotate: '0deg',
+      transition: theme.custom.framerAnimation.standard,
+    },
+    click: {
+      scale: 1.1,
+      rotate: '360deg',
+      transition: theme.custom.framerAnimation.standard,
+    },
+  }
+
   return (
     <>
       <Head>
@@ -105,7 +119,6 @@ We will get back to you in 48 hours.`)
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: theme.custom.spacing.xl,
         }}
       >
         <Container
@@ -113,11 +126,11 @@ We will get back to you in 48 hours.`)
             display: 'flex',
             width: '100%',
             flexDirection: 'column',
-            px: 0,
             alignItems: 'center',
-            gap: theme.custom.spacing.lg,
+            // gap: theme.custom.spacing.lg,
             justifyContent: 'center',
-            padding: theme.custom.spacing.lg,
+            py: theme.custom.spacing.lg,
+            px: '0 !important',
             maxWidth: theme.breakpoints.values.lg,
           }}
         >
@@ -137,8 +150,7 @@ We will get back to you in 48 hours.`)
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            px: theme.custom.spacing.xl,
-            py: theme.custom.spacing.xl,
+            py: theme.custom.spacing.lg,
             alignItems: 'center',
             gap: theme.custom.spacing.lg,
             justifyContent: 'center',
@@ -151,9 +163,8 @@ We will get back to you in 48 hours.`)
           <Typography
             align='center'
             fontWeight={900}
-            fontSize={40}
+            fontSize={theme.custom.fontSizes.xxl}
             color={theme.palette.primary.main}
-            // sx={{ fontSize: 40 }}
           >
             REQUEST AN APPOINTMENT WITH US
           </Typography>
@@ -189,7 +200,6 @@ We will get back to you in 48 hours.`)
               placeholder='Email'
               value={email}
               onChange={e => setEmail(e.currentTarget.value)}
-              // icon={<MdAlternateEmail />}
               required
               InputProps={{
                 startAdornment: (
@@ -212,12 +222,10 @@ We will get back to you in 48 hours.`)
                   </InputAdornment>
                 ),
               }}
-              // icon={<MdPhone />}
             />
             <TextField
               placeholder='Your message'
               label='Message'
-              // radius='md'
               multiline
               minRows={2}
               value={message}
@@ -245,6 +253,88 @@ We will get back to you in 48 hours.`)
             >
               SUBMIT
             </Button>
+          </Box>
+        </Container>
+        <Container
+          sx={{
+            display: 'flex',
+            // flexDirection: 'column',
+            paddingBottom: theme.custom.spacing.lg,
+            alignItems: 'end',
+            gap: theme.custom.spacing.lg,
+            justifyContent: 'center',
+            borderRadius: `${theme.shape.borderRadius}px`,
+            width: '100%',
+            maxWidth: theme.breakpoints.values.lg,
+            backgroundColor: theme.palette.grey[100],
+          }}
+        >
+          <Box
+            component={motion.div}
+            initial='rest'
+            whileTap='click'
+            whileHover='click'
+            animate='rest'
+            onClick={() =>
+              window.open(
+                'https://wa.me/34711011293?text=Hello,%20I%20would%20like%20to%arrange%an%appointment%20and%20enquire%20for%20legal%20information',
+                '_blank'
+              )
+            }
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: theme.custom.spacing.xs,
+              alignItems: 'center',
+              backgroundColor: 'white',
+              p: theme.custom.spacing.xs,
+              borderRadius: `${theme.shape.borderRadius}px`,
+              cursor: 'pointer',
+            }}
+          >
+            <Typography
+              fontSize={theme.custom.fontSizes.xl}
+              color={theme.palette.primary.main}
+              fontWeight='500'
+            >
+              WhatsApp
+            </Typography>
+            <motion.div variants={iconMotion}>
+              <WhatsappRounded
+                sx={{ color: 'green', fontSize: theme.custom.fontSizes.xxl }}
+              />
+            </motion.div>
+          </Box>
+          <Box
+            component={motion.div}
+            initial='rest'
+            whileTap='click'
+            whileHover='click'
+            animate='rest'
+            onClick={() => window.open('mailto:info@cnglawyers.com', '_blank')}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: theme.custom.spacing.xs,
+              alignItems: 'center',
+              backgroundColor: 'white',
+              p: theme.custom.spacing.xs,
+              borderRadius: `${theme.shape.borderRadius}px`,
+              cursor: 'pointer',
+            }}
+          >
+            <Typography
+              fontSize={theme.custom.fontSizes.xl}
+              color={theme.palette.primary.main}
+              fontWeight='500'
+            >
+              Email
+            </Typography>
+            <motion.div variants={iconMotion}>
+              <MailRounded
+                sx={{ color: 'blue', fontSize: theme.custom.fontSizes.xxl }}
+              />
+            </motion.div>
           </Box>
         </Container>
       </Box>

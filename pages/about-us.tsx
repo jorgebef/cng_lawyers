@@ -1,9 +1,20 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
-import { Box, Button, Container, Typography, useTheme } from '@mui/material'
+import {
+  Box,
+  Container,
+  Divider,
+  List,
+  ListItem,
+  Typography,
+  useTheme,
+} from '@mui/material'
 import { useAppCtx } from '../context/AppCtx'
 import { useRouter } from 'next/router'
+import { ContactButton } from '../components/contactButton'
+import { TimelineSeparator } from '@mui/lab'
+import { GoPrimitiveDot } from 'react-icons/go'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -15,6 +26,39 @@ const About: NextPage = () => {
   const theme = useTheme()
   const router = useRouter()
   const { viewContact } = useAppCtx()
+
+  const members = [
+    {
+      name: 'Javier Casanova Navarro',
+      association: 'Orihuela',
+      regNo: 'xxxx',
+      specialtyList: [
+        'Courtroom specialist',
+        'Contract law',
+        'Administration legislation',
+      ],
+    },
+    {
+      name: 'Daniel Gutierrez Gomez',
+      association: 'Orihuela',
+      regNo: 'xxxx',
+      specialtyList: [
+        'Conveyancing specialist',
+        'International law',
+        'Real Estate law',
+      ],
+    },
+    {
+      name: 'Mª José Navarro Cámara',
+      association: 'Orihuela',
+      regNo: 'xxxx',
+      specialtyList: [
+        'Real Estate law specialist',
+        '+30 years experience',
+        'Extrajudicial settlement specialist',
+      ],
+    },
+  ]
 
   return (
     <div>
@@ -34,7 +78,7 @@ const About: NextPage = () => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: theme.custom.spacing.md,
+          gap: theme.custom.spacing.xl,
         }}
       >
         <Container
@@ -43,24 +87,96 @@ const About: NextPage = () => {
             flexDirection: 'column',
             alignItems: 'center',
             gap: theme.custom.spacing.lg,
+            paddingTop: theme.custom.spacing.lg,
             justifyContent: 'center',
-            padding: theme.custom.spacing.lg,
             maxWidth: theme.breakpoints.values.xl,
           }}
         >
           <Typography
             fontWeight={900}
             color={theme.palette.primary.main}
-            sx={{ fontSize: 40 }}
+            sx={{ fontSize: theme.custom.fontSizes.xxl }}
           >
             ABOUT US
           </Typography>
-          <img
+          <Box
+            component='img'
             src='/team.jpg'
             alt='CNG Lawyers team'
             loading='lazy'
             height='auto'
+            sx={{
+              borderRadius: `${theme.shape.borderRadius}px`,
+              minWidth: theme.breakpoints.values.sm,
+            }}
           />
+        </Container>
+
+        <Container
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: 'repeat(3,1fr)' },
+            // placeContent: 'center',
+            maxWidth: `${theme.breakpoints.values.lg}px !important`,
+            gap: theme.custom.spacing.md,
+          }}
+        >
+          {members.map((member, i) => (
+            <Box
+              key={i}
+              component={motion.div}
+              initial='rest'
+              whileHover='hover'
+              animate='rest'
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'stretch',
+                alignItems: 'stretch',
+              }}
+            >
+              <Box
+                component={motion.div}
+                variants={{
+                  rest: { scale: 1 },
+                  hover: {
+                    scale: 1.1,
+                  },
+                }}
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  padding: theme.custom.spacing.sm,
+                  borderRadius: `${theme.shape.borderRadius}px`,
+                  backgroundColor: theme.palette.grey[100],
+                }}
+              >
+                <Typography
+                  fontSize={theme.custom.fontSizes.xl}
+                  color={theme.palette.primary.main}
+                  fontWeight='500'
+                >
+                  {member.name}
+                </Typography>
+                <Typography color={theme.palette.primary.main} fontWeight='500'>
+                  {member.association} registered lawyer no. {member.regNo}
+                </Typography>
+                <Divider
+                  sx={{ alignSelf: 'stretch', my: theme.custom.spacing.xs }}
+                />
+                <List dense>
+                  {member.specialtyList.map((spec, j) => (
+                    <ListItem key={j}>
+                      <Typography color={theme.palette.primary.main}>
+                        <GoPrimitiveDot/> {spec}
+                      </Typography>
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            </Box>
+          ))}
         </Container>
 
         <Container
@@ -76,9 +192,9 @@ const About: NextPage = () => {
             component='span'
             align='justify'
             color={theme.palette.primary.main}
-            fontSize={theme.typography.h5.fontSize}
+            fontSize={theme.custom.fontSizes.lg}
             px={theme.custom.spacing.lg}
-            fontWeight={500}
+            fontWeight={400}
           >
             At CNG Lawyers we are an independent law firm where we offer you the
             legal experience you deserve, provided by qualified lawyers that not
@@ -86,33 +202,21 @@ const About: NextPage = () => {
             helped thousands of people in their quest to buy or sell a property
             in Spain as well as managing their legal representation, taxes, and
             all affairs in the country. We always go that one step further for
-            our clients. We are conveyancing experts.
-            <Typography
-              component='span'
-              fontWeight={900}
-              fontSize={theme.typography.h5.fontSize}
-            >
-              without obligation
+            our clients. We are conveyancing experts.{' '}
+            <Typography component='span' fontWeight={900}>
+              Without obligation
             </Typography>
           </Typography>
-          <Button
+          <ContactButton
             size='large'
+            btnFontSize='lg'
             onClick={() => {
               viewContact()
               router.push('/contact')
             }}
-            sx={{
-              color: 'white',
-              fontSize: theme.typography.h6.fontSize,
-              px: theme.custom.spacing.sm,
-              backgroundColor: theme.palette.error.main,
-              ':hover': {
-                backgroundColor: theme.palette.error.light,
-              },
-            }}
           >
             Contact us
-          </Button>
+          </ContactButton>
         </Container>
       </Box>
     </div>

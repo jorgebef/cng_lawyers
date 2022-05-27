@@ -50,7 +50,7 @@ export const ServiceTimeline = ({ itemArr }: ServiceTimelineProps) => {
           subheader={
             <ListSubheader
               sx={{
-                fontSize: theme.typography.h5.fontSize,
+                fontSize: theme.custom.fontSizes.xl,
                 color: theme.palette.primary.main,
                 fontWeight: 900,
                 textAlign: 'left',

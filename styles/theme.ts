@@ -23,6 +23,11 @@ declare module '@mui/material/styles' {
       fontSizes: {
         lg: number
         xl: number
+        xxl: number
+      }
+      framerAnimation: {
+        standard: Object
+        infinite: Object
       }
     }
   }
@@ -49,7 +54,9 @@ declare module '@mui/material/styles' {
       fontSizes?: {
         lg?: number
         xl?: number
+        xxl?: number
       }
+      framerAnimation?: {}
     }
   }
 }
@@ -67,7 +74,8 @@ export const theme = createTheme({
       main: '#FF4365',
     },
     extra: {
-      main: '#495810',
+      main: '#FFBC42',
+      light: '#FFCD70',
     },
   },
   shape: { borderRadius: 6 },
@@ -96,7 +104,7 @@ export const theme = createTheme({
       height: 65,
     },
     footer: {
-      height: 170,
+      height: 210,
     },
     spacing: {
       xs: 1.5,
@@ -107,7 +115,11 @@ export const theme = createTheme({
     },
     fontSizes: {
       lg: 20,
-      xl: 26,
+      xl: 24,
+      xxl: 34,
+    },
+    framerAnimation: {
+      standard: { type: 'spring', damping: 24, stiffness: 280 },
     },
   },
 })

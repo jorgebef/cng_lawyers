@@ -47,6 +47,7 @@ export const Footer = () => {
       component='footer'
       sx={{
         height: theme.custom.footer.height,
+        py: theme.custom.spacing.sm,
         backgroundColor: theme.palette.grey[100],
         color: theme.palette.grey[500],
       }}
@@ -122,6 +123,8 @@ export const Footer = () => {
         <Typography
           sx={{
             color: theme.palette.grey[700],
+            whiteSpace: 'nowrap',
+            minWidth: 'max-content',
           }}
         >
           © 2022 Designed by: J. Befán - All rights reserved.

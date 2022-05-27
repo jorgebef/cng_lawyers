@@ -5,13 +5,13 @@ import { useAppCtx } from '../../context/AppCtx'
 import {
   AppBar,
   Box,
-  Button,
   IconButton,
   Toolbar,
   Typography,
   useTheme,
 } from '@mui/material'
 import { CloseRounded, MenuRounded } from '@mui/icons-material'
+import { ContactButton } from '../contactButton'
 
 interface ILink {
   link: string
@@ -49,12 +49,7 @@ export const Header: React.FC = () => {
       className={active === link.link ? 'active' : undefined}
       onClick={(e: React.MouseEvent) => handleNavigate(e, link.link)}
       sx={{
-        color:
-          active === link.link
-            ? 'white'
-            : link.label.toLowerCase() === 'contact us'
-            ? theme.palette.error.main
-            : theme.palette.primary.main,
+        color: theme.palette.primary.main,
         display: 'block',
         lineHeight: 1,
         px: theme.custom.spacing.md,
@@ -63,9 +58,16 @@ export const Header: React.FC = () => {
         textDecoration: 'none',
         cursor: 'pointer',
         fontWeight: 700,
+        backgroundColor:
+          link.label.toLowerCase() === 'contact us'
+            ? theme.palette.extra.main
+            : 'white',
 
         '&:hover': {
-          backgroundColor: theme.palette.grey[200],
+          backgroundColor:
+            link.label.toLowerCase() === 'contact us'
+              ? theme.palette.extra.light
+              : theme.palette.grey[200],
         },
 
         '&.active, &:hover.active': {
@@ -118,23 +120,16 @@ export const Header: React.FC = () => {
             gap: theme.custom.spacing.xs,
           }}
         >
-          <Button
+          <ContactButton
+            size='small'
+            btnFontSize='sm'
             onClick={(e: React.MouseEvent) => {
               viewContact()
               handleNavigate(e, '/contact')
             }}
-            size='small'
-            sx={{
-              color: 'white',
-              px: theme.custom.spacing.xs,
-              backgroundColor: theme.palette.error.main,
-              ':hover': {
-                backgroundColor: theme.palette.error.light,
-              },
-            }}
           >
             Contact us
-          </Button>
+          </ContactButton>
           <IconButton
             aria-label={`${open ? 'open' : 'close'} menu button`}
             onClick={() => setOpen(!open)}
@@ -161,7 +156,7 @@ export const Header: React.FC = () => {
           initial={open ? 'open' : 'closed'}
           animate={open ? 'open' : 'closed'}
           variants={dropdownVariants}
-          transition={{ type: 'spring', damping: 24, stiffness: 280 }}
+          transition={theme.custom.framerAnimation}
           sx={{
             position: 'absolute',
             display: { xs: 'flex', md: 'none' },
