@@ -8,14 +8,14 @@ type LayoutProps = {
 }
 
 export const Layout = ({ children }: LayoutProps) => {
-
   return (
     <>
       <Header />
       <Box
         sx={{
-          my: `${theme.custom.header.height}px`,
+          mt: `${theme.custom.header.height}px`,
           minHeight: `calc(100vh - ${theme.custom.header.height}px - ${theme.custom.footer.height}px)`,
+          mb: '100px',
         }}
       >
         {children}

@@ -1,16 +1,13 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import { ServiceCard, ServiceCell } from '../components/services'
-import { GiReceiveMoney, GiHandcuffs } from 'react-icons/gi'
 import { motion } from 'framer-motion'
 import { Box, Container, Divider, Typography, useTheme } from '@mui/material'
-import {
-  BalanceSharp,
-  FeedSharp,
-  HouseSharp,
-  SignpostSharp,
-} from '@mui/icons-material'
 import { ServiceTimeline } from '../components/services/ServiceTimeline'
+import { GiReceiveMoney, GiDiploma } from 'react-icons/gi'
+import { GoLaw } from 'react-icons/go'
+import { MdOutlineFeed } from 'react-icons/md'
+import { BsFillHouseFill, BsFillSignpost2Fill } from 'react-icons/bs'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -60,7 +57,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             fontWeight={900}
             textAlign='center'
             color={theme.palette.primary.main}
-            fontSize={40}
+            fontSize={theme.custom.fontSizes.xxl}
           >
             LEGAL SERVICES
           </Typography>
@@ -79,17 +76,8 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             }}
           >
             <ServiceCell
-              title='SPANISH PROPERTY LAW'
-              icon={<HouseSharp sx={{ fontSize: 70, color: 'white' }} />}
-            >
-              Our specialist property team will guide you through all aspects of
-              Purchasing & Selling your Property, Property Rentals, Commercial
-              Leases, Building Projects, and Securing Off-Plan Purchases
-            </ServiceCell>
-
-            <ServiceCell
-              title='RELOCATION SERVICES'
-              icon={<SignpostSharp sx={{ fontSize: 70, color: 'white' }} />}
+              title='conveyancing experts'
+              Icon={BsFillSignpost2Fill}
             >
               Our relocation team will help you in arranging your NIE
               (foreigner’s tax number), Residency Card, Health Card, Visas,
@@ -98,8 +86,27 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             </ServiceCell>
 
             <ServiceCell
+              title='real estate law'
+              Icon={BsFillHouseFill}
+            >
+              Our specialist property team will guide you through all aspects of
+              Purchasing & Selling your Property, Property Rentals, Commercial
+              Leases, Building Projects, and Securing Off-Plan Purchases
+            </ServiceCell>
+
+            <ServiceCell
+              title='qualified solicitors at your disposal'
+              Icon={GiDiploma}
+            >
+              At CNG Lawyers, you will always receive the best legal advice from
+              qualified and registered solicitors totalling 50+ years of
+              experience between the team in various fields like from criminal
+              law, real estate law or commercial law.
+            </ServiceCell>
+
+            <ServiceCell
               title='WILLS & INHERITANCE'
-              icon={<FeedSharp sx={{ fontSize: 70, color: 'white' }} />}
+              Icon={MdOutlineFeed}
             >
               It is extremely important to make a Spanish will as Spanish law on
               inheritance is very different from other countries. We can assist
@@ -108,31 +115,24 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             </ServiceCell>
 
             <ServiceCell
-              title='CIVIL LAW'
-              icon={<BalanceSharp sx={{ fontSize: 70, color: 'white' }} />}
+              title='comprehensive legal representation'
+              Icon={GoLaw}
             >
-              CNG Lawyers handles all matters of Civil Litigation, including
-              Personal Injuries, Debt Collection, Creditors Rights, Wrongful
-              Dismissal, Divorce and Family Law
+              At CNG Lawyers, we handle all matters of legal representation,
+              including but not limited to Litigation, including Personal
+              Injuries, Divorce, Family Law, tax representation for your tax
+              declarations, whether resident or non-resident taxes and any other
+              procedures.
             </ServiceCell>
 
             <ServiceCell
-              title='TAXATION'
-              icon={<GiReceiveMoney size='70px' color='white' />}
+              title='taxation experts'
+              Icon={GiReceiveMoney}
             >
               Assisting in all matters of fiscal representation before the
               Spanish tax office, both for private individuals and companies. We
               can assist you with your Personal Income Tax Declaration, Tax
               Appeals and Claims
-            </ServiceCell>
-            <ServiceCell
-              title='CRIMINAL LAW'
-              icon={<GiHandcuffs size='70px' color='white' />}
-            >
-              CNG Lawyers can assist you if you have been charged with or have
-              been a victim of any offences, including Driving & Vehicle
-              offences, Personal Assault, Theft & Vandalism, Criminal
-              Negligence, Corporate Crimes and any other offences
             </ServiceCell>
           </Box>
         </Container>
@@ -151,7 +151,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             align='center'
             fontWeight={900}
             color={theme.palette.primary.main}
-            fontSize={40}
+            fontSize={theme.custom.fontSizes.xxl}
           >
             PROFESSIONAL SERVICE WHEN BUYING OR SELLING IN SPAIN
           </Typography>
@@ -164,6 +164,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
                   'We will provide you with a full breakdown of costs easy to understand for the purchase or sale of the desired property.',
                   'Our solicitors perform a complete legal evaluation and due diligence of the property.',
                   'We negotiate and prepare the contract for any real estate property purchase.',
+                  'We help you obtain your tax identification (NIE) number, Spanish bank account and Power of Attorney (when required).',
                 ],
               },
               {

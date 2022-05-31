@@ -28,7 +28,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <ThemeProvider theme={theme}>
           <AnimatePresence
             exitBeforeEnter
-            // initial={false}
             onExitComplete={() => window.scrollTo(0, 0)}
           >
             <Layout>

@@ -6,9 +6,10 @@ interface IFooterContact {
 }
 
 const footerContact: IFooterContact = {
-  addr: 'C/ Pedro Lorca xxxxx',
-  telf1: '+34 xxx xxx xxx',
-  telf2: '+34 xxx xxx xxx',
+  addr: 'C/ Pedro Lorca 29, 3rd floor',
+  addr2: 'Torrevieja - 03181',
+  addr3: 'Alicante (Spain)',
+  telf1: '+34 711 01 12 93',
   email: 'info@cnglawyers.com',
 }
 
@@ -23,31 +24,30 @@ const footerCols: IFooterCol[] = [
     links: [
       { label: 'Conveyancing', link: '/services' },
       { label: 'Inheritance', link: '/services' },
+      { label: 'Legal Representation', link: '/services' },
+      { label: 'Tax Advice', link: '/services' },
     ],
   },
   {
     title: 'About us',
-    links: [
-      { label: 'XXXXX', link: '/contact' },
-      { label: 'XXXXXXX', link: '/contact' },
-    ],
+    links: [{ label: 'About us', link: '/about-us' }],
   },
   {
-    title: 'Community',
+    title: 'Contact us',
     links: [
-      { label: 'Follow on Instagram', link: '/contact' },
-      { label: 'Email newsletter', link: '/contact' },
+      { label: 'Reach out to us', link: '/contact' },
+      { label: 'Whatsapp', link: '/contact' },
     ],
   },
 ]
 
 export const Footer = () => {
-
   return (
     <Box
       component='footer'
       sx={{
         height: theme.custom.footer.height,
+        py: theme.custom.spacing.sm,
         backgroundColor: theme.palette.grey[100],
         color: theme.palette.grey[500],
       }}
@@ -123,6 +123,8 @@ export const Footer = () => {
         <Typography
           sx={{
             color: theme.palette.grey[700],
+            whiteSpace: 'nowrap',
+            minWidth: 'max-content',
           }}
         >
           © 2022 Designed by: J. Befán - All rights reserved.
