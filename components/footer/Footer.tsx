@@ -26,19 +26,22 @@ const footerCols: IFooterCol[] = [
     links: [
       { label: 'Conveyancing', link: '/services' },
       { label: 'Inheritance', link: '/services' },
-      { label: 'Legal Representation', link: '/services' },
+      { label: 'Litigation', link: '/services' },
       { label: 'Tax Advice', link: '/services' },
     ],
   },
   {
     title: 'About us',
-    links: [{ label: 'About us', link: '/about-us' }],
+    links: [{ label: 'The team', link: '/about-us' }],
   },
   {
     title: 'Contact us',
     links: [
-      { label: 'Reach out to us', link: '/contact' },
-      { label: 'Whatsapp', link: '/contact' },
+      { label: 'Email', link: 'mailto:info@cnglawyers.com' },
+      {
+        label: 'Whatsapp',
+        link: 'https://wa.me/34711011293?text=Hello,%20I%20would%20like%20to%arrange%an%appointment%20and%20enquire%20for%20legal%20information',
+      },
     ],
   },
 ]
@@ -114,9 +117,23 @@ export const Footer = () => {
                 >
                   {col.title}
                 </Typography>
-                {col.links.map((link, j) => (
-                  <Typography key={j}>{link.label}</Typography>
-                ))}
+                {col.links.map((link, j) =>
+                  col.title.toLowerCase() === 'contact us' ? (
+                    <Typography
+                      onClick={() => window.open(link.link, '_blank')}
+                      key={j}
+                      sx={{ cursor: 'pointer' }}
+                    >
+                      {link.label}
+                    </Typography>
+                  ) : (
+                    <div key={j}>
+                      <Typography component='a' href={link.link}>
+                        {link.label}
+                      </Typography>
+                    </div>
+                  )
+                )}
               </div>
             ))}
           </Box>

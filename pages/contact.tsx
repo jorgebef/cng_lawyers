@@ -269,73 +269,61 @@ We will get back to you in 48 hours.`)
             backgroundColor: theme.palette.grey[100],
           }}
         >
-          <Box
-            component={motion.div}
-            initial='rest'
-            whileTap='click'
-            whileHover='click'
-            animate='rest'
-            onClick={() =>
-              window.open(
-                'https://wa.me/34711011293?text=Hello,%20I%20would%20like%20to%arrange%an%appointment%20and%20enquire%20for%20legal%20information',
-                '_blank'
-              )
-            }
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: theme.custom.spacing.xs,
-              alignItems: 'center',
-              backgroundColor: 'white',
-              p: theme.custom.spacing.xs,
-              borderRadius: `${theme.shape.borderRadius}px`,
-              cursor: 'pointer',
-            }}
-          >
-            <Typography
-              fontSize={theme.custom.fontSizes.xl}
-              color={theme.palette.primary.main}
-              fontWeight='500'
+          {[
+            {
+              title: 'Whatsapp',
+              color: theme.palette.success.main,
+              link: 'https://wa.me/34711011293?text=Hello,%20I%20would%20like%20to%arrange%an%appointment%20and%20enquire%20for%20legal%20information',
+              icon: (
+                <WhatsappRounded
+                  sx={{ color: 'white', fontSize: theme.custom.fontSizes.xxl }}
+                />
+              ),
+            },
+            {
+              title: 'Email',
+              color: theme.palette.primary.main,
+              link: 'mailto:info@cnglawyers.com',
+              icon: (
+                <MailRounded
+                  sx={{
+                    color: 'white',
+                    fontSize: theme.custom.fontSizes.xxl,
+                  }}
+                />
+              ),
+            },
+          ].map((btn, i) => (
+            <Box
+              component={motion.div}
+              key={i}
+              initial='rest'
+              whileTap='click'
+              whileHover='click'
+              animate='rest'
+              onClick={() => window.open(btn.link, '_blank')}
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: theme.custom.spacing.xs,
+                alignItems: 'center',
+                backgroundColor: btn.color,
+                px: theme.custom.spacing.xs,
+                py: 0.5,
+                borderRadius: `${theme.shape.borderRadius}px`,
+                cursor: 'pointer',
+              }}
             >
-              WhatsApp
-            </Typography>
-            <motion.div variants={iconMotion}>
-              <WhatsappRounded
-                sx={{ color: 'green', fontSize: theme.custom.fontSizes.xxl }}
-              />
-            </motion.div>
-          </Box>
-          <Box
-            component={motion.div}
-            initial='rest'
-            whileTap='click'
-            whileHover='click'
-            animate='rest'
-            onClick={() => window.open('mailto:info@cnglawyers.com', '_blank')}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: theme.custom.spacing.xs,
-              alignItems: 'center',
-              backgroundColor: 'white',
-              p: theme.custom.spacing.xs,
-              borderRadius: `${theme.shape.borderRadius}px`,
-              cursor: 'pointer',
-            }}
-          >
-            <Typography
-              fontSize={theme.custom.fontSizes.xl}
-              color={theme.palette.primary.main}
-              fontWeight='500'
-            >
-              Email
-            </Typography>
-            <motion.div variants={iconMotion}>
-              <MailRounded
-                sx={{ color: 'blue', fontSize: theme.custom.fontSizes.xxl }}
-              />
-            </motion.div>
-          </Box>
+              <Typography
+                fontSize={theme.custom.fontSizes.lg}
+                color={theme.palette.grey[50]}
+                fontWeight='500'
+              >
+                {btn.title}
+              </Typography>
+              <motion.div variants={iconMotion}>{btn.icon}</motion.div>
+            </Box>
+          ))}
         </Container>
       </Box>
     </>

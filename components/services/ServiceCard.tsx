@@ -69,6 +69,7 @@ export const ServiceCard = ({
             width='800'
             height='500'
             layout='responsive'
+            placeholder='blur'
             quality={40}
           />
         </motion.div>
