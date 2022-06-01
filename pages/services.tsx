@@ -8,6 +8,9 @@ import { GiReceiveMoney, GiDiploma } from 'react-icons/gi'
 import { GoLaw } from 'react-icons/go'
 import { MdOutlineFeed } from 'react-icons/md'
 import { BsFillHouseFill, BsFillSignpost2Fill } from 'react-icons/bs'
+import conveyancingImg from '../public/conveyancing.jpg'
+import fiscalImg from '../public/fiscal_repres.jpg'
+import litigationImg from '../public/litigation.jpg'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -194,7 +197,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
           }}
         >
           <ServiceCard
-            img='/conveyancing.jpg'
+            img={conveyancingImg}
             title='Conveyancing'
             align='left'
           >
@@ -208,7 +211,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
           </ServiceCard>
 
           <ServiceCard
-            img='/fiscal_repres.jpg'
+            img={fiscalImg}
             title='Fiscal Representation'
             align='right'
           >
@@ -219,7 +222,7 @@ const Services: NextPage = ({}: InferGetStaticPropsType<
             easier. Contact us in order to enquire about the possible packages.
           </ServiceCard>
 
-          <ServiceCard img='/litigation.jpg' title='Litigation' align='left'>
+          <ServiceCard img={litigationImg} title='Litigation' align='left'>
             If you have any procedure that requires the appearance of a lawyer,
             be sure you are in good hands. We will handle the procedure and
             inform you of any news, winning cases and reaching deals that are

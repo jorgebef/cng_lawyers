@@ -1,5 +1,7 @@
 import { Box, Container, Divider, Typography } from '@mui/material'
+import Image from 'next/image'
 import { theme } from '../../styles/theme'
+import logoImg from '../../public/logo.svg'
 
 interface IFooterContact {
   [key: string]: string
@@ -82,9 +84,9 @@ export const Footer = () => {
                 width: '150px',
               }}
             >
-              <img
+              <Image
                 alt='CNG Lawyers logo'
-                src='/logo.svg'
+                src={logoImg}
                 loading='lazy'
                 width='128px'
                 height='50px'

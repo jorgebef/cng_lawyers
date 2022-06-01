@@ -59,12 +59,10 @@ const FeatureDiv = ({ number, text }: FeatureDivProps) => {
           WebkitTextFillColor: 'transparent',
           width: `${number.length + 2.6 + Math.log(number.length) * 1.8}rem`,
         }}
-        component='span'
       >
         +{count}
       </Typography>
       <Typography
-        component='span'
         fontWeight={700}
         fontSize={theme.typography.h5.fontSize}
         color={theme.palette.primary.main}

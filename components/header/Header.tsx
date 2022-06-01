@@ -12,6 +12,7 @@ import {
 } from '@mui/material'
 import { CloseRounded, MenuRounded } from '@mui/icons-material'
 import { ContactButton } from '../contactButton'
+import Image from 'next/image'
 
 interface ILink {
   link: string
@@ -44,7 +45,7 @@ export const Header: React.FC = () => {
   }
 
   const items = links.map(link => (
-    <Typography
+    <Box
       key={link.label}
       className={active === link.link ? 'active' : undefined}
       onClick={(e: React.MouseEvent) => handleNavigate(e, link.link)}
@@ -77,7 +78,7 @@ export const Header: React.FC = () => {
       }}
     >
       {link.label}
-    </Typography>
+    </Box>
   ))
 
   const dropdownVariants = {
@@ -104,7 +105,7 @@ export const Header: React.FC = () => {
             cursor: 'pointer',
           }}
         >
-          <img
+          <Image
             alt='CNG Lawyers logo'
             src='/logo.svg'
             loading='lazy'

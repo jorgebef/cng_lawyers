@@ -1,8 +1,9 @@
 import { Box, Typography, useTheme } from '@mui/material'
 import { motion } from 'framer-motion'
+import Image, { StaticImageData } from 'next/image'
 
 interface ServiceCardProps {
-  img: string
+  img: StaticImageData
   title: string
   align: 'left' | 'right'
   children: React.ReactNode
@@ -52,21 +53,25 @@ export const ServiceCard = ({
           overflow: 'hidden',
         }}
       >
-        <Box
-          component={motion.img}
-          src={img}
-          alt={title}
+        <motion.div
           variants={imgMotion}
-          loading='lazy'
-          width='800'
-          height='500'
-          sx={{
+          style={{
             gridRow: 1,
             width: '100%',
             height: 'auto',
             zIndex: 0,
           }}
-        />
+        >
+          <Image
+            src={img}
+            alt={title}
+            loading='lazy'
+            width='800'
+            height='500'
+            layout='responsive'
+            quality={40}
+          />
+        </motion.div>
       </Box>
       <Box
         sx={{

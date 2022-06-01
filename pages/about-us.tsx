@@ -13,8 +13,9 @@ import {
 import { useAppCtx } from '../context/AppCtx'
 import { useRouter } from 'next/router'
 import { ContactButton } from '../components/contactButton'
-import { TimelineSeparator } from '@mui/lab'
 import { GoPrimitiveDot } from 'react-icons/go'
+import Image from 'next/image'
+import teamImg from '../public/team.jpg'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -31,9 +32,9 @@ const About: NextPage = () => {
     {
       name: 'Javier Casanova Navarro',
       association: 'Orihuela',
-      regNo: 'xxxx',
+      regNo: '1820',
       specialtyList: [
-        'Courtroom specialist',
+        'Litigation specialist',
         'Contract law',
         'Administration legislation',
       ],
@@ -41,7 +42,7 @@ const About: NextPage = () => {
     {
       name: 'Daniel Gutierrez Gomez',
       association: 'Orihuela',
-      regNo: 'xxxx',
+      regNo: '1776',
       specialtyList: [
         'Conveyancing specialist',
         'International law',
@@ -51,7 +52,7 @@ const About: NextPage = () => {
     {
       name: 'Mª José Navarro Cámara',
       association: 'Orihuela',
-      regNo: 'xxxx',
+      regNo: '569',
       specialtyList: [
         'Real Estate law specialist',
         '+30 years experience',
@@ -100,16 +101,22 @@ const About: NextPage = () => {
             ABOUT US
           </Typography>
           <Box
-            component='img'
-            src='/team.jpg'
-            alt='CNG Lawyers team'
-            loading='lazy'
-            height='auto'
             sx={{
               borderRadius: `${theme.shape.borderRadius}px`,
               minWidth: theme.breakpoints.values.sm,
             }}
-          />
+          >
+            <Image
+              src={teamImg}
+              alt='CNG Lawyers team'
+              loading='lazy'
+              height='336'
+              width='500'
+              layout='responsive'
+              placeholder='blur'
+              quality={70}
+            />
+          </Box>
         </Container>
 
         <Container
@@ -168,8 +175,9 @@ const About: NextPage = () => {
                 <List dense>
                   {member.specialtyList.map((spec, j) => (
                     <ListItem key={j}>
+                      <GoPrimitiveDot color={theme.palette.primary.main} />
                       <Typography color={theme.palette.primary.main}>
-                        <GoPrimitiveDot/> {spec}
+                        {spec}
                       </Typography>
                     </ListItem>
                   ))}
@@ -188,9 +196,9 @@ const About: NextPage = () => {
             gap: theme.custom.spacing.md,
           }}
         >
-          <Typography
-            component='span'
-            align='justify'
+          <Box
+            // component='span'
+            // align='justify'
             color={theme.palette.primary.main}
             fontSize={theme.custom.fontSizes.lg}
             px={theme.custom.spacing.lg}
@@ -203,10 +211,14 @@ const About: NextPage = () => {
             in Spain as well as managing their legal representation, taxes, and
             all affairs in the country. We always go that one step further for
             our clients. We are conveyancing experts.{' '}
-            <Typography component='span' fontWeight={900}>
+            <Typography
+              fontSize={theme.custom.fontSizes.lg}
+              component='span'
+              fontWeight={900}
+            >
               Without obligation
             </Typography>
-          </Typography>
+          </Box>
           <ContactButton
             size='large'
             btnFontSize='lg'

@@ -1,6 +1,9 @@
 import { Box, Container, Typography } from '@mui/material'
+import Image from 'next/image'
 import { GoLaw } from 'react-icons/go'
 import { theme } from '../../styles/theme'
+import handshakeImg from '../../public/handshake_cropped.jpg'
+import apitsLogo from '../../public/apits_logo.png'
 
 export const Hero = () => {
   return (
@@ -44,16 +47,17 @@ export const Hero = () => {
             },
           }}
         >
-          <img
+          <Image
             alt='handshake image'
-            src='/handshake_cropped.jpg'
+            src={handshakeImg}
             width='900'
             height='750'
-            style={{
-              height: '45vh',
-              marginLeft: '-110px',
-              objectFit: 'cover',
-            }}
+            // style={{
+            //   height: '45vh',
+            //   marginLeft: '-110px',
+            //   objectFit: 'cover',
+            // }}
+            placeholder='blur'
           />
         </Box>
         <Box
@@ -101,22 +105,15 @@ export const Hero = () => {
                 width: '160px',
               }}
             >
-              <img
-                src='/apits_logo.png'
+              <Image
+                src={apitsLogo}
                 alt='A Place in the Sun logo'
                 loading='lazy'
                 width='192'
                 height='35'
-                style={{ width: '100%', height: 'auto' }}
+                placeholder='blur'
+                quality={20}
               />
-              {/* <img */}
-              {/*   src='/logo_abogacia_white.png' */}
-              {/*   alt='Logo Abogacia' */}
-              {/*   loading='lazy' */}
-              {/*   width='210' */}
-              {/*   height='72' */}
-              {/*   style={{ width: '100%', height: 'auto' }} */}
-              {/* /> */}
               <Box
                 sx={{
                   display: 'grid',
