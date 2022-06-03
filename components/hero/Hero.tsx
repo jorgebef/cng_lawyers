@@ -27,9 +27,12 @@ export const Hero = () => {
       >
         <Box
           sx={{
+            // position: 'relative',
             display: 'flex',
             overflow: 'hidden',
             height: '100%',
+            // height: '10rem',
+            // width: '30rem',
             clipPath: 'url(#myCurve)',
             marginLeft: '-100px',
             marginRight: { xs: '-160px', sm: '-120px', md: 0 },
@@ -52,12 +55,14 @@ export const Hero = () => {
             src={handshakeImg}
             width='900'
             height='750'
+            loading='eager'
             // style={{
             //   height: '45vh',
             //   marginLeft: '-110px',
             //   objectFit: 'cover',
             // }}
             placeholder='blur'
+            objectFit='cover'
           />
         </Box>
         <Box
@@ -108,7 +113,7 @@ export const Hero = () => {
               <Image
                 src={apitsLogo}
                 alt='A Place in the Sun logo'
-                loading='lazy'
+                loading='eager'
                 width='192'
                 height='35'
                 placeholder='blur'

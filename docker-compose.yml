@@ -12,4 +12,4 @@ services:
       - ./public:/app/public
       - ./styles:/app/styles
       - ./utils:/app/utils
-    #   - ./netlify.toml:/app/netlify.toml
+      # - ./netlify.toml:/app/netlify.toml

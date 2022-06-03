@@ -109,7 +109,7 @@ const About: NextPage = () => {
             <Image
               src={teamImg}
               alt='CNG Lawyers team'
-              loading='lazy'
+              loading='eager'
               height='336'
               width='500'
               layout='responsive'
