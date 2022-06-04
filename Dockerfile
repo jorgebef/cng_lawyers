@@ -1,16 +1,12 @@
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /app
 
 COPY package.json ./
-COPY netlify.toml ./
-COPY tsconfig.json ./
-COPY .eslintrc.json ./
-COPY next.config.js ./
-COPY next-env.d.ts ./
 
-RUN npm i -E
+RUN npm install
 RUN npm i -g netlify-cli
 
+COPY . .
 
-CMD ["npm","run","dev"]
+CMD ["netlify","deploy", "--build"]

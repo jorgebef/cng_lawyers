@@ -55,7 +55,7 @@ export const Hero = () => {
             src={handshakeImg}
             width='900'
             height='750'
-            loading='eager'
+            priority
             // style={{
             //   height: '45vh',
             //   marginLeft: '-110px',
@@ -113,7 +113,7 @@ export const Hero = () => {
               <Image
                 src={apitsLogo}
                 alt='A Place in the Sun logo'
-                loading='eager'
+                priority
                 width='192'
                 height='35'
                 placeholder='blur'

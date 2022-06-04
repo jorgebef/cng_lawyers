@@ -1,15 +1,6 @@
 services:
-  app:
-    image: docker-nextjs-dev
+  node-netlify-deploy:
+    image: jbefp/node-netlify-build
     build: .
     ports:
       - 3000:3000
-    volumes:
-      - ./components:/app/components
-      - ./context:/app/context
-      - ./netlify:/app/netlify
-      - ./pages:/app/pages
-      - ./public:/app/public
-      - ./styles:/app/styles
-      - ./utils:/app/utils
-      # - ./netlify.toml:/app/netlify.toml
