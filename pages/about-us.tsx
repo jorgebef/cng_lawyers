@@ -15,7 +15,10 @@ import { useRouter } from 'next/router'
 import { ContactButton } from '../components/contactButton'
 import { GoPrimitiveDot } from 'react-icons/go'
 import Image from 'next/image'
-import teamImg from '../public/team.jpg'
+import teamImg from '../public/team.svg'
+import main_javier from '../public/main_javier.svg'
+import group_meeting from '../public/group_meeting.svg'
+import main_mjose from '../public/main_mjose.svg'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -56,7 +59,7 @@ const About: NextPage = () => {
       specialtyList: [
         'Real Estate law specialist',
         '+30 years experience',
-        'Extrajudicial settlement specialist',
+        'Extrajudicial settlement expert',
       ],
     },
   ]
@@ -102,8 +105,14 @@ const About: NextPage = () => {
           </Typography>
           <Box
             sx={{
+              display: 'grid',
+              placeContent: 'center',
               borderRadius: `${theme.shape.borderRadius}px`,
-              minWidth: theme.breakpoints.values.sm,
+              // minWidth: theme.breakpoints.values.sm,
+              width: '100%',
+              '> *': {
+                maxWidth: theme.breakpoints.values.sm,
+              },
             }}
           >
             <Image
@@ -112,8 +121,9 @@ const About: NextPage = () => {
               loading='eager'
               height='336'
               width='500'
-              layout='responsive'
-              placeholder='blur'
+              // layout='responsive'
+              priority
+              objectFit='contain'
               quality={70}
             />
           </Box>
@@ -122,10 +132,15 @@ const About: NextPage = () => {
         <Container
           sx={{
             display: 'grid',
+            placeItems: 'center',
             gridTemplateColumns: { xs: '1fr', md: 'repeat(3,1fr)' },
-            // placeContent: 'center',
-            maxWidth: `${theme.breakpoints.values.lg}px !important`,
+            placeContent: 'center',
+            maxWidth: {
+              xs: `${theme.breakpoints.values.sm}px !important`,
+              md: `${theme.breakpoints.values.lg}px !important`,
+            },
             gap: theme.custom.spacing.md,
+            // backgroundColor: 'green',
           }}
         >
           {members.map((member, i) => (
@@ -136,10 +151,13 @@ const About: NextPage = () => {
               whileHover='hover'
               animate='rest'
               sx={{
+                justifySelf: 'stretch',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'stretch',
                 alignItems: 'stretch',
+                minWidth: 'max-content',
+                maxWidth: { xs: theme.breakpoints.values.md },
               }}
             >
               <Box
@@ -185,6 +203,47 @@ const About: NextPage = () => {
               </Box>
             </Box>
           ))}
+        </Container>
+
+        <Container
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            alignItems: 'center',
+            gap: theme.custom.spacing.xs,
+            // paddingTop: theme.custom.spacing.lg,
+            justifyContent: 'center',
+            maxWidth: theme.breakpoints.values.xl,
+            // backgroundColor: 'red',
+          }}
+        >
+          <Image
+            src={main_javier}
+            alt='Javier Casanova'
+            loading='eager'
+            // layout='responsive'
+            priority
+            objectFit='contain'
+            quality={70}
+          />
+          <Image
+            src={group_meeting}
+            alt='CNG team group'
+            loading='eager'
+            // layout='responsive'
+            priority
+            objectFit='contain'
+            quality={70}
+          />
+          <Image
+            src={main_mjose}
+            alt='MJose Navarro'
+            loading='eager'
+            // layout='responsive'
+            priority
+            objectFit='contain'
+            quality={70}
+          />
         </Container>
 
         <Container

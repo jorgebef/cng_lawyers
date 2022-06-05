@@ -2,8 +2,8 @@ import { Box, Container, Typography } from '@mui/material'
 import Image from 'next/image'
 import { GoLaw } from 'react-icons/go'
 import { theme } from '../../styles/theme'
-import handshakeImg from '../../public/handshake_cropped.jpg'
-import apitsLogo from '../../public/apits_logo.png'
+import handshakeImg from '../../public/handshake_cropped.svg'
+import apitsLogo from '../../public/apits_logo.svg'
 
 export const Hero = () => {
   return (
@@ -61,7 +61,6 @@ export const Hero = () => {
             //   marginLeft: '-110px',
             //   objectFit: 'cover',
             // }}
-            placeholder='blur'
             objectFit='cover'
           />
         </Box>
@@ -116,7 +115,6 @@ export const Hero = () => {
                 priority
                 width='192'
                 height='35'
-                placeholder='blur'
                 quality={20}
               />
               <Box

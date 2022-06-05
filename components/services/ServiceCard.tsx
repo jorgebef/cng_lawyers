@@ -1,9 +1,10 @@
 import { Box, Typography, useTheme } from '@mui/material'
 import { motion } from 'framer-motion'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 interface ServiceCardProps {
-  img: StaticImageData
+  // img: StaticImageData
+  img: string
   title: string
   align: 'left' | 'right'
   children: React.ReactNode
@@ -69,7 +70,6 @@ export const ServiceCard = ({
             width='800'
             height='500'
             layout='responsive'
-            placeholder='blur'
             quality={40}
           />
         </motion.div>
