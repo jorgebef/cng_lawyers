@@ -19,8 +19,7 @@ exports.handler = function (event, context, callback) {
 
   const mailData = {
     from: 'CNG Lawyers <info@cnglawyers.com>',
-    to: 'jorge.befan@gmail.com',
-    // to: 'info@cnglawyers.com',
+    to: 'info@cnglawyers.com',
     subject: `Website contact - ${name}`,
     text: `Someone contacted via the website\n
 Name: ${name}\n
