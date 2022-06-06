@@ -52,19 +52,28 @@ const FeatureDiv = ({ number, text }: FeatureDivProps) => {
       <Typography
         fontWeight={900}
         borderColor={theme.palette.secondary.main}
-        fontSize={theme.typography.h3.fontSize}
+        fontSize={{
+          xs: theme.custom.fontSizes.xxl,
+          sm: theme.typography.h3.fontSize,
+        }}
         sx={{
           background: `-webkit-linear-gradient(30deg, ${theme.palette.secondary.main} 10%, ${theme.palette.primary.main} 70%)`,
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
-          width: `${number.length + 2.6 + Math.log(number.length) * 1.8}rem`,
+          width: {
+            xs: `${number.length + 1.0 + Math.log(number.length) * 1.8}rem`,
+            sm: `${number.length + 2.6 + Math.log(number.length) * 1.8}rem`,
+          },
         }}
       >
         +{count}
       </Typography>
       <Typography
         fontWeight={700}
-        fontSize={theme.typography.h5.fontSize}
+        fontSize={{
+          xs: theme.custom.fontSizes.xl,
+          sm: theme.typography.h5.fontSize,
+        }}
         color={theme.palette.primary.main}
       >
         {text}

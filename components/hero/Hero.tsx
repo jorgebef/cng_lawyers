@@ -12,6 +12,7 @@ export const Hero = () => {
         display: 'flex',
         justifyContent: 'center',
         height: '42vh',
+        minHeight: '310px',
         maxHeight: '550px',
         backgroundColor: theme.palette.primary.main,
         overflow: 'hidden',
@@ -82,9 +83,8 @@ export const Hero = () => {
               color='white'
               sx={{
                 lineHeight: 1.1,
-                fontSize: { xs: 35, md: 55 },
+                fontSize: { xs: 35, sm: 42, md: 55 },
                 fontWeight: 900,
-                // whiteSpace: 'nowrap'
               }}
             >
               LEGAL ADVICE
@@ -98,8 +98,7 @@ export const Hero = () => {
                 flexDirection: 'column',
                 gap: theme.custom.spacing.xs,
                 marginTop: theme.custom.spacing.sm,
-                width: { xs: '140px', md: '170px' },
-                height: { xs: '90px', md: '150px' },
+                width: { xs: '140px', sm: '170px' },
               }}
             >
               <Image

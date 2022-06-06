@@ -21,6 +21,9 @@ declare module '@mui/material/styles' {
         xl: number
       }
       fontSizes: {
+        xs: number
+        sm: number
+        md: number
         lg: number
         xl: number
         xxl: number
@@ -52,6 +55,9 @@ declare module '@mui/material/styles' {
         xl?: number
       }
       fontSizes?: {
+        xs?: number
+        sm?: number
+        md?: number
         lg?: number
         xl?: number
         xxl?: number
@@ -114,9 +120,12 @@ export const theme = createTheme({
       xl: 10,
     },
     fontSizes: {
+      xs: 12,
+      sm: 16,
+      md: 18,
       lg: 20,
       xl: 24,
-      xxl: 34,
+      xxl: 36,
     },
     framerAnimation: {
       standard: { type: 'spring', damping: 24, stiffness: 280 },

@@ -36,6 +36,8 @@ const Contact: NextPage = () => {
   const [phone, setPhone] = useState<string>()
   const [message, setMessage] = useState<string>()
 
+  const [loading, setLoading] = useState<boolean>(false)
+
   // useEffect(() => {
   //   if (contactView === true) {
   //     scrollIntoView({ alignment: 'center' })
@@ -52,6 +54,7 @@ const Contact: NextPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setLoading(true)
 
     try {
       const res = await fetch('/.netlify/functions/sendMail', {
@@ -68,12 +71,16 @@ const Contact: NextPage = () => {
         }),
       })
       const resData = await res.json()
+      setLoading(false)
       if (res.ok) {
         clearValues()
-        alert(`Message ID ${resData.messageId} has been successfully sent.
+        alert(`Your message has been successfully sent.
 We will get back to you in 48 hours.`)
+      }else{
+        alert('We are unable to send the message for you, please email us at info@cnglawyers.com instead.')
       }
     } catch (err) {
+      setLoading(false)
       alert(err)
     }
 

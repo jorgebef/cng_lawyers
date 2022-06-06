@@ -111,7 +111,7 @@ export const Header: React.FC = () => {
           sx={{
             display: { xs: 'flex', md: 'none' },
             alignItems: 'center',
-            gap: theme.custom.spacing.xs,
+            gap: { xs: null, sm: theme.custom.spacing.xs },
           }}
         >
           <ContactButton
