@@ -27,14 +27,11 @@ export const Hero = () => {
       >
         <Box
           sx={{
-            // position: 'relative',
             display: 'flex',
             overflow: 'hidden',
             height: '100%',
-            // height: '10rem',
-            // width: '30rem',
             clipPath: 'url(#myCurve)',
-            marginLeft: '-100px',
+            marginLeft: { xs: '-100px', md: '-160px' },
             marginRight: { xs: '-160px', sm: '-120px', md: 0 },
             zIndex: 0,
 
@@ -56,11 +53,6 @@ export const Hero = () => {
             width='900'
             height='750'
             priority
-            // style={{
-            //   height: '45vh',
-            //   marginLeft: '-110px',
-            //   objectFit: 'cover',
-            // }}
             objectFit='cover'
           />
         </Box>
@@ -78,7 +70,6 @@ export const Hero = () => {
               display: 'flex',
               flexDirection: 'column',
               textAlign: 'center',
-              // gap: theme.custom.spacing.xs,
               alignItems: 'center',
               padding: {
                 xs: theme.custom.spacing.xs,
@@ -91,8 +82,9 @@ export const Hero = () => {
               color='white'
               sx={{
                 lineHeight: 1.1,
-                fontSize: { xs: 40, md: 55 },
+                fontSize: { xs: 35, md: 55 },
                 fontWeight: 900,
+                // whiteSpace: 'nowrap'
               }}
             >
               LEGAL ADVICE
@@ -105,16 +97,15 @@ export const Hero = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: theme.custom.spacing.xs,
-                marginTop: theme.custom.spacing.md,
-                width: '160px',
+                marginTop: theme.custom.spacing.sm,
+                width: { xs: '140px', md: '170px' },
+                height: { xs: '90px', md: '150px' },
               }}
             >
               <Image
                 src={apitsLogo}
                 alt='A Place in the Sun logo'
                 priority
-                width='192'
-                height='35'
                 quality={20}
               />
               <Box
@@ -131,7 +122,10 @@ export const Hero = () => {
                 <Typography
                   // color={theme.palette.extra.main}
                   color={theme.palette.grey[300]}
-                  fontSize={theme.custom.fontSizes.xl}
+                  fontSize={{
+                    xs: theme.custom.fontSizes.lg,
+                    md: theme.custom.fontSizes.xl,
+                  }}
                   fontWeight='700'
                   lineHeight={1.1}
                 >
