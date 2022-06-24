@@ -2,14 +2,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { useAppCtx } from '../../context/AppCtx'
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Toolbar,
-  Typography,
-  useTheme,
-} from '@mui/material'
+import { AppBar, Box, IconButton, Toolbar, useTheme } from '@mui/material'
 import { CloseRounded, MenuRounded } from '@mui/icons-material'
 import { ContactButton } from '../contactButton'
 import Image from 'next/image'
@@ -108,7 +101,7 @@ export const Header: React.FC = () => {
           <Image
             alt='CNG Lawyers logo'
             src='/logo.svg'
-            loading='lazy'
+            priority
             width='128px'
             height='50px'
           />
@@ -118,7 +111,7 @@ export const Header: React.FC = () => {
           sx={{
             display: { xs: 'flex', md: 'none' },
             alignItems: 'center',
-            gap: theme.custom.spacing.xs,
+            gap: { xs: '2.5vw', sm: theme.custom.spacing.xs },
           }}
         >
           <ContactButton

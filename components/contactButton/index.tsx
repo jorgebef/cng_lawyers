@@ -16,12 +16,26 @@ export const ContactButton = ({
         backgroundColor: theme.palette.extra.main,
         fontSize:
           btnFontSize === 'sm'
-            ? theme.typography.body2.fontSize
+            ? {
+                xs: theme.custom.fontSizes.xs,
+                sm: theme.typography.body2.fontSize,
+              }
             : btnFontSize === 'md'
             ? theme.typography.body1.fontSize
             : btnFontSize === 'lg'
             ? theme.custom.fontSizes.lg
             : theme.custom.fontSizes.xxl,
+        // fontSize: {
+        //   xs: theme.custom.fontSizes.xs,
+        //   sm:
+        //     btnFontSize === 'sm'
+        //       ? theme.typography.body2.fontSize
+        //       : btnFontSize === 'md'
+        //       ? theme.typography.body1.fontSize
+        //       : btnFontSize === 'lg'
+        //       ? theme.custom.fontSizes.lg
+        //       : theme.custom.fontSizes.xxl,
+        // },
         ':hover': {
           backgroundColor: theme.palette.extra.light,
         },
