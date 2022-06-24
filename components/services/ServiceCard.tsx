@@ -1,10 +1,10 @@
 import { Box, Typography, useTheme } from '@mui/material'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 
 interface ServiceCardProps {
-  // img: StaticImageData
-  img: string
+  img: StaticImageData
+  // img: string
   title: string
   align: 'left' | 'right'
   children: React.ReactNode

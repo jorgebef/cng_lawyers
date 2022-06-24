@@ -2,8 +2,8 @@ import { Box, Container, Typography } from '@mui/material'
 import Image from 'next/image'
 import { GoLaw } from 'react-icons/go'
 import { theme } from '../../styles/theme'
-import handshakeImg from '../../public/handshake_cropped.svg'
-import apitsLogo from '../../public/apits_logo.svg'
+import handshakeImg from '../../public/handshake_cropped.jpg'
+import apitsLogo from '../../public/apits_logo.png'
 
 export const Hero = () => {
   return (

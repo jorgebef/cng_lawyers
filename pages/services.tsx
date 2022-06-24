@@ -8,9 +8,9 @@ import { GiReceiveMoney, GiDiploma } from 'react-icons/gi'
 import { GoLaw } from 'react-icons/go'
 import { MdOutlineFeed } from 'react-icons/md'
 import { BsFillHouseFill, BsFillSignpost2Fill } from 'react-icons/bs'
-import conveyancingImg from '../public/conveyancing.svg'
-import fiscalImg from '../public/fiscal_repres.svg'
-import litigationImg from '../public/litigation.svg'
+import conveyancingImg from '../public/conveyancing.jpg'
+import fiscalImg from '../public/fiscal_repres.jpg'
+import litigationImg from '../public/litigation.jpg'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {

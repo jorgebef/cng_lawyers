@@ -15,10 +15,10 @@ import { useRouter } from 'next/router'
 import { ContactButton } from '../components/contactButton'
 import { GoPrimitiveDot } from 'react-icons/go'
 import Image from 'next/image'
-import teamImg from '../public/team.svg'
-import main_javier from '../public/main_javier.svg'
-import group_meeting from '../public/group_meeting.svg'
-import main_mjose from '../public/main_mjose.svg'
+import teamImg from '../public/team.jpg'
+import main_javier from '../public/main_javier.jpg'
+import group_meeting from '../public/group_meeting.jpg'
+import main_mjose from '../public/main_mjose.jpg'
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
